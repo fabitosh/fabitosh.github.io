@@ -1,0 +1,48 @@
+body { 
+	font-family: 'Roboto', sans-serif;
+	margin: auto;
+	width: 70%;
+}
+
+/* Header */
+header {
+  	font-size: 48px;
+  	font-weight: normal;
+}
+
+/* Navigation */
+nav {
+	text-align: center;
+}
+nav ul {
+  	display: inline-block;
+    list-style-type: none;
+    margin: 10px auto;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav li a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+nav li a:hover {
+  color: red;
+}
+
+nav li a:active {
+	font-weight: bold;
+}
+
+/* Main */
+.main {
+	font-size: 12px;
+}
