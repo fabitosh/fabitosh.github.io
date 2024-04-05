@@ -1,0 +1,14 @@
+---
+layout: layout.njk
+title: Photography
+---
+
+<h1>Photography</h1>
+
+{{ content | safe }}
+
+<section class="gallery">
+    {% for image in collections.photographyJpgs %}
+        <figure><img src="../{{image}}" alt=""></figure>
+    {% endfor %}
+</section>
