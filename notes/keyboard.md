@@ -44,3 +44,52 @@ This could be tackled in different ways. In my situation, I opted for adjusting 
 When I connect the Voyager, I want to swap command and control on my Mac. When using the Laptop keyboard, I actually preferred the OS default.
 [Karabiner](https://karabiner-elements.pqrs.org/) allows such modification dependent on the input source.
 
+# Gimmick: Bind Hyper to long F press for the integrated keyboard
+
+Add your own rule to the Complex Modifications of Karabiner:
+```json
+{
+    "description": "Bind hyper to long key hold of F on integrated laptop keyboard",
+    "manipulators": [
+        {
+            "conditions": [
+                {
+                    "identifiers": [
+                        {
+                            "is_built_in_keyboard": true
+                        }
+                    ],
+                    "type": "device_if"
+                }
+            ],
+            "from": {
+                "key_code": "f",
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
+            },
+            "parameters": {
+                "basic.to_if_held_down_threshold_milliseconds": 350
+            },
+            "to_if_alone": [
+                {
+                    "key_code": "f"
+                }
+            ],
+            "to_if_held_down": [
+                {
+                    "key_code": "left_control",
+                    "modifiers": [
+                        "left_shift",
+                        "left_option",
+                        "left_command"
+                    ]
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}
+```
