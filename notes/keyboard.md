@@ -37,6 +37,7 @@ This could be tackled in different ways. In my situation, I opted for adjusting 
 
 ### Create a Windows-like Swiss German Layout
 [Ukelele](https://software.sil.org/ukelele/) helps us adjust Keyboard layouts to our needs. Whilst doing that, I took the liberty of removing the dead key behaviour (wait for the next keystroke and potentially modify that character) for keys such as `~`. 
+Store the file in `~/Library/Keyboard Layouts/` and restart the machine. The new layout should be available in the Keyboard settings.
 
 > todo: upload .keylayout file
 
