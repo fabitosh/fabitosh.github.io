@@ -4,6 +4,9 @@ node_modules/
 # Eleventy build output directory
 _site/
 
+# Obsidian Sync
+**/_tmp/
+
 # Logs
 logs
 *.log
