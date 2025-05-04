@@ -1,0 +1,129 @@
+import os
+import re
+import shutil
+from pathlib import Path
+import yaml
+
+# Configuration
+OBSIDIAN_VAULT_PATH = Path("/Users/fabio/Google Drive/My Drive/obsiabio")
+# TODO: ignore .trash folder
+TARGET_YAML_KEY = "tags"
+TARGET_TAG_VALUE = "tech/website/hosted"
+TEMP_FOLDER_PATH = Path("_tmp/obsidian_publish")
+WEBSITE_NOTES_PATH = Path("../notes")
+
+def _clean_filename(filename: str) -> str:
+    """
+    Obsidian Files can contain spaces and special characters. Make them web compatible.
+    Example: Converts "My Note (Test).md" to "my-note-test.md"
+    """
+    name_part = filename.rsplit('.md', 1)[0]
+    cleaned = name_part.lower()
+    # Replace spaces and common separators with hyphens
+    cleaned = re.sub(r'[\s_(),]+', '-', cleaned)
+    # Remove any characters that are not alphanumeric or hyphens
+    cleaned = re.sub(r'[^a-z0-9-]', '', cleaned)
+    # Remove leading/trailing hyphens and consecutive hyphens
+    cleaned = re.sub(r'^-+|-+$', '', cleaned)
+    cleaned = re.sub(r'-{2,}', '-', cleaned)
+    return f"{cleaned}.md"
+
+def _parse_yaml_frontmatter(file_path: Path) -> dict:
+    """Parses YAML frontmatter from a Markdown file."""
+    assert file_path.suffix == ".md"
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            if content.startswith('---'):
+                parts = content.split('---', 2)
+                if len(parts) >= 3:
+                    frontmatter = yaml.safe_load(parts[1])
+                    return frontmatter if isinstance(frontmatter, dict) else {}
+    except yaml.YAMLError as e:
+        print(f"Warning: Error parsing YAML in {file_path}: {e}")
+    except Exception as e:
+        print(f"Warning: Unexpected error reading {file_path}: {e}")
+    return {}
+
+def _has_publish_tag(frontmatter: dict) -> bool:
+    """Checks if the frontmatter contains the target publish tag."""
+    tags = frontmatter.get(TARGET_YAML_KEY, [])
+    if tags is None:
+        return False
+    if isinstance(tags, str):
+        tags = [tags]
+    return TARGET_TAG_VALUE in tags
+
+def mirror_obsidian_notes() -> None:
+    """
+    Finds notes with the publish tag in Obsidian vault,
+    cleans their filenames, and copies them to the temp folder.
+    """
+    print(f"Starting mirror process...")
+    print(f"Source Vault: {OBSIDIAN_VAULT_PATH}")
+    print(f"Target Tag: '{TARGET_TAG_VALUE}'")
+    print(f"Temp Folder: {TEMP_FOLDER_PATH}")
+
+    if TEMP_FOLDER_PATH.exists():
+        print(f"Clearing existing temp folder: {TEMP_FOLDER_PATH}")
+        shutil.rmtree(TEMP_FOLDER_PATH)
+    TEMP_FOLDER_PATH.mkdir(parents=True, exist_ok=True)
+    print(f"Created temp folder: {TEMP_FOLDER_PATH}")
+
+    copied_count = 0
+    for item in OBSIDIAN_VAULT_PATH.rglob('*.md'):
+        if item.is_file():
+            obsidian_frontmatter = _parse_yaml_frontmatter(item)
+            if _has_publish_tag(obsidian_frontmatter):
+                web_name = _clean_filename(item.name)
+                target_path = os.path.join(TEMP_FOLDER_PATH, web_name)
+                try:
+                    shutil.copy2(item, target_path) # copy2 preserves metadata like modification time
+                    copied_count += 1
+                except Exception as e:
+                    print(f"Error copying {item} to {target_path}: {e}")
+    print(f"Mirroring complete. Copied {copied_count} notes to {TEMP_FOLDER_PATH}")
+
+
+def sync_notes() -> None:
+    """
+    Compares the temp folder with the website notes folder and updates the website notes in the working directory.
+    """
+    print("\nStarting sync process...")
+    print(f"Comparing '{TEMP_FOLDER_PATH}' with '{WEBSITE_NOTES_PATH}'")
+
+    if not TEMP_FOLDER_PATH.exists():
+        print("Error: Temp folder does not exist. Run mirroring first.")
+        return
+    if not WEBSITE_NOTES_PATH.exists():
+        raise EnvironmentError(f"Warning: Website notes folder '{WEBSITE_NOTES_PATH}' not found.")
+
+    temp_obsidian_notes = {f.name: f for f in TEMP_FOLDER_PATH.glob('*.md')}
+    website_notes = {f.name: f for f in WEBSITE_NOTES_PATH.glob('*.md')}
+
+    for name, temp_path in temp_obsidian_notes.items():
+        website_path = os.path.join(WEBSITE_NOTES_PATH, name)
+        if name in website_notes:
+            try:
+                # TODO: Add YAML modification logic. Take from website.
+                shutil.copy2(temp_path, website_path)
+            except Exception as e:
+                print(f"Error updating {website_path}: {e}")
+        else:
+            # File missing in website - add it
+            try:
+                # TODO: Add YAML modification logic. Create for website.
+                shutil.copy2(temp_path, website_path)
+            except Exception as e:
+                print(f"Error adding {website_path}: {e}")
+
+    for name, website_path in website_notes.items():
+        if name not in temp_obsidian_notes:
+            print(f"Warning: '{name}' exists in website notes but not in latest mirrored notes.")
+
+    print("Review changes using the git diff in the website repo.")
+
+
+if __name__ == "__main__":
+    mirror_obsidian_notes()
+    # sync_notes()
