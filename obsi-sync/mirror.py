@@ -76,7 +76,6 @@ def mirror_obsidian_notes() -> None:
         print(f"Clearing existing temp folder: {TEMP_FOLDER_PATH}")
         shutil.rmtree(TEMP_FOLDER_PATH)
     TEMP_FOLDER_PATH.mkdir(parents=True, exist_ok=True)
-    print(f"Created temp folder: {TEMP_FOLDER_PATH}")
 
     copied_count = 0
     for item in OBSIDIAN_VAULT_PATH.rglob('*.md'):
@@ -86,7 +85,7 @@ def mirror_obsidian_notes() -> None:
             obsidian_frontmatter, _ = _process_markdown_file(item)
             if _has_publish_tag(obsidian_frontmatter):
                 web_name = _clean_filename(item.name)
-                target_path = os.path.join(TEMP_FOLDER_PATH, web_name)
+                target_path = TEMP_FOLDER_PATH / web_name
                 try:
                     shutil.copy2(item, target_path) # copy2 preserves metadata like modification time
                     copied_count += 1
@@ -102,17 +101,14 @@ def sync_notes() -> None:
     print("\nStarting sync process...")
     print(f"Comparing '{TEMP_FOLDER_PATH}' with '{WEBSITE_NOTES_PATH}'")
 
-    if not TEMP_FOLDER_PATH.exists():
-        print("Error: Temp folder does not exist. Run mirroring first.")
-        return
-    if not WEBSITE_NOTES_PATH.exists():
-        raise EnvironmentError(f"Warning: Website notes folder '{WEBSITE_NOTES_PATH}' not found.")
+    assert TEMP_FOLDER_PATH.exists(), f"{TEMP_FOLDER_PATH=} does not exist. Run mirroring first."
+    assert WEBSITE_NOTES_PATH.exists(), f"{WEBSITE_NOTES_PATH=} not found."
 
     temp_obsidian_notes = {f.name: f for f in TEMP_FOLDER_PATH.glob('*.md')}
     website_notes = {f.name: f for f in WEBSITE_NOTES_PATH.glob('*.md')}
 
     for name, temp_path in temp_obsidian_notes.items():
-        website_path = os.path.join(WEBSITE_NOTES_PATH, name)
+        website_path = WEBSITE_NOTES_PATH / name
         if name in website_notes:
             try:
                 web_frontmatter, _ = _process_markdown_file(website_path)
