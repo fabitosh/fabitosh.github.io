@@ -93,6 +93,15 @@ def mirror_obsidian_notes() -> None:
                     print(f"Error copying {item} to {target_path}: {e}")
     print(f"Mirroring complete. Copied {copied_count} notes to {TEMP_FOLDER_PATH}")
 
+def _create_web_frontmatter(obsidian_frontmatter: Frontmatter, filename: str) -> Frontmatter:
+    return Frontmatter({
+        'title': obsidian_frontmatter.get('title', filename.title()),
+        'tags': obsidian_frontmatter.get('tags', []),
+        'btime': obsidian_frontmatter.get('btime'),
+        'mtime': obsidian_frontmatter.get('mtime'),
+        'status': 'completed', # scribble, draft, completed, revision
+        'permalink': "notes/{{ page.fileSlug }}/index.html",
+    })
 
 def sync_notes() -> None:
     """
@@ -120,8 +129,10 @@ def sync_notes() -> None:
         else:
             # File missing in website - add it
             try:
-                # TODO: Add YAML modification logic. Create for website.
-                shutil.copy2(temp_path, website_path)
+                obsidian_frontmatter, content = _process_markdown_file(temp_path)
+                web_frontmatter = _create_web_frontmatter(obsidian_frontmatter)
+                # todo: create web md file
+                # shutil.copy2(temp_path, website_path)
             except Exception as e:
                 print(f"Error adding {website_path}: {e}")
 
