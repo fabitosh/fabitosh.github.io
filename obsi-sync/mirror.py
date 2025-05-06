@@ -19,13 +19,13 @@ def _clean_filename(filename: str) -> str:
     """
     name_part = filename.rsplit('.md', 1)[0]
     cleaned = name_part.lower()
-    # Replace spaces and common separators with hyphens
-    cleaned = re.sub(r'[\s_(),]+', '-', cleaned)
-    # Remove any characters that are not alphanumeric or hyphens
-    cleaned = re.sub(r'[^a-z0-9-]', '', cleaned)
-    # Remove leading/trailing hyphens and consecutive hyphens
-    cleaned = re.sub(r'^-+|-+$', '', cleaned)
-    cleaned = re.sub(r'-{2,}', '-', cleaned)
+    umlaut_subs = {'ä': 'ae', 'ö': 'oe', 'ü': 'ue'}
+    for umlaut, sub in umlaut_subs.items():
+        cleaned = cleaned.replace(umlaut, sub)
+    cleaned = re.sub(r'[\s_(),]+', '-', cleaned)  # Replace spaces/separators
+    cleaned = re.sub(r'[^a-z0-9-]', '', cleaned)  # Remove invalid chars
+    cleaned = re.sub(r'^-+|-+$', '', cleaned)     # Trim leading/trailing hyphens
+    cleaned = re.sub(r'-{2,}', '-', cleaned)      # Remove consecutive hyphens
     return f"{cleaned}.md"
 
 def _parse_yaml_frontmatter(file_path: Path) -> dict:
