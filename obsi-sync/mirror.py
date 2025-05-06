@@ -6,7 +6,7 @@ import yaml
 
 # Configuration
 OBSIDIAN_VAULT_PATH = Path("/Users/fabio/Google Drive/My Drive/obsiabio")
-# TODO: ignore .trash folder
+OBSIDIAN_TRASH_FOLDER_NAME = ".trash"
 TARGET_YAML_KEY = "tags"
 TARGET_TAG_VALUE = "tech/website/hosted"
 TEMP_FOLDER_PATH = Path("_tmp/obsidian_publish")
@@ -72,6 +72,8 @@ def mirror_obsidian_notes() -> None:
 
     copied_count = 0
     for item in OBSIDIAN_VAULT_PATH.rglob('*.md'):
+        if OBSIDIAN_TRASH_FOLDER_NAME in item.parents:
+            continue
         if item.is_file():
             obsidian_frontmatter = _parse_yaml_frontmatter(item)
             if _has_publish_tag(obsidian_frontmatter):
