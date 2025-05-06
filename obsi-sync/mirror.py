@@ -2,6 +2,8 @@ import os
 import re
 import shutil
 from pathlib import Path
+from typing import NewType
+
 import yaml
 
 # Configuration
@@ -28,22 +30,28 @@ def _clean_filename(filename: str) -> str:
     cleaned = re.sub(r'-{2,}', '-', cleaned)      # Remove consecutive hyphens
     return f"{cleaned}.md"
 
-def _parse_yaml_frontmatter(file_path: Path) -> dict:
+Frontmatter = NewType("Frontmatter", dict)
+MdContent = NewType("MdContent", str)
+
+def _process_markdown_file(file_path: Path) -> (Frontmatter, MdContent):
     """Parses YAML frontmatter from a Markdown file."""
     assert file_path.suffix == ".md"
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
             if content.startswith('---'):
-                parts = content.split('---', 2)
+                parts = content.split('---')
                 if len(parts) >= 3:
                     frontmatter = yaml.safe_load(parts[1])
-                    return frontmatter if isinstance(frontmatter, dict) else {}
+                    frontmatter = frontmatter if isinstance(frontmatter, dict) else {}
+                    content = "\n".join(parts[2::1]).strip()
+                    return frontmatter, content
     except yaml.YAMLError as e:
         print(f"Warning: Error parsing YAML in {file_path}: {e}")
     except Exception as e:
         print(f"Warning: Unexpected error reading {file_path}: {e}")
-    return {}
+    return {}, ""
+
 
 def _has_publish_tag(frontmatter: dict) -> bool:
     """Checks if the frontmatter contains the target publish tag."""
@@ -75,7 +83,7 @@ def mirror_obsidian_notes() -> None:
         if OBSIDIAN_TRASH_FOLDER_NAME in item.parents:
             continue
         if item.is_file():
-            obsidian_frontmatter = _parse_yaml_frontmatter(item)
+            obsidian_frontmatter, _ = _process_markdown_file(item)
             if _has_publish_tag(obsidian_frontmatter):
                 web_name = _clean_filename(item.name)
                 target_path = os.path.join(TEMP_FOLDER_PATH, web_name)
@@ -107,8 +115,10 @@ def sync_notes() -> None:
         website_path = os.path.join(WEBSITE_NOTES_PATH, name)
         if name in website_notes:
             try:
-                # TODO: Add YAML modification logic. Take from website.
-                shutil.copy2(temp_path, website_path)
+                web_frontmatter, _ = _process_markdown_file(website_path)
+                _, obsidian_content = _process_markdown_file(temp_path)
+                # todo: update content of website_path
+                # shutil.copy2(temp_path, website_path)
             except Exception as e:
                 print(f"Error updating {website_path}: {e}")
         else:
