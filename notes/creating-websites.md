@@ -1,20 +1,24 @@
 ---
+btime: 2025-03-31 07:33
 layout: note.njk
-title: Building Websites
-tags: [ en, tech, Eleventy, Bootstrap ]
-status: scribble
+mtime: 2025-05-07 10:01
 permalink: notes/{{ page.fileSlug }}/index.html
+status: scribble
+tags:
+- en
+- tech
+- Eleventy
+- Bootstrap
+title: Building Websites
 ---
-
-My aim is to create websites as a platform with minimal mingling in the web languages. The use case determines the
-required framework.
+My aim is to create websites as a platform with minimal mingling in the web languages. The use case determines the required framework. This is a beginners ramble overview.
 
 ## Display Static Content
 
 Here, I want to have files that can be visualized directly on any browser without relying on any environment setup. Each
 consumer should see a mostly identical output.
 Those sites are lean, secure, and generally simple. In the past, I have not overly enjoyed creating and maintaining
-such sites, which was the reason for me looking into it.  
+such sites, which was the reason for me looking into it.
 My goal is to set the page up once and from then on only worry about the content anymore.
 
 ### Painpoint: Repetitive code
@@ -33,9 +37,9 @@ for our webpages.
 
 Placing all the individual boxes of a website in the right place for multiple browsers, and screen resolutions and
 keeping it up to date with the latest developments can quickly start consuming time.
-[Bootstrap](https://getbootstrap.com/) massively simplifies this by offering dynamic design templates.
+[Bootstrap](https://getbootstrap.com/) massively simplifies this by offering dynamic design templates. [Tailwind CSS](https://tailwindcss.com/) is said to be a more modern replacement.
 
-## npm
+### npm
 
 We have identified two packages that help us resolve most of the pain points.
 [npm](https://www.npmjs.com/) manages packages for JavaScript/node.js similarly to the way `poetry` or `setuptools` do
@@ -59,15 +63,13 @@ Start up a local web server that hot-reloads the page
 npx @11ty/eleventy --serve
 ```
 
-## Deployment
+### Deployment
 
-As the website is fully static, it can be freely hosted e.g. on GitHub pages. With GitHub workflows, we can even host it
-on a specific git action like a push on the master branch.
+As the website is fully static, it can be hosted anywhere.
 
 This website is the result of this evaluation. Feel free to check out
-its [source code on github](https://github.com/fabitosh/fabitosh.github.io).
+its [source code on github](https://github.com/fabitosh/fabitosh.github.io). I automatically deploy this site on any push to master.
 
-# Dynamic Websites
+## Dynamic Websites
 
-Next:
-Plotly Dash, hosting, host on subdomain?
+Next: Plotly Dash, host a plotly dash app (chat analyzer) on a subdomain?

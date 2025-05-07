@@ -154,4 +154,4 @@ def sync_notes() -> None:
 
 if __name__ == "__main__":
     mirror_obsidian_notes()
-    # sync_notes()
+    sync_notes()
