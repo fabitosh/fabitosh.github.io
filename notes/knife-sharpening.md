@@ -1,13 +1,11 @@
 ---
-btime: 2025-03-31 07:33
+btime: 2024-05-02
 layout: note.njk
-mtime: 2025-05-07 09:25
+mtime: 
 permalink: notes/{{ page.fileSlug }}/index.html
 status: scribble
 tags:
-- en
-- hobby
-- food
+- kitchen
 title: Keep your Knives Sharp
 ---
 ## Reduce wear

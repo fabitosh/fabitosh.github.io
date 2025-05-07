@@ -1,11 +1,11 @@
 ---
-btime: 2025-03-31 07:33
+btime: 2024-04-12
 layout: note.njk
-mtime: 2025-05-07 09:27
+mtime: 
 permalink: notes/{{ page.fileSlug }}/index.html
 status: completed
 tags:
-- de
+- german
 - friends
 title: Parkieren in Zürich
 ---

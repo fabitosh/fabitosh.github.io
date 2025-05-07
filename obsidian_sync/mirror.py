@@ -68,7 +68,7 @@ def sync_notes() -> None:
             try:
                 web_frontmatter, _ = _parse_markdown_file(website_path)
                 obsi_f, obsidian_content = _parse_markdown_file(temp_path)
-                web_frontmatter.update({k: v for k, v in obsi_f.items() if k in {'btime', 'mtime'}})
+                web_frontmatter.update({k: v for k, v in obsi_f.items() if k in {'title'}})
                 _save_markdown_file(website_path, web_frontmatter, obsidian_content)
             except Exception as e:
                 print(f"Error updating {website_path}: {e}")

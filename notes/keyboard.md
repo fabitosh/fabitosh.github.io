@@ -1,12 +1,11 @@
 ---
-btime: 2025-03-31 07:33
+btime: 2024-04-12
 layout: note.njk
-mtime: 2025-05-07 09:25
+mtime: 2025-01-19
 permalink: notes/{{ page.fileSlug }}/index.html
 status: scribble
 tags:
-- en
-- tech
+- developer
 title: Keyboard Layout
 ---
 ## Challenge 1: Keyboard Layout

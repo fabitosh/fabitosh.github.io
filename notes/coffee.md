@@ -1,13 +1,11 @@
 ---
-btime: 2025-03-31 07:33
+btime: 2024-04-08
 layout: note.njk
-mtime: 2025-05-07 09:21
+mtime: 2025-04-10
 permalink: notes/{{ page.fileSlug }}/index.html
 status: completed
 tags:
-- en
-- hobby
-- food
+- kitchen
 title: Coffee
 ---
 ## Coffee Part 1: The basics

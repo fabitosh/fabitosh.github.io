@@ -1,15 +1,12 @@
 ---
-btime: 2025-03-31 07:33
+btime: 2024-04-12
 layout: note.njk
-mtime: 2025-05-07 10:01
+mtime: 
 permalink: notes/{{ page.fileSlug }}/index.html
 status: scribble
 tags:
-- en
-- tech
-- Eleventy
-- Bootstrap
-title: Building Websites
+- developer
+title: Creating Websites
 ---
 My aim is to create websites as a platform with minimal mingling in the web languages. The use case determines the required framework. This is a beginners ramble overview.
 
