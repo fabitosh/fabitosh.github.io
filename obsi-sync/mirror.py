@@ -95,11 +95,12 @@ def mirror_obsidian_notes() -> None:
 
 def _create_web_frontmatter(obsidian_frontmatter: Frontmatter, filename: str) -> Frontmatter:
     return Frontmatter({
-        'title': obsidian_frontmatter.get('title', filename.title()),
+        'layout': 'note.njk',
+        'title': obsidian_frontmatter.get('title', filename.replace("-", " ").title()),
         'tags': obsidian_frontmatter.get('tags', []),
         'btime': obsidian_frontmatter.get('btime'),
         'mtime': obsidian_frontmatter.get('mtime'),
-        'status': 'completed', # scribble, draft, completed, revision
+        'status': obsidian_frontmatter.get('status', 'draft'), # scribble, draft, completed, revision
         'permalink': "notes/{{ page.fileSlug }}/index.html",
     })
 
@@ -138,7 +139,7 @@ def sync_notes() -> None:
             # File missing in website - add it
             try:
                 obsidian_frontmatter, content = _parse_markdown_file(temp_path)
-                web_frontmatter = _create_web_frontmatter(obsidian_frontmatter)
+                web_frontmatter = _create_web_frontmatter(obsidian_frontmatter, filename=name)
                 _save_markdown_file(website_path, web_frontmatter, content)
             except Exception as e:
                 print(f"Error adding {website_path}: {e}")
