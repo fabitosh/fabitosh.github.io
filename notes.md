@@ -24,10 +24,10 @@ title: fabio.earth - notes
           </span>
         {%- endif -%}
       </td>
-      <td class="text-muted small">{{ note.date | date: "%Y-%m-%d" }}</td>
+      <td class="text-muted small">{{ note.data['btime'] | date: "%Y-%m-%d" }}</td>
       <td>
-        {%- if note.data['date modified'] -%}
-          <span class="text-muted small">{{ note.data['date modified'] | date: "%Y-%m-%d" }}</span>
+        {%- if note.data['mtime'] -%}
+          <span class="text-muted small">{{ note.data['mtime'] | date: "%Y-%m-%d" }}</span>
         {%- else -%}
           <span class="text-muted small">-</span>
         {%- endif -%}

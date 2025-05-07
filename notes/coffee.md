@@ -1,11 +1,13 @@
 ---
+btime: 2024-04-08
 layout: note.njk
-title: Coffee
-tags: [ en, hobby, food ]
-status: completed
+mtime: 2025-04-10
 permalink: notes/{{ page.fileSlug }}/index.html
+status: completed
+tags:
+- kitchen
+title: Coffee
 ---
-
 ## Coffee Part 1: The basics
 At its core, brewed coffee is water with extracts from coffee beans. This page aims to introduce into the process of making coffee at home.
 
@@ -21,10 +23,10 @@ Coffee variations dilute or complement the raw coffee taste.
 However, to adjust the coffee-related flavors in those drinks, understanding the espresso extraction process is key.
 
 #### Coffee-related flavors
-A key taste spectrum ranges from sour over "balanced" to bitter. The interesting part is, that where we land on this spectrum heavily relies on process factors. If it **tastes sour, you have under-extracted** the coffee. If it is **bitter, it's over-extracted**.  
+A key taste spectrum ranges from sour over "balanced" to bitter. The interesting part is, that where we land on this spectrum heavily relies on process factors. If it **tastes sour, you have under-extracted** the coffee. If it is **bitter, it's over-extracted**.
 Once you have reasonable process parameters, you can learn to differentiate the tastes by pulling a *salami shot*. To do this, distribute the espresso shot into three cups as it brews. The first cup will be sour and the last one should be bitter and potentially watery.
 
-**Sourness**: Reminiscent of lemon juice. Result of acids extracting early in the brewing process. The sharp flavor is detected on the sides of the tongue.  
+**Sourness**: Reminiscent of lemon juice. Result of acids extracting early in the brewing process. The sharp flavor is detected on the sides of the tongue.
 **Bitterness**: Reminiscent of dark chocolate or even ashy/burnt flavours. Dry. Displeasing taste towards the back of the tongue.
 
 ##### Beans
@@ -92,3 +94,5 @@ My opinionated take on the order of importance to get good-great coffee:
 5. The quality of the coffee machine
 
 In a next part we will look at coffee equipment and some more advanced nuances.
+
+[[Coffee Machines]]
