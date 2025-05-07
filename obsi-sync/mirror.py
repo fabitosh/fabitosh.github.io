@@ -53,7 +53,7 @@ def _parse_markdown_file(file_path: Path) -> (Frontmatter, MdContent):
     return {}, ""
 
 
-def _has_publish_tag(frontmatter: dict) -> bool:
+def _has_publish_tag(frontmatter: Frontmatter) -> bool:
     """Checks if the frontmatter contains the target publish tag."""
     tags = frontmatter.get(TARGET_YAML_KEY, [])
     if tags is None:
@@ -120,8 +120,6 @@ def sync_notes() -> None:
         website_path = WEBSITE_NOTES_PATH / name
         if name in website_notes:
             try:
-                # todo: update content of website_path
-                # shutil.copy2(temp_path, website_path)
                 web_frontmatter, _ = _parse_markdown_file(website_path)
                 _, obsidian_content = _parse_markdown_file(temp_path)
             except Exception as e:
