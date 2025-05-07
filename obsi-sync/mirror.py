@@ -33,8 +33,8 @@ def _clean_filename(filename: str) -> str:
 Frontmatter = NewType("Frontmatter", dict)
 MdContent = NewType("MdContent", str)
 
-def _process_markdown_file(file_path: Path) -> (Frontmatter, MdContent):
-    """Parses YAML frontmatter from a Markdown file."""
+def _parse_markdown_file(file_path: Path) -> (Frontmatter, MdContent):
+    """Parses YAML frontmatter and content from a Markdown file."""
     assert file_path.suffix == ".md"
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -82,7 +82,7 @@ def mirror_obsidian_notes() -> None:
         if OBSIDIAN_TRASH_FOLDER_NAME in item.parents:
             continue
         if item.is_file():
-            obsidian_frontmatter, _ = _process_markdown_file(item)
+            obsidian_frontmatter, _ = _parse_markdown_file(item)
             if _has_publish_tag(obsidian_frontmatter):
                 web_name = _clean_filename(item.name)
                 target_path = TEMP_FOLDER_PATH / web_name
@@ -120,16 +120,16 @@ def sync_notes() -> None:
         website_path = WEBSITE_NOTES_PATH / name
         if name in website_notes:
             try:
-                web_frontmatter, _ = _process_markdown_file(website_path)
-                _, obsidian_content = _process_markdown_file(temp_path)
                 # todo: update content of website_path
                 # shutil.copy2(temp_path, website_path)
+                web_frontmatter, _ = _parse_markdown_file(website_path)
+                _, obsidian_content = _parse_markdown_file(temp_path)
             except Exception as e:
                 print(f"Error updating {website_path}: {e}")
         else:
             # File missing in website - add it
             try:
-                obsidian_frontmatter, content = _process_markdown_file(temp_path)
+                obsidian_frontmatter, content = _parse_markdown_file(temp_path)
                 web_frontmatter = _create_web_frontmatter(obsidian_frontmatter)
                 # todo: create web md file
                 # shutil.copy2(temp_path, website_path)
