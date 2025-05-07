@@ -34,7 +34,7 @@ def mirror_obsidian_notes() -> None:
 
     copied_count = 0
     for item in OBSIDIAN_VAULT_PATH.rglob('*.md'):
-        if OBSIDIAN_TRASH_FOLDER_NAME in item.parents:
+        if OBSIDIAN_TRASH_FOLDER_NAME in item.parts:
             continue
         if item.is_file():
             obsidian_frontmatter, _ = _parse_markdown_file(item)
