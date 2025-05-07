@@ -103,6 +103,15 @@ def _create_web_frontmatter(obsidian_frontmatter: Frontmatter, filename: str) ->
         'permalink': "notes/{{ page.fileSlug }}/index.html",
     })
 
+
+def _save_markdown_file(file_path: Path, frontmatter: Frontmatter, content: MdContent) -> None:
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write('---\n')
+        yaml.dump(dict(frontmatter), f, default_flow_style=False, allow_unicode=True)
+        f.write('---\n')
+        f.write(content)
+
+
 def sync_notes() -> None:
     """
     Compares the temp folder with the website notes folder and updates the website notes in the working directory.
@@ -122,6 +131,7 @@ def sync_notes() -> None:
             try:
                 web_frontmatter, _ = _parse_markdown_file(website_path)
                 _, obsidian_content = _parse_markdown_file(temp_path)
+                _save_markdown_file(website_path, web_frontmatter, obsidian_content)
             except Exception as e:
                 print(f"Error updating {website_path}: {e}")
         else:
@@ -129,8 +139,7 @@ def sync_notes() -> None:
             try:
                 obsidian_frontmatter, content = _parse_markdown_file(temp_path)
                 web_frontmatter = _create_web_frontmatter(obsidian_frontmatter)
-                # todo: create web md file
-                # shutil.copy2(temp_path, website_path)
+                _save_markdown_file(website_path, web_frontmatter, content)
             except Exception as e:
                 print(f"Error adding {website_path}: {e}")
 
