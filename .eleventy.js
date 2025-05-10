@@ -1,5 +1,5 @@
 const fg = require("fast-glob");
-
+const { alertPlugin } = require("markdown-it-github-alert");
 photographyImages = fg.sync(['photography/**/*.jpg', '!**/_site']);
 module.exports = function(eleventyConfig) {
     eleventyConfig.addCollection('notes', function(collectionApi) {
@@ -56,5 +56,7 @@ module.exports = function(eleventyConfig) {
             }
         }
     });
+        // github markdown callouts: note, tip, important, warning, caution
+        .use(alertPlugin);
     eleventyConfig.setLibrary("md", md);
 };

@@ -40,12 +40,12 @@ That seems obvious, but is believed to be wrong. The argument is, I believe, tha
 Poorly factored organizational boundaries creates additional work. A security team to do the security tickets instead of weaving it into the regular dev work.
 
 ### Pattern 5: Humans have an impressive capacity for chauvinism
->[!Info]
->Chauvinism (in this context): The strong and unreasonable belief that your group is the best or most important.
+>[!NOTE]
+> Chauvinism (in this context): The strong and unreasonable belief that your group is the best or most important.
 
 
 There can be a general tendency to imagine other people's jobs are easy compared to ours.  
->We'll make the platform, you can worry about the _business logic_ (term of art implying "your bullshit") 
+> We'll make the platform, you can worry about the _business logic_ (term of art implying "your bullshit")
 
 It is worrisome if platform teams are full of people who aren't worried about what the company they work for even does.
 
@@ -53,7 +53,7 @@ Brilliant jerks are poison. They cause strongest people to leave, or job hunt an
 
 
 ## Common Theme: Parochialism & Ego
->[!info]
+>[!NOTE]
 >Parochialism: A limited or narrow outlook, especially focused on a local area; narrow-mindedness.
 
 The yin and yang of dysfunction.
@@ -76,7 +76,7 @@ The word for the idea that SRE and developers should share tasks is DevOps, but 
 The expert differentiates from an owner as in wanting to make his discipline more accessible to others.
 
 ### Proactive cross-pollination
->[!Info]
+>[!NOTE]
 >Pollination: the process in which pollen is taken from one plant to another so that new plant seeds can be produced
 
 Understand your colleagues' work!  
