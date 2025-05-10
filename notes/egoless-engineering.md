@@ -59,48 +59,7 @@ Brilliant jerks are poison. They cause strongest people to leave, or job hunt an
 The yin and yang of dysfunction.
 
 |              | Positive Spin                                          | Negative Spin                                              |
-| 
-
-
-
- | 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- | 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- |
+|--------------|--------------------------------------------------------|------------------------------------------------------------|
 | Parochialism | Deference, not wanting to step on someone else's toes. | Lack of curiosity.                                         |
 | Ego          | Pride in your work                                     | Territoriality. Dismissiveness in the abilities of others. |
 
