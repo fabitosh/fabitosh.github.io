@@ -5,7 +5,7 @@ mtime:
 permalink: notes/{{ page.fileSlug }}/index.html
 status: draft
 tags:
-	- habits
+- habits
 title: Digital Dopamine
 ---
 Using apps and websites in a fashion that reflects my values is tricky.
