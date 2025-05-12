@@ -112,11 +112,11 @@ def _parse_markdown_file(file_path: Path) -> (Frontmatter, MdContent):
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
             if content.startswith('---'):
-                parts = content.split('---')
+                parts = content.split('---', 2)
                 if len(parts) >= 3:
                     frontmatter = yaml.safe_load(parts[1])
                     frontmatter = frontmatter if isinstance(frontmatter, dict) else {}
-                    content = "\n".join(parts[2::1]).strip()
+                    content = parts[2].strip()
                     return frontmatter, content
     except yaml.YAMLError as e:
         print(f"Warning: Error parsing YAML in {file_path}: {e}")
