@@ -3,7 +3,7 @@ import fg from "fast-glob";
 import markdownIt from "markdown-it";
 import { alertPlugin } from "markdown-it-github-alert";
 
-const photographyImages = fg.sync(['photography/**/*.jpg', '!**/_site']);
+const photographyImages = fg.sync(['assets/photography/**/*.jpg', '!**/_site']);
 
 export default function (eleventyConfig) {
     eleventyConfig.addCollection('notes', function (collectionApi) {
