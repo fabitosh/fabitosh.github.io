@@ -6,7 +6,7 @@ module.exports = function(eleventyConfig) {
         return collectionApi.getFilteredByGlob('notes/*.md');
     });
     eleventyConfig.addPassthroughCopy("photography/800px/");
-    eleventyConfig.addPassthroughCopy("css/");
+    eleventyConfig.addPassthroughCopy("assets/");
     eleventyConfig.addCollection('photographyJpgs', function(collection) { return photographyImages});
 
     let markdownIt = require("markdown-it");
