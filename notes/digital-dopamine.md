@@ -1,7 +1,7 @@
 ---
 btime: 2024-03-23
 layout: note.njk
-mtime:
+mtime: null
 permalink: notes/{{ page.fileSlug }}/index.html
 status: draft
 tags:
