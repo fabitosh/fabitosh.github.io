@@ -25,3 +25,7 @@ ehthumbs.db
 # Editor directories and files
 .idea
 .vscode
+
+# Python
+uv.lock
+.venv/

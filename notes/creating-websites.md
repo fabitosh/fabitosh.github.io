@@ -1,7 +1,7 @@
 ---
 btime: 2024-04-12
 layout: note.njk
-mtime: 
+mtime: null
 permalink: notes/{{ page.fileSlug }}/index.html
 status: scribble
 tags:
@@ -65,7 +65,7 @@ npx @11ty/eleventy --serve
 As the website is fully static, it can be hosted anywhere.
 
 This website is the result of this evaluation. Feel free to check out
-its [source code on github](https://github.com/fabitosh/fabitosh.github.io). I automatically deploy this site on any push to main.
+its [source code on github](https://github.com/fabitosh/fabitosh.github.io). I automatically deploy this site on any push to master.
 
 ## Dynamic Websites
 
