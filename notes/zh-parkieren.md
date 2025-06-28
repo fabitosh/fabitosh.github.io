@@ -1,7 +1,7 @@
 ---
 btime: 2024-04-12
 layout: note.njk
-mtime: 
+mtime: null
 permalink: notes/{{ page.fileSlug }}/index.html
 status: completed
 tags:
@@ -27,6 +27,7 @@ bis 14.30 Uhr. Bei einer Ankunftszeit zwischen 18.00 und 8.00 Uhr bis 9.00 Uhr.
 An Sonn- und Feiertagen gilt eine zeitliche Parkbeschränkung nur, wenn eine Zusatztafel dies signalisiert.
 
 Das Einstellrad auf der Parkscheibe muss immer auf den der Ankunftszeit folgenden Strich eingestellt werden.
+
   > **Beispiel**
   > Ankunftszeit: 09.05 Uhr
   > Einstellung: 09.30 Uhr

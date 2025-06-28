@@ -50,6 +50,7 @@ When I connect the Voyager, I want to swap command and control on my Mac. When u
 ## Gimmick: Bind Hyper to long F press for the integrated keyboard
 
 Add your own rule to the Complex Modifications of Karabiner:
+
 ```json
 {
     "description": "Bind hyper to long key hold of F on integrated laptop keyboard",
