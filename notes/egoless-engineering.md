@@ -8,7 +8,7 @@ tags:
 - developer
 title: Egoless Engineering
 ---
-I have drawn inspiration from Dan McKinley's slidedeck on a presentation about [Egoless Engineering](https://egoless.engineering/). 
+I have drawn inspiration from Dan McKinley's slidedeck on a presentation about [Egoless Engineering](https://egoless.engineering/).
 He presents organizational pitfalls he found in software focused companies, what makes other engineering teams work well and how to get there.
 
 Below are my notes from going through it. I have aimed to replicate Dan McKinley's message in the first chapter and added my follow-up thoughts and questions afterwards.

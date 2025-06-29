@@ -9,7 +9,7 @@ tags:
 title: "Nexus: AI's impact on Society"
 ---
 Personal notes from reading Nexus by Yuval Noah Harari. They mostly aim to echo the book's thoughts, but certainly carry my perspective on it. If only by the selection of the thoughts to recite. I've found the contextualization of the algorithmic advancements the most compelling aspect. The assessment of capabilities and shortcomings of AI is fair to me.  
-This summary does not replace working through the book and neither aspires to. I hope it helps you evaluating on whether the covered topics are of interest to you or processing the book.
+This summary does not replace working through the book and neither aspires to. I hope it helps you evaluating on whether the covered topics are of interest to you or help processing the book.
 ## Initial Skim
 
 ### Purpose: What is this book about? What problem is the author trying to solve?
@@ -26,7 +26,7 @@ The dangers of idea-generating AI for humanity and how it affects both democraci
 I work around AI. I want to be thoughtful of the social implications and hope this to provide a framework for it. Harari has written other fantastic books.
 
 ## Notes
-
+---
 ### Part I: Human Networks
 ### Chapter 1&2: What is information?
 
