@@ -239,15 +239,7 @@ To fight this, China and the US are already regulating the usage of foreign owne
 #### Cyber Weapons
 Way more versatile than nuclear bombs. Can bring down electrical grids, inflame political scandals, influence elections, jam enemy sensors and above all can do that secretly. Would nuclear bombs be activated upon order or is their launch application already hacked?
 
-### A happier outlook.
+### A happier outlook
 Humans would have never been able to create states if their only interest was power. States are built upon processes building up trust. With this trust we managed to have healthcare budgets that exceed military budgets. That would have sounded impossible in the beginning of the 20th century.
 
 Information is not truth. It's main task is to connect. It has enabled evil power-networks such as a highly efficient war machine of Nazi Germany. To build wiser networks we must abandon the naive-view of data and commit ourselves to the hard work of building institutions with strong self-correcting mechanisms.
-
-## Syntopical Connections
-
-- [[Book Review ‘Nexus,’ by Yuval Noah Harari - The New York Times]]
-- [[Nexus by Yuval Noah Harari]]
-- [[Sapiens by Yuval Noah Harari]]
-
-## Summary & Critique
