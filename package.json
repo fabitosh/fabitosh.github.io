@@ -17,5 +17,8 @@
     "fast-glob": "^3.3.2",
     "markdown-it": "^14.1.0",
     "markdown-it-github-alert": "^1.0.6"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-rss": "^2.0.4"
   }
 }
