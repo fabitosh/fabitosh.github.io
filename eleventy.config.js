@@ -37,7 +37,7 @@ export default function (eleventyConfig) {
 
     let md = markdownIt({
         html: true,
-        breaks: true,
+        // breaks: true,
         linkify: true
     })
         // Add Bootstrap classes to tables
