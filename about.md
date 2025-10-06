@@ -36,9 +36,11 @@ Photography is a neat hobby. I recently shot my first wedding and enjoyed the in
 
 ## Contact Me
 
-[LinkedIn](https://www.linkedin.com/in/fabiomeier/)
+Reach me on [LinkedIn](https://www.linkedin.com/in/fabiomeier/) or using the form below.
 
-<form action="https://submit-form.com/NWte3JVo6">
+
+<script src="https://unpkg.com/@botpoison/browser" async></script>
+<form action="https://submit-form.com/NWte3JVo6" data-botpoison-public-key="pk_c4f57deb-f974-451b-ae17-9b8c28343b31">
   <div class="mb-3">
     <label for="email" class="form-label">Your Email</label>
     <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required />
