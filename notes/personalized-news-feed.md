@@ -1,9 +1,9 @@
 ---
 btime: 2025-05-24 11:29
 layout: note.njk
-mtime: null
+mtime: 2025-10-17
 permalink: notes/{{ page.fileSlug }}/index.html
-status: draft
+status: completed
 tags:
 - RSS
 - apps
@@ -18,7 +18,8 @@ This article summarizes my research on how to consolidate news channels into one
 - Lets me define the news feeds and how they are ordered
 
 ## RSS: Really Simple Syndication
-A web feed technology that allows access to updates of online content in a standardized, computer-readable format.
+
+RSS is a web feed technology that allows access to updates of online content in a standardized, computer-readable format and a core piece of my system.
 
 > [!note]
 > *Syndication*: The act of selling articles (newspaper, photography) to other organizations, so that they can be shown to a wider audience.
@@ -35,58 +36,65 @@ If a site decides to not support RSS the following workarounds exist:
 - Third-Party Services that generate them:
 	- RSS.app - $8-$17/month
 	- RSS Bridge: self-hosted FOSS
-	- many more
 - Do it yourself:
 	- Select elements of the page to track changes from. If they change, create a new "post" in the feed. Solutions exist that use GitHub Actions.
+- Reevaluate the importance. Is the information really worth the hassle?
+- Check it using a supported way (Newsletter)
 
-I am curious how well that will work.
+Few websites still show links to their RSS feeds directly in the UI. I was glad to find out, that we can get RSS feeds to youtube channels. 
 
-## Which Reader?
+## My Story
+I have tackled this with two approaches so far.
+
+### Readwise Reader 🔴
+First, I have tried [Readwise Reader](https://readwise.io/read) for five months. They offer an elaborate information-stream aggregation through one channel. RSS-Feeds, Mail-Newsletters, pdfs, e-books etc. Which is what has drawn me to the platform. They also take care of ingesting non-RSS information channels.
+
+In their Reader platform, there are feeds and a library. You can move feed-posts to the Library in "inbox", "later" or "archive" buckets. There is also a delete option hidden, but I don't think they want me to use it. Besides the three categories, the library is then divided into articles, books, emails, pdfs, tweets, videos and tags. One can build quite an elaborate system in there. But that was exactly my issue. It is *in there* - their proprietary cloud-platform. Yes, you can automatically extract your highlights/notes into Obsidian. But the reference material is archived in their system. Their data-export contains none of the structure we talked about above. Thus, I do not want to rely on it.
+
+I have now moved away. I want it simpler.
+
+### RSS Reader, Mail Newsletter, Obsidian Clipper 🟢
+Not wanting to have all news through one single entry point simplifies things. Basically it comes down to handling information that is not supported by RSS feeds.
+
+Checking more than one place is a trade-off I am happy to make. Even with Readwise, you are still checking mails and the instant messenger(s) at the very least.
+
+My goal turns to get all relevant news through:
+- RSS Feeds: Here I just want an aggregation of my curated feeds.
+- Mail-Newsletters: For places without RSS feed, I will sign up with `mymail+newsletter@gmail.com` and create an inbox filter.
+- If something does not offer neither, I'll bite the bullet and add it to a list of sites I want to infrequently and manually check.
+
+News and articles I particularly liked and want to come back to, are to be stored as markdown on my machine.
+
+#### RSS Reader
+This brings us to the choice of the RSS Reader. 
+
 Initial requirements:
 - Must: No ads.
 - Must: No forced "suggested articles" / no endless scrolling.
 - Should: Somewhat modern design
-- Must: Platforms: Works on my Android phone and Desktop. Browser is fine.
-- Some workflow to mark items as "read later" or directly add them to Obsidian Clipper.
+- Must: Platforms: Works on my Android phone and Desktop. A usable browser-based implementation is fine.
 
-I don't really need tags or folders. The inbox should be small enough that I see everything anyway. Ultimately, the features can be limited.
-### Miniflux, self-hosted, FOSS
-- Very minimalist
-- Web only
-- 15$/year if you do not want to self-host.
+The inbox should be small enough that I can process everything. Ultimately, the features can be limited.
 
-### FreshRSS, self-hosted, FOSS
-- Powerful, highly customizable.
+Below are all candidates that would work for me.
 
-### Innoreader, proprietary
-- Powerful and feature-rich.
-- Free Tier
-	- RSS feeds without ads.
-	- Pull from newsletters is a paid feature
-### Readwise Reader, Paid Platform aimed at power users
-- Excellent platform support, highly polished.
-- Aggregation Layer for Readwise, which aims to help organize read content (feeds, newsletters, kindle books, pdfs, etc. including notes made on them.
-- Offers direct integration into Obsidian.
+Free and Open Source. Could be self hosted:
+- [FreshRSS](https://freshrss.org/index.html)
+- [Miniflux](https://miniflux.app/)
+- [newsblur](https://newsblur.com/)
 
-## Trying it out
-Starting simple, I opted to try the free version of Innoreader and started setting up my RSS stream. Despite having this improved news funnel, I want to remain disciplined and subscribe to a small set of information that is highly useful to me. I still intend to learn mostly through books.
+They can also be paired with phone apps, that interact with their corresponding APIs. One such platform is [ReadYou](https://github.com/ReadYouApp/ReadYou).
 
-The process is not super seamless, but there are usually ways to get there. Some examples:
-- [Anthropic News](https://www.anthropic.com/news): No official RSS feed found 🔴. The Github repo [Ohlshansk/rss-feeds](https://github.com/Olshansk/rss-feeds) came to the rescue.
-- [paulgraham.com](https://www.paulgraham.com/articles.html): RSS Feed outdated since 2 years 🔴 The github repo mentioned above comes to the rescue again.
-- [srf.ch](https://www.srf.ch/really-simple-syndication-rss-feeds-von-srf): Multiple maintained RSS Feeds ✅
-- [Hungry Minds](https://www.hungryminds.dev/) Newsletter: Sends a weekly digest of articles. The RSS Feed does the same. I would have hoped to have individual articles within this framework. 🟧 I liked the format as Mail Newsletter (less spam), but prefer the granularity in the RSS. Might have to replace it with other sources.
-- [Google Deepmind News](https://deepmind.google/discover/blog/): A bit tricky to find, but there is one: [Deepmind RSS](https://blog.google/technology/google-deepmind/rss/)
-- youtube: Supports RSS feeds for each channel, but seemingly unofficially. The feed is: `https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID` The `CHANNEL_ID` can either be found in the URL or in the source code.
-- [dcrainmaker.com](https://www.dcrainmaker.com/feed): Again, not found as link on the website but it exists as `/feed`.
+Proprietary candidates:
+- [Inoreader](https://www.inoreader.com)
+- [feeder](https://feeder.co/)
 
-### What I did not get to work within 5 minutes
-- Private social media feeds
-	- Instagram
-	- Strava
-- New Pumpfoil Gear from [Takoon](https://int.takoon.com/collections/pump-foil). They, like many other websites, offer a mail newsletter instead. The Newsletter Integration could come in handy.
-
-## Initial Impression
-After a somewhat cumbersome setup, I am loving the feed view. It's super cool to have infrequently updated personal blogs and youtube channels at one spot.
-
-I am inclined to give Readwise Reader a try in the future but want to start out simple with Innoreader's free tier for now, aggregating and refining the feeds I need.
+#### Archival
+[Obsidian Web Clipper](https://obsidian.md/clipper) allows capturing web pages into markdown. It natively integrates with Obsidian. 
+I might create a post about parts of my Obsidian setup another time. For the archival of my favorite articles, I make sure to include the following information into the frontmatter of the markdown:
+- source
+- author
+- date when the website was captured
+- date when the post has been created (if available)
+- A tag, that clarifies it is clipped: `#clippings`
+- A tag to specify I need to process it. `#to-process`
