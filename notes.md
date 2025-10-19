@@ -5,34 +5,19 @@ title: fabio.earth - notes
 
 # Notes
 
-<table class="table table-sm table-hover align-middle">
-  <thead class="table-light">
-    <tr>
-      <th>Title</th>
-      <th>Created</th>
-      <th>Modified</th>
-    </tr>
-  </thead>
-  <tbody>
-  {%- for note in collections.notes -%}
-    <tr>
-      <td>
-        <a href="{{ note.url }}">{{ note.data.title }}</a>
+<div>
+{%- for note in collections.notes -%}
+    <hgroup>
+      <h2><a href="{{ note.url }}">{{ note.data.title }}</a>
         {%- if note.data.tags -%}
-          <span class="ms-2">
-          {% for tag in note.data.tags %} <span class="badge rounded-pill text-bg-light fw-normal me-1">{{ tag }}</span> {% endfor %}
-          </span>
-        {%- endif -%}
-      </td>
-      <td class="text-muted small">{{ note.data['btime'] | date: "%Y-%m-%d" }}</td>
-      <td>
+          {% for tag in note.data.tags %} <span class="tag">{{ tag }}</span> {% endfor %}
+        {%- endif -%}</h2>
+      <p>
+        {{ note.data['btime'] | date: "%Y-%m-%d  " }}
         {%- if note.data['mtime'] -%}
-          <span class="text-muted small">{{ note.data['mtime'] | date: "%Y-%m-%d" }}</span>
-        {%- else -%}
-          <span class="text-muted small">-</span>
+          | last updated {{ note.data['mtime'] | date: "%Y-%m-%d" }}
         {%- endif -%}
-      </td>
-    </tr>
-  {%- endfor -%}
-  </tbody>
-</table>
+      </p>
+    </hgroup>
+{%- endfor -%}
+</div>

@@ -1,17 +1,53 @@
+:root {
+    --header-background-color: var(--pico-background-color);
+    --header-font-color: var(--pico-color);
+}
+
+.navbar-logo-dot-color {
+    color: var(--pico-primary);
+}
+
+.logo-text {
+    color: var(--header-font-color);
+    font-weight: bolder;
+    font-size: 1.4rem;
+}
+
+/* Tags of the notes */
+.tag {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    background-color: var(--pico-secondary-background);
+    color: var(--pico-secondary-inverse);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: normal;
+}
+
+/* Gallery styling */
+.gallery {
+    display: grid;
+    gap: 1rem;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Blockquotes */
 blockquote {
-  padding: 1em;
-  border-left: 0.25rem solid;
-  padding-bottom: 0px;
-  padding-top: 0px;
-  border-color: red;
+    border-left: 0.25rem solid;
+    padding: 0 1em;
+    border-color: red;
   background-color: rgba(255, 0, 0, 0.03);
 }
 
+/* Markdown alerts */
 .markdown-alert {
-    padding: 1em;
     border-left: 0.25rem solid;
-    padding-bottom: 0px;
-    padding-top: 0px;
+    padding: 0 1em;
     border-color: var(--border-color);
 }
 
@@ -46,3 +82,171 @@ blockquote {
 .markdown-alert.tip {
     --border-color: #57AB5A;
 }
+
+/* Navbar */
+nav[role="menu"] {
+    background-color: var(--header-background-color);
+}
+
+nav[role="menu"] > ul > li > a {
+    color: var(--header-font-color);
+}
+
+/*******************************************************************************
+* Pico CSS  - responsive nav
+* Grows vertically (mobile-first). Changes back to horizontal growth on higher
+* resolutions.
+*****************************************************************************/
+
+:where(menu, [role="menu"]),
+:where(menu, [role="menu"]) > [role="menuitem"] {
+    flex-direction: column;
+    position: relative;
+}
+
+@media (min-width: 576px) {
+    :where(menu, [role="menu"]),
+    :where(menu, [role="menu"]) > [role="menuitem"] {
+        flex-direction: row;
+    }
+}
+
+/*******************************************************************************
+* Pure CSS burger menu
+* Styles a parent + checkbox to look like 3 stacked lines when unchecked and
+* as a cross when checked. Includes animations.
+Mostly taken from an example by wwmoraes:
+https://github.com/picocss/pico/discussions/343#discussioncomment-11700419
+*****************************************************************************/
+
+[data-role="burger"] {
+    opacity: 0.8;
+    cursor: pointer;
+    border-radius: 10%;
+    box-sizing: border-box;
+    background-color: transparent;
+    height: 24px;
+    width: 28px;
+    padding: 0;
+    margin: 0;
+    border: 0 solid #e7edf2;
+}
+
+[data-role="burger"] > input[type="checkbox"] {
+    height: 4px;
+    width: 28px;
+    border: none;
+    background-color: var(--pico-primary);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin-inline: 0;
+}
+
+[data-role="burger"] > input[type="checkbox"]:checked {
+    background-image: none;
+    background-color: transparent;
+}
+
+[data-role="burger"] > input[type="checkbox"]::before, [data-role="burger"] > input[type="checkbox"]::after {
+    height: 4px;
+    width: 28px;
+    border-radius: 2px;
+    background-color: var(--pico-primary);
+    position: absolute;
+    content: "";
+    transition: all 0.2s ease-in-out;
+}
+
+[data-role="burger"] > input[type="checkbox"]::before {
+    top: -10px;
+}
+
+[data-role="burger"] > input[type="checkbox"]::after {
+    top: 10px;
+}
+
+[data-role="burger"] > input[type="checkbox"]:checked::before {
+    box-shadow: none;
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+[data-role="burger"] > input[type="checkbox"]:checked::after {
+    box-shadow: none;
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/*******************************************************************************
+  * Pure CSS toggle
+  * Uses a checkbox to trigger rules and show/hide related elements.
+*****************************************************************************/
+
+/* adjust menu for toggling */
+:where(menu, [role="menu"]) {
+    position: relative; /* anchor for children */
+    /* needed otherwise it grows to fit all its children */
+    max-height: calc(var(--pico-line-height) * 1em + var(--pico-nav-element-spacing-vertical)*2);;
+}
+
+/* hide entries within menu */
+:where(menu, [role="menu"]) > [role="menuitem"] {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    background-color: var(--header-background-color);
+}
+
+/* show hidden items when burger is checked */
+:where(menu, [role="menu"]):has(> label > input[type="checkbox"]:checked) > [role="menuitem"] {
+    visibility: visible;
+    opacity: 1;
+    z-index: 9999;
+}
+
+/* position the menu button */
+:where(menu, [role="menu"]) > label {
+    position: absolute;
+    right: 20px;
+    top: 27px;
+    padding: var(--pico-nav-element-spacing-vertical) var(--pico-nav-element-spacing-horizontal);
+}
+
+@media (min-width: 576px) {
+    /* hide menu button */
+    :where(menu, nav[role="menu"]) > label {
+        display: none;
+    }
+
+    /* show all elements */
+    :where(menu, [role="menu"]) > [role="menuitem"] {
+        visibility: visible;
+        opacity: 1;
+        display: flex;
+        top: unset;
+        right: 0;
+    }
+}
+
+/* Theme toggle */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* Theme toggle icon visibility */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+[data-theme='dark'] .theme-toggle .icon-sun { display: inline; }
+[data-theme='dark'] .theme-toggle .icon-moon { display: none; }
+[data-theme='light'] .theme-toggle .icon-sun { display: none; }
+[data-theme='light'] .theme-toggle .icon-moon { display: inline; }

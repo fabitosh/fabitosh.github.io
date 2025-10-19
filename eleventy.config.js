@@ -7,13 +7,21 @@ const photographyImages = fg.sync(['photography/**/*.jpg', '!**/_site']);
 
 export default function (eleventyConfig) {
     eleventyConfig.addCollection('notes', function (collectionApi) {
-        return collectionApi.getFilteredByGlob('notes/*.md');
+        const notes = collectionApi.getFilteredByGlob('notes/*.md');
+        // latest changes first
+        notes.sort((a, b) => {
+            const dateA = a.data.mtime || a.data.btime;
+            const dateB = b.data.mtime || b.data.btime;
+            return new Date(dateB) - new Date(dateA);
+        });
+        return notes;
     });
 
-    eleventyConfig.addCollection('photographyJpgs', function (collection) {return photographyImages});
+    eleventyConfig.addCollection('photographyJpgs', function () {return photographyImages});
 
     eleventyConfig.addPassthroughCopy("photography/800px/");
     eleventyConfig.addPassthroughCopy("css/");
+    eleventyConfig.addPassthroughCopy("assets/js/**.js");
 
     eleventyConfig.addPlugin(feedPlugin, {
         type: "rss",
@@ -40,15 +48,6 @@ export default function (eleventyConfig) {
         // breaks: true,
         linkify: true
     })
-        // Add Bootstrap classes to tables
-        .use(function (md) {
-            const defaultRender = md.renderer.rules.table_open || function (tokens, idx, options, env, self) {
-                return self.renderToken(tokens, idx, options);
-            };
-            md.renderer.rules.table_open = function (tokens, idx, options, env, self) {
-                return '<table class="table table-bordered table-hover">';
-            };
-        })
         // Github markdown callouts: note, tip, important, warning, caution
         .use(alertPlugin);
     eleventyConfig.setLibrary("md", md);
