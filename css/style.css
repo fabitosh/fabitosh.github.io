@@ -170,7 +170,7 @@ https://github.com/picocss/pico/discussions/343#discussioncomment-11700419
     opacity: 0;
     transition: all 0.2s ease-in-out;
     position: relative;
-    background-color: var(--pico-card-background-color);
+    background-color: var(--pico-background-color);
 }
 
 /* show hidden items when burger is checked */
