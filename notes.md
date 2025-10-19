@@ -5,34 +5,19 @@ title: fabio.earth - notes
 
 # Notes
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Created</th>
-      <th>Modified</th>
-    </tr>
-  </thead>
-  <tbody>
-  {%- for note in collections.notes -%}
-    <tr>
-      <td>
-        <a href="{{ note.url }}">{{ note.data.title }}</a>
+<div>
+{%- for note in collections.notes -%}
+    <hgroup>
+      <h2><a href="{{ note.url }}">{{ note.data.title }}</a>
         {%- if note.data.tags -%}
-          <span class="tags">
           {% for tag in note.data.tags %} <span class="tag">{{ tag }}</span> {% endfor %}
-          </span>
-        {%- endif -%}
-      </td>
-      <td><small>{{ note.data['btime'] | date: "%Y-%m-%d" }}</small></td>
-      <td>
+        {%- endif -%}</h2>
+      <p>
+        {{ note.data['btime'] | date: "%Y-%m-%d  " }}
         {%- if note.data['mtime'] -%}
-          <small>{{ note.data['mtime'] | date: "%Y-%m-%d" }}</small>
-        {%- else -%}
-          <small>-</small>
+          | last updated {{ note.data['mtime'] | date: "%Y-%m-%d" }}
         {%- endif -%}
-      </td>
-    </tr>
-  {%- endfor -%}
-  </tbody>
-</table>
+      </p>
+    </hgroup>
+{%- endfor -%}
+</div>
