@@ -7,7 +7,14 @@ const photographyImages = fg.sync(['photography/**/*.jpg', '!**/_site']);
 
 export default function (eleventyConfig) {
     eleventyConfig.addCollection('notes', function (collectionApi) {
-        return collectionApi.getFilteredByGlob('notes/*.md');
+        const notes = collectionApi.getFilteredByGlob('notes/*.md');
+        // latest changes first
+        notes.sort((a, b) => {
+            const dateA = a.data.mtime || a.data.btime;
+            const dateB = b.data.mtime || b.data.btime;
+            return new Date(dateB) - new Date(dateA);
+        });
+        return notes;
     });
 
     eleventyConfig.addCollection('photographyJpgs', function () {return photographyImages});
