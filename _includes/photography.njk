@@ -6,6 +6,6 @@ title: Photography
 {{ content | safe }}
 <section class="gallery">
     {% for image in collections.photographyJpgs %}
-        <figure><img src="../{{image}}" class="img-fluid mx-auto d-block" alt=""></figure>
+        <figure><img src="../{{image}}" alt=""></figure>
     {% endfor %}
 </section>

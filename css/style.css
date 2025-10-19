@@ -1,3 +1,98 @@
+/* Mobile navigation */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hide checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* Hamburger icon */
+.menu-icon {
+    display: block;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--pico-contrast);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+    /* Hide menu items on mobile by default */
+    nav ul .nav-item {
+        display: none !important;
+        width: 100%;
+    }
+
+    /* Show mobile menu items when checkbox is checked */
+    nav ul #menu-toggle:checked ~ .nav-item {
+        display: block !important;
+    }
+
+    /* Stack menu items vertically on mobile */
+    nav ul:last-child {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Make the links full width on mobile when shown */
+    nav ul .nav-item a {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+    .nav-mobile {
+        display: none !important;
+    }
+
+    .nav-item {
+        display: block !important;
+    }
+}
+
+/* Tag badges */
+.tags {
+    display: inline-flex;
+    gap: 0.25rem;
+    margin-left: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    background-color: var(--pico-secondary-background);
+    color: var(--pico-secondary);
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: normal;
+}
+
+/* Gallery styling */
+.gallery {
+    display: grid;
+    gap: 1rem;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Blockquotes */
 blockquote {
   padding: 1em;
   border-left: 0.25rem solid;
@@ -7,6 +102,7 @@ blockquote {
   background-color: rgba(255, 0, 0, 0.03);
 }
 
+/* Markdown alerts */
 .markdown-alert {
     padding: 1em;
     border-left: 0.25rem solid;

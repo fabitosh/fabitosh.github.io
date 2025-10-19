@@ -40,15 +40,6 @@ export default function (eleventyConfig) {
         // breaks: true,
         linkify: true
     })
-        // Add Bootstrap classes to tables
-        .use(function (md) {
-            const defaultRender = md.renderer.rules.table_open || function (tokens, idx, options, env, self) {
-                return self.renderToken(tokens, idx, options);
-            };
-            md.renderer.rules.table_open = function (tokens, idx, options, env, self) {
-                return '<table class="table table-bordered table-hover">';
-            };
-        })
         // Github markdown callouts: note, tip, important, warning, caution
         .use(alertPlugin);
     eleventyConfig.setLibrary("md", md);
