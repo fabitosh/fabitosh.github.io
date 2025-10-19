@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.red.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --accent-color: #9f1104;
+            --hover-color: #b21a05;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* to prevent scrollbars from the background */
+        }
+
+        .background {
+            background-image: url('/photography/800px/fabio_earth_13.jpg');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+            transform: scale(1.1);
+        }
+
+        .content {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+            text-align: center;
+        }
+
+        .banner {
+            color: var(--primary-color);
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .banner .dot {
+            color: var(--accent-color);
+        }
+
+        .boxes {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--primary-color);
+            padding: 1rem;
+            width: 300px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            border-radius: 0.2rem;
+            border: 1px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            background: var(--hover-color);
+        }
+
+        .box h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .banner {
+                font-size: 3rem;
+            }
+
+            .boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <main class="content">
+        <h1 class="banner">fabio<span class="dot">.</span>earth</h1>
+        <div class="boxes">
+            <a href="/notes/" class="box">
+                <h2>Notes</h2>
+            </a>
+            <a href="/photography/" class="box">
+                <h2>Photography</h2>
+            </a>
+            <a href="/projects/" class="box">
+                <h2>Projects</h2>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
