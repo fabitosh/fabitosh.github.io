@@ -10,10 +10,11 @@ export default function (eleventyConfig) {
         return collectionApi.getFilteredByGlob('notes/*.md');
     });
 
-    eleventyConfig.addCollection('photographyJpgs', function (collection) {return photographyImages});
+    eleventyConfig.addCollection('photographyJpgs', function () {return photographyImages});
 
     eleventyConfig.addPassthroughCopy("photography/800px/");
     eleventyConfig.addPassthroughCopy("css/");
+    eleventyConfig.addPassthroughCopy("assets/js/**.js");
 
     eleventyConfig.addPlugin(feedPlugin, {
         type: "rss",
