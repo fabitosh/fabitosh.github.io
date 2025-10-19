@@ -1,7 +1,19 @@
-.primary-color {
+:root {
+    --header-background-color: var(--pico-card-background-color);
+    --header-font-color: var(--pico-color);
+}
+
+.navbar-logo-dot-color {
     color: var(--pico-primary);
 }
 
+.logo-text {
+    color: var(--header-font-color);
+    font-weight: bolder;
+    font-size: 1.4rem;
+}
+
+/* Tags of the notes */
 .tag {
     display: inline-block;
     padding: 0.125rem 0.5rem;
@@ -70,11 +82,23 @@ blockquote {
 .markdown-alert.tip {
     --border-color: #57AB5A;
 }
+
+/* Navbar */
+nav[role="menu"] {
+    background-color: var(--header-background-color);
+    padding: 0.5rem 0.5rem;
+    border: bottom 1px solid var(--pico-primary-border);
+}
+
+nav[role="menu"] > ul > li > a {
+    color: var(--header-font-color);
+}
+
 /*******************************************************************************
-  * Pico CSS  - responsive nav
-  * Grows vertically (mobile-first). Changes back to horizontal growth on higher
-  * resolutions.
-  *****************************************************************************/
+* Pico CSS  - responsive nav
+* Grows vertically (mobile-first). Changes back to horizontal growth on higher
+* resolutions.
+*****************************************************************************/
 
 :where(menu, [role="menu"]),
 :where(menu, [role="menu"]) > [role="menuitem"] {
@@ -164,8 +188,7 @@ https://github.com/picocss/pico/discussions/343#discussioncomment-11700419
 :where(menu, [role="menu"]) {
     position: relative; /* anchor for children */
     /* needed otherwise it grows to fit all its children */
-    max-height: calc(var(--pico-line-height, 1.5) * 1em + 1.0rem);
-    left: 2%;
+    max-height: calc(var(--pico-line-height) * 1em + var(--pico-nav-element-spacing-vertical)*2);;
 }
 
 /* hide entries within menu */
@@ -174,7 +197,7 @@ https://github.com/picocss/pico/discussions/343#discussioncomment-11700419
     opacity: 0;
     transition: all 0.2s ease-in-out;
     position: relative;
-    background-color: var(--pico-background-color);
+    background-color: var(--header-background-color);
 }
 
 /* show hidden items when burger is checked */
@@ -188,8 +211,8 @@ https://github.com/picocss/pico/discussions/343#discussioncomment-11700419
 :where(menu, [role="menu"]) > label {
     position: absolute;
     right: 20px;
-    top: 2rem;
-    padding: 0.5rem 1rem;
+    top: 27px;
+    padding: var(--pico-nav-element-spacing-vertical) var(--pico-nav-element-spacing-horizontal);
 }
 
 @media (min-width: 576px) {
