@@ -162,12 +162,12 @@ def _resolve_image_path(link: str, note_dir: Path) -> Path | None:
 def _update_image_link_in_content(content: MdContent, old_link: str, new_link: str) -> MdContent:
     """Replaces an old image link with a new one in the content."""
     escaped_old_link = re.escape(old_link)
-    pattern1 = re.compile(r'!\x5B\x5B' + escaped_old_link + r'\x5D\x5D')
-    pattern2 = re.compile(r'!\x5B[^\x5D]*\x5D\x5C(' + escaped_old_link + r'\x5C)')
+    pattern1 = re.compile(r'!\[\[' + escaped_old_link + r']]')  # Obsidian style
+    pattern2 = re.compile(r'!\[.*?]\(' + escaped_old_link + r'\)')  # Markdown style (flexible alt)
     new_md_link = f"![]({new_link})"
-    content = pattern1.sub(new_md_link, content)
-    content = pattern2.sub(new_md_link, content)
-    return content
+    updated = pattern1.sub(new_md_link, content)
+    updated = pattern2.sub(new_md_link, updated)
+    return MdContent(updated)
 
 
 def _clean_filename(filename: str) -> str:
@@ -182,31 +182,31 @@ def _clean_filename(filename: str) -> str:
     umlaut_subs = {'ä': 'ae', 'ö': 'oe', 'ü': 'ue'}
     for umlaut, sub in umlaut_subs.items():
         cleaned = cleaned.replace(umlaut, sub)
-    cleaned = re.sub(r'[\\s_(),]+', '-', cleaned)
+    cleaned = re.sub(r'[\s_(),]+', '-', cleaned)
     cleaned = re.sub(r'[^a-z0-9-]', '', cleaned)
     cleaned = re.sub(r'^-+|-+$', '', cleaned)
     cleaned = re.sub(r'-{2,}', '-', cleaned)
     return f"{cleaned}{extension}"
 
 
-def _parse_markdown_file(file_path: Path) -> (Frontmatter, MdContent):
+def _parse_markdown_file(file_path: Path) -> tuple[Frontmatter, MdContent]:
     """Parses YAML frontmatter and content from a Markdown file."""
     assert file_path.suffix == ".md"
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-            if content.startswith('---'):
-                parts = content.split('---', 2)
+            raw = f.read()
+            if raw.startswith('---'):
+                parts = raw.split('---', 2)
                 if len(parts) >= 3:
                     frontmatter = yaml.safe_load(parts[1])
                     frontmatter = frontmatter if isinstance(frontmatter, dict) else {}
-                    content = parts[2].strip()
-                    return frontmatter, content
+                    body = parts[2].strip()
+                    return Frontmatter(frontmatter), MdContent(body)
     except yaml.YAMLError as e:
         print(f"Warning: Error parsing YAML in {file_path}: {e}")
     except Exception as e:
         print(f"Warning: Unexpected error reading {file_path}: {e}")
-    return {}, ""
+    return Frontmatter({}), MdContent("")
 
 
 def _has_publish_tag(frontmatter: Frontmatter) -> bool:
