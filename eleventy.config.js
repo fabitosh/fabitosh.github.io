@@ -19,9 +19,7 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addCollection('photographyJpgs', function () {return photographyImages});
 
-    eleventyConfig.addPassthroughCopy("photography/800px/");
-    eleventyConfig.addPassthroughCopy("css/");
-    eleventyConfig.addPassthroughCopy("assets/js/**.js");
+    eleventyConfig.addPassthroughCopy("assets/");
 
     eleventyConfig.addPlugin(feedPlugin, {
         type: "rss",
