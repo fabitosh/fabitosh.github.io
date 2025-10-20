@@ -105,9 +105,25 @@ def sync_notes() -> None:
 
 
 def _extract_image_links(content: MdContent) -> list[str]:
-    """Extracts image links from Markdown content."""
-    image_pattern = re.compile(r'!\x5B\x5B([^\x5D]+\x5C.(?:jpg|jpeg|png|gif|webp))\x5D\x5D|!\x5B[^\x5D]*\x5D\x5C(([^)]+\x5C.(?:jpg|jpeg|png|gif|webp))\x5C))')
-    links = []
+    """Extract image links from Markdown or Obsidian-style embeds.
+
+    Supports:
+      1. Obsidian: ![[path/to/Image Name.PNG]]
+      2. Markdown: ![alt text](path/to/image-name.jpg)
+
+    Optional query or fragment after extension (included in returned link):
+      ![alt](image.jpg?version=2)
+      ![[Folder/Image.PNG#section]]
+
+    Handles nested brackets inside alt text e.g. ![stuff [inner] text](image.png)
+    by using a non-greedy wildcard for alt portion until the next "](" sequence.
+    """
+    image_pattern = re.compile(
+        r'!\[\[([^]]+\.(?:jpe?g|png|gif|webp)(?:[?#][^]]*)?)]]'  # Obsidian
+        r'|!\[.*?]\(([^)]+\.(?:jpe?g|png|gif|webp)(?:[?#][^)]*)?)\)',  # Markdown (non-greedy alt)
+        re.IGNORECASE,
+    )
+    links: list[str] = []
     for match in image_pattern.finditer(content):
         link = match.group(1) or match.group(2)
         if link:
