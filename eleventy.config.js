@@ -1,11 +1,12 @@
-import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import {feedPlugin} from "@11ty/eleventy-plugin-rss";
 import fg from "fast-glob";
+import Shiki from '@shikijs/markdown-it'
 import markdownIt from "markdown-it";
-import { alertPlugin } from "markdown-it-github-alert";
+import {alertPlugin} from "markdown-it-github-alert";
 
 const photographyImages = fg.sync(['assets/photography/**/*.jpg', '!**/_site']);
 
-export default function (eleventyConfig) {
+export default async function (eleventyConfig) {
     eleventyConfig.addCollection('notes', function (collectionApi) {
         const notes = collectionApi.getFilteredByGlob('notes/*.md');
         // latest changes first
@@ -17,7 +18,9 @@ export default function (eleventyConfig) {
         return notes;
     });
 
-    eleventyConfig.addCollection('photographyJpgs', function () {return photographyImages});
+    eleventyConfig.addCollection('photographyJpgs', function () {
+        return photographyImages
+    });
 
     eleventyConfig.addPassthroughCopy("assets/");
 
@@ -41,11 +44,19 @@ export default function (eleventyConfig) {
         }
     });
 
+
     let md = markdownIt({
         html: true,
         // breaks: true,
         linkify: true
     })
+        // Syntax highlighting of code blocks
+        .use(await Shiki({
+            themes: {
+                light: 'vitesse-light',
+                dark: 'vitesse-dark',
+            }
+        }))
         // Github markdown callouts: note, tip, important, warning, caution
         .use(alertPlugin);
     eleventyConfig.setLibrary("md", md);
