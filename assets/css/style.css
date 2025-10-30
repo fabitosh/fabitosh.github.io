@@ -64,23 +64,23 @@ blockquote {
 }
 
 .markdown-alert.note {
-    --border-color: #539BF5;
+    --border-color: var(--pico-secondary);
 }
 
 .markdown-alert.warning {
-    --border-color: #C69026;
+    --border-color: var(--pico-primary);
 }
 
 .markdown-alert.important {
-    --border-color: #986EE2;
+    --border-color: var(--pico-primary);
 }
 
 .markdown-alert.caution {
-    --border-color: #E5534B;
+    --border-color: var(--pico-primary);
 }
 
 .markdown-alert.tip {
-    --border-color: #57AB5A;
+    --border-color: var(--pico-secondary);
 }
 
 /* Navbar */
