@@ -50,14 +50,15 @@ export default async function (eleventyConfig) {
         // breaks: true,
         linkify: true
     })
+        // Github markdown callouts: note, tip, important, warning, caution
+        .use(alertPlugin)
         // Syntax highlighting of code blocks
         .use(await Shiki({
             themes: {
-                light: 'vitesse-light',
-                dark: 'vitesse-dark',
-            }
-        }))
-        // Github markdown callouts: note, tip, important, warning, caution
-        .use(alertPlugin);
+                light: 'catppuccin-latte',
+                dark: 'catppuccin-mocha',
+            },
+            defaultColor: 'light-dark()',
+        }));
     eleventyConfig.setLibrary("md", md);
 };
