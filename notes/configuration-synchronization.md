@@ -57,27 +57,28 @@ If our `.zshrc` file should look different depending on whether it is on linux o
 
 Within the template, we define the logic of how the file should look different depending on the OS of the source.
 
+{% raw %}
 ```go
 # .zshrc.tmpl
-{{ if eq .chezmoi.os "darwin" }}
+{{- if eq .chezmoi.os "darwin" }}
 	# On mac homebrew also supports casks
 	alias brewup="brew update && brew upgrade && brew upgrade --cask"
 {{ else if eq .chezmoi.os "linux" }}
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	alias brewup="brew update && brew upgrade"
-{{ end }}
+{{- end }}
 ```
+{% endraw %}
 
 On a linux machine, our `.zshrc` will be rendered to
 
-```
-
+```shell
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 alias brewup="brew update && brew upgrade"
-
 ```
 
-Note the empty lines 1 and 4. To avoid newlines introduced by the if/end conditionals, we can use a dash in our conditionals: `{{- if ...}` and `{{- end }`.
+The dashes (`-`) avoid newlines before or after the template tags `if` and `end`.
+
 
 Useful variables for templating are:
 - `.chezmoi.os`: "darwin", "linux", "windows"
@@ -90,7 +91,7 @@ Useful variables for templating are:
 Let's create our first template.  
 My `.zshrc` is already managed by chezmoi, but not yet a template. Let's make it one:
 
-```zsh
+```shell
 chezmoi chattr +template ~/.zshrc
 ```
 
@@ -98,14 +99,15 @@ When we now use `chezmoi edit ~/.zshrc` we will automatically edit the template.
 
 To preview the template output on the current machine, run
 
-```zsh
+```shell
 chezmoi cd
 chezmoi execute-template < dot_zshrc.tmpl
 ```
 
 If that is how you expect it to look like, don't forget to `chezmoi apply` your changes onto your current machine as well. Without that you have only changed the file within the chezmoi git repo.
 
->[!Tip] [Official Docs: Templating](https://www.chezmoi.io/user-guide/templating/)
+> [!Tip]
+> [Official Docs: Templating](https://www.chezmoi.io/user-guide/templating/)
 
 With that we can synchronize files and thus text-based configurations across multiple computers.
 
@@ -115,9 +117,11 @@ I dislike installing applications and packages through a clicky-clicky download 
 #### My package managers of choice
 Mac
 - [Homebrew](https://brew.sh/): THE package manager on Mac. Can install GUI apps as casks.
+
 Linux / WSL:
 - [Homebrew](https://brew.sh/): There would be more alternatives. Choosing it for consistency with my Mac setup. Brew does not support casks on Linux, but I do not need any GUI applications on WSL.
 - apt: For initial machine essential installs that I rarely update: (`build-essential`, `curl`, `zsh`). This article will not go into more details regarding that for now.
+
 Windows:
 - [scoop](https://scoop.sh/): Not much research went into that one. Admin rights are a bit of a struggle on the work computer, and this seemed to consider that.
 
@@ -147,7 +151,8 @@ packages:
 
 Any time changes in that file are detected, we want to pass them to our package manager. On the other hand, if we only updated a dotfile configuration, we do not need and want to interact with the package manager. Chezmoi handily also addresses that need. Script names starting with `run_onchange` are only executed if their content has changed. The script below will run if there are changes of our `packages.yaml`.
 
-```sh
+{% raw %}
+```shell
 # run_onchange_install-packages.sh.tmpl
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
@@ -173,6 +178,7 @@ EOF
 echo "Homebrew bundle for Linux complete."
 {{ end }}
 ```
+{% endraw %}
 
 This shell-script will handle installations on Mac and Linux through homebrew. Since no condition is triggered on windows, the file will not be created on a windows machine. Neat. For windows we define a [run_onchange_install-packages.ps1.tmpl](https://github.com/fabitosh/dotfiles/blob/main/run_onchange_install-packages.ps1.tmpl) in similar fashion.
 
@@ -194,7 +200,8 @@ You can decide yourself whether it is worthwhile to automate those steps as well
 ### run_once
 If we do not want to go through the minor hassle of installing homebrew before applying our dotfiles, scripts starting with`run_once_before` are our friend.
 
-```bash
+{% raw %}
+```go
 # ~/.local/share/chezmoi/run_once_before_10-install-homebrew.sh.tmpl
 {{ if ne .chezmoi.os "windows" -}} 
 #!/bin/sh
@@ -233,6 +240,7 @@ fi
 # subsequent sessions have their paths defined in the .zshenv
 {{ end -}}
 ```
+{% endraw %}
 
 > [!Tip]
 > Further documentation on how to use scripts with chezmoi
