@@ -19,9 +19,12 @@ What's automated and synchronised:
 
 One command. Three operating systems. Done.
 
-<a href="/projects/configuration-synchronization/">Read more</a>
-
-[github dotfiles](https://github.com/fabitosh/dotfiles)
+<div class="grid">
+  <a href="/projects/configuration-synchronization/" role="button">Read more</a>
+  <a href="https://github.com/fabitosh/dotfiles" role="button" class="secondary">
+    {% githubIcon %} fabitosh/dotfiles
+  </a>
+</div>
 
 ---
 
@@ -31,7 +34,11 @@ Instant messagers are not always my friend. I generally prefer exchanging in per
 IMs. At times, I get overwhelmed by the messages I should reply to or want to craft. In order to understand my problem
 better (and because it seemed like a cool project), I started looking into my chat data.
 
-[github](https://github.com/fabitosh/chat-analyzer)
+<div class="grid">
+  <a href="https://github.com/fabitosh/chat-analyzer" role="button" class="secondary">
+    {% githubIcon %} fabitosh/chat-analyzer
+  </a>
+</div>
 
 ---
 
