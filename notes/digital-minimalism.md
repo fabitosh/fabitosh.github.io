@@ -1,7 +1,7 @@
 ---
-btime: null
+btime: 2025-06-29 18:52
 layout: note.njk
-mtime: 2025-06-29 18:52
+mtime: null
 permalink: notes/{{ page.fileSlug }}/index.html
 status: Completed
 tags:
