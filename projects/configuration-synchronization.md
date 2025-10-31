@@ -1,25 +1,27 @@
 ---
-btime: null
+btime: 2025-10-19 23:58
 layout: note.njk
-mtime: 2025-10-19 23:58
-permalink: notes/{{ page.fileSlug }}/index.html
-status: draft
-tags:
-- tech/devops
-- tech/website/hosted
-title: Configuration Synchronization.Md
+mtime: null
+permalink: projects/{{ page.fileSlug }}/index.html
+status: never finished
+title: Configuration Synchronization using chezmoi
 ---
 ## Configuration Synchronization
 
 I would like to be efficient and "home" on any machine within a few minutes.
 Setting up a new computer gets more annoying the more extensive and customized your toolchain is.
 
-In this article I aim to relieve the pain of having to remember (!) and re-install:
+On this page I aim to relieve the pain of having to remember (!) and re-install:
 - Configurations and preferences that can be stored in text
 - Terminal Packages
 - GUI applications
 
-Even better, we aim to synchronize those settings across multiple operating systems. In my case I have [WSL](https://ubuntu.com/desktop/wsl) at work and use Mac OS at home. I would like to have similar workflows on both machines.
+Even better, we aim to synchronize those settings across multiple operating systems.
+
+At work I have a Windows machine, at home a Mac.
+I am using [WSL](https://ubuntu.com/desktop/wsl) for my development tasks at work.
+All GUI applications running natively on Windows.
+I would like to have similar workflows on both machines.
 
 ### Text-Based Configurations
 The scope of configurations is limited to program settings, that can be saved in a plain text file. Fortunately this will encompass many developer tools. Those text configurations usually start with a dot in their name (`.zshrc`, `.gitconfig`, `.vimrc` etc.) and are thus commonly named **dotfiles**.
@@ -112,7 +114,7 @@ If that is how you expect it to look like, don't forget to `chezmoi apply` your 
 With that we can synchronize files and thus text-based configurations across multiple computers.
 
 ### Managing Software
-I dislike installing applications and packages through a clicky-clicky download and installer process. Similar to `pip` or `npm` there are system level package managers. We strictly revert to them whenever possible. This includes avoiding to manually update the application through pop-ups of it's user interface. This would potentially get the configuration from the package manager out of sync. Instead, we use the package manager to update it.
+I dislike installing applications and packages through a clicky-clicky download and installer process. Similar to `pip` or `npm` there are system level package managers. We strictly rely on them whenever possible. This includes avoiding to manually update the application through pop-ups of its user interface. This would potentially get the configuration from the package manager out of sync. Instead, we use the package manager to update it.
 
 #### My package managers of choice
 Mac
@@ -192,7 +194,7 @@ With that, we can both manage configurations as well as packages on our machines
 To install `chezmoi` and directly apply your public github `.dotfiles` repo, we can run
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply github-username.
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply github-username
 ```
 
 With our configuration so far, this would likely fail though. For example the new machine will not have our package managers installed.
@@ -252,7 +254,8 @@ Do not store any sensitive data in plaintext within the repo. Even if you have t
 - [Encryption is supported](https://www.chezmoi.io/user-guide/encryption/). Have not tested it myself.
 
 ### Follow-up Reading
-- [fabitosh/dotfiles](https://github.com/fabitosh/dotfiles) My relatively simple dotfiles repo.
+- [fabitosh/dotfiles](https://github.com/fabitosh/dotfiles) My relatively simple dotfiles repo that builds on the 
+  concepts and snippets shown here.
 - [Managing dotfiles with Chezmoi | Nathaniel Landau](https://natelandau.com/managing-dotfiles-with-chezmoi/): Well explained more advanced setup.
 - [#chezmoi on github](https://github.com/search?q=%23chezmoi&type=repositories) Various public dotfiles repos.
 - [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/): Keep your home directory clean. Standard on where applications are supposed to store their data.
