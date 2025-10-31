@@ -14,6 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@shikijs/markdown-it": "^3.13.0",
     "fast-glob": "^3.3.2",
     "markdown-it": "^14.1.0",
     "markdown-it-github-alert": "^1.0.6"

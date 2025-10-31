@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#C62F20"/>
+  <!-- "f" as a clean path -->
+  <path d="M 25,83 L 25,50 L 20,50 L 20,40 L 25,40 L 25,33 Q 25,25 28,22 Q 31,19 39,19 L 50,19 L 50,29 L 42,29 Q 38,29 37,30 Q 36,31 36,35 L 36,40 L 48,40 L 48,50 L 36,50 L 36,83 Z" fill="white"/>
+  <circle cx="65" cy="75" r="7" fill="white"/>
+</svg>
+

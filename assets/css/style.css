@@ -64,23 +64,23 @@ blockquote {
 }
 
 .markdown-alert.note {
-    --border-color: #539BF5;
+    --border-color: var(--pico-secondary);
 }
 
 .markdown-alert.warning {
-    --border-color: #C69026;
+    --border-color: var(--pico-primary);
 }
 
 .markdown-alert.important {
-    --border-color: #986EE2;
+    --border-color: var(--pico-primary);
 }
 
 .markdown-alert.caution {
-    --border-color: #E5534B;
+    --border-color: var(--pico-primary);
 }
 
 .markdown-alert.tip {
-    --border-color: #57AB5A;
+    --border-color: var(--pico-secondary);
 }
 
 /* Navbar */
@@ -250,3 +250,15 @@ https://github.com/picocss/pico/discussions/343#discussioncomment-11700419
 [data-theme='dark'] .theme-toggle .icon-moon { display: none; }
 [data-theme='light'] .theme-toggle .icon-sun { display: none; }
 [data-theme='light'] .theme-toggle .icon-moon { display: inline; }
+
+[data-theme='dark'] .shiki,
+[data-theme='dark'] .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+}
+
+[data-theme='light'] .shiki,
+[data-theme='light'] .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: var(--shiki-light-bg) !important;
+}
