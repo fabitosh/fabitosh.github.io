@@ -7,6 +7,7 @@ title: fabio.earth - about
 Issa me, Fabio.
 I'm not Italian, my parents only like Italian food and the name.
 
+![Fabio Meier](/assets/images/about.jpg)
 
 I like the idea of sharing knowledge.
 Knowing someone else might benefit in some form helps me refining whatever I am doing a bit further.
