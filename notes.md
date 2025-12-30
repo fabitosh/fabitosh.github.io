@@ -1,6 +1,7 @@
 ---
 layout: layout.njk
 title: fabio.earth - notes
+permalink: /
 ---
 
 # Notes
