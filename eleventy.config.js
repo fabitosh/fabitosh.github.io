@@ -3,6 +3,8 @@ import fg from "fast-glob";
 import Shiki from '@shikijs/markdown-it'
 import markdownIt from "markdown-it";
 import {alertPlugin} from "markdown-it-github-alert";
+import texmath from 'markdown-it-texmath';
+import katex from 'katex';
 
 const photographyImages = fg.sync(['assets/photography/**/*.jpg', '!**/_site']);
 
@@ -58,6 +60,12 @@ export default async function (eleventyConfig) {
     })
         // Github markdown callouts: note, tip, important, warning, caution
         .use(alertPlugin)
+        // LaTeX support
+        .use(texmath, {
+            engine: katex,
+            delimiters: 'dollars',
+            katexOptions: { macros: { "\\RR": "\\mathbb{R}" } }
+        })
         // Syntax highlighting of code blocks
         .use(await Shiki({
             themes: {
