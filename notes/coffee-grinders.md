@@ -5,11 +5,9 @@ mtime: 2026-04-04 10:54
 permalink: notes/{{ page.fileSlug }}/index.html
 status: draft
 tags:
-- leisure/coffee
-- tech/website/hosted
-title: Coffee Grinders.Md
+- kitchen
+title: Quantifying Coffee Grinders
 ---
-## Coffee Grinders
 
 This article assumes you have already started nerding into [[Coffee]] before. I have been looking into an upgrade of my coffee grinder. In this post I'm going through my learnings of the relevant metrics. Writing this down helps me to ensure I have understood the concepts (hopefully). This is mostly a theoretical piece. I am no taste-bud reference and have not done comparative tasting of different grinders.
 
