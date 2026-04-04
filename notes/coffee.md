@@ -73,7 +73,7 @@ Let's start with some experimentally determined, good parameters for standard-si
 Adjusting the grind size is the primary way to control and the hardest to give quantifieable guidance for.
 
 If the shot pulls too fast and tastes sour: we need to increase the resistance of the coffee puck and thus grind finer.
-If we barely get any coffee drips out of the machine we have too much resistance. We can grind coarser. Alternatively, you could considerr slightly reducing the dose.
+If we barely get any coffee drips out of the machine we have too much resistance. We can grind coarser. Alternatively, you could consider slightly reducing the dose.
 
 Sounds easy enough, right?
 ##### Channeling
