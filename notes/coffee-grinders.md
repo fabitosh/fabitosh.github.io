@@ -1,15 +1,15 @@
 ---
-btime: null
+btime: 2026-04-04
 layout: note.njk
-mtime: 2026-04-04 10:54
+mtime: null
 permalink: notes/{{ page.fileSlug }}/index.html
-status: draft
+status: completed
 tags:
 - kitchen
 title: Quantifying Coffee Grinders
 ---
 
-This article assumes you have already started nerding into [[Coffee]] before. I have been looking into an upgrade of my coffee grinder. In this post I'm going through my learnings of the relevant metrics. Writing this down helps me to ensure I have understood the concepts (hopefully). This is mostly a theoretical piece. I am no taste-bud reference and have not done comparative tasting of different grinders.
+This article assumes you have already started nerding into [Coffee](/notes/coffee/) before. I have been looking into an upgrade of my coffee grinder. In this post I'm going through my learnings of the relevant metrics. Writing this down helps me to ensure I have understood the concepts (hopefully). This is mostly a theoretical piece. I am no taste-bud reference and have not done comparative tasting of different grinders.
 
 Starting out, what do I want from a grinder?
 - It should fit into my life: Aesthetics, Footprint, Price. Noise.
@@ -57,7 +57,7 @@ On the other hand unimodal PSD is said to provide "clarity". There is no over-ex
 
 The holes in the portafilter baskets are around 200-300 $\mu m$, which is significantly larger than the fines. This does not mean all fines fall through as the coffee puck provides resistance in itself. Here we start going into territory that is not straightforward I think.
 
-> [!info]
+> [!note]
 > Permeability: Measure of how well fluids can flow through a medium
 
 There is [Darcy's Law](https://en.wikipedia.org/wiki/Darcy%27s_law) which - applied here - describes the flow rate $Q$ through a porous medium of portafilter area $A$ and puck height $L$ as:

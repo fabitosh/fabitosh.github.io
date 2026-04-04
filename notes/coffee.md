@@ -95,4 +95,4 @@ My opinionated take on the order of importance to get good-great coffee:
 
 In a next part we will look at coffee equipment and some more advanced nuances.
 
-[[Coffee Machines]]
+[Coffee Grinders](/notes/coffee-grinders)
