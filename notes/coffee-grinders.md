@@ -18,20 +18,20 @@ Starting out, what do I want from a grinder?
 - Its grounds should allow me to brew a consistent and delicious coffee.
 - The workflow with it should be enjoyable: Grind Speed. Time it takes to get a dose. Dialing in. Switching between beans. Switching between brew methods.
 
-In the first part we'll go through the aspects of how the grinder influences the taste of the coffee. The second part was about getting clarity on the cons of using a bean-hopper, even with grind-by-weight.
+In the first part we'll go through the aspects of how the grinder influences the taste of the coffee. The second part is about getting clarity on the cons of using a bean-hopper, even with grind-by-weight.
 
 Let's investigate the contributing aspects further.
 
 ### Design Goal. What kind of ground coffee will taste nice?
 
-We need to understand what we should actually optimize for. **Particle Size Distribution (PSD)** is the basis that attempts to quantify grinder characteristics. That is, the distribution of coffee particles of different sizes. My naive assumption was always, that this is all about uniformity. My idea of an ideal grinder was one, that crushes beans into particles of equal size. The general idea is quite simple: all pieces are equally sized and can thus be equally extracted at their sweet spot. I was surprised to see, that this design target was only a rather recent thing. **Unimodal** burrs. The name hints it, we have one mode (= one particle size) where most of our particles are.
+We need to understand what we should actually optimize for. **Particle Size Distribution (PSD)** is the basis that attempts to quantify grinder characteristics. That is, the distribution of coffee particles of different sizes. My naive assumption was always, that this is all about uniformity. My idea of an ideal grinder was one, that crushes beans into particles of equal size. The general idea is quite simple: all pieces are equally sized and can thus be equally extracted at their sweet spot. I was surprised to see that this design target was only a rather recent thing. **Unimodal** burrs. The name hints it, we have one mode (= one particle size) where most of our particles are.
 ![](/assets/images/coffeegrinders-unimodal-1.png)
 
 Traditionally, **bimodal** burrs were the norm and are still desirable due a different design goal. The underlying idea is that we have a majority of particles of "medium" size. The remaining particles should be significantly smaller bits, "filling" the space between the larger particles. Their role is to increase the overall resistance of the coffee puck.
 
 ![](/assets/images/coffeegrinders-bimodal-1.png)
 
-There also discussions about whether multi-modal output (3+ distinct size peaks) would be desirable, though my impression was that this has still been very experimental, which I am not the target audience for in this topic. We'll thus conclude that the industry is currently on two distinct design goals discussed above.
+There are also discussions about whether multi-modal output (3+ distinct size peaks) would be desirable, though my impression was that this has still been very experimental, which I am not the target audience for in this topic. We'll thus conclude that the industry is currently on two distinct design goals discussed above.
 
 #### Performance Quantification
 
@@ -47,24 +47,24 @@ A low variation around the main peak would be desirable to allow the even extrac
 #### The role of fines in espresso
 
 Classic coffee machines ramp up to 9 bar and keep it up there until the end of the shot. To reach an extraction of the coffee, sufficient resistance needs to come from the puck. This is a primary role of the fines.
-A unimodal PSD can reach the required resistance as well by grinding finer than the main peak of the main peak from the bimodal PDS. Though it is generally harder to hit that sweet spot without channeling. The fines leave a broader window to operate within.
+A unimodal PSD can reach the required resistance as well by grinding finer than the main peak from the bimodal PSD. Though it is generally harder to hit that sweet spot without channeling. The fines leave a broader window to operate within.
 It also would help if the machine were able to only run at a lower pressure (like 6 bars), which most machine today cannot be configured to.
 
-Bimodal ground espresso is described to have "more body" and "creamyness". My understanding is, that this comes from fines, that are small enough that they can bass through the basket holes. These tend to stabilize coffee oils together, which is what we perceive as more "syrupy".
+Bimodal ground espresso is described to have "more body" and "creaminess". My understanding is, that this comes from fines, that are small enough that they can pass through the basket holes. These tend to stabilize coffee oils together, which is what we perceive as more "syrupy".
 
 On the other hand unimodal PSD is said to provide "clarity". There is no over-extraction of the fines. This over-extraction tends to come with some bitterness, which disturbs said clarity. Bitterness is inherently not a bad thing, but a matter of taste. Having it in the cup might dominate or numb other flavors though.
 
 > [!IMPORTANT]
 > Higher amount of fines allow and require coarser grind settings, have "more body" and less nuanced taste profiles.
 
-The holes in the portafilter baskets are around 200-300 $\micro m$, significantly smaller than all fines. This does not mean all fines fall through as the coffee puck provides resistance in itself. Here we start going into territory that is not straightforward I think.
+The holes in the portafilter baskets are around 200-300 $\mu m$, which is significantly larger than the fines. This does not mean all fines fall through as the coffee puck provides resistance in itself. Here we start going into territory that is not straightforward I think.
 
 > [!info]
 > Permeability: Measure of how well fluids can flow through a medium
 
-There is [Darcey's Law](https://en.wikipedia.org/wiki/Darcy%27s_law) which - applied here -describes the flow rate $Q$ through a porous medium of portafilter area $A$ and puck height $L$ as:
-$$Q = \frac{\kappa A}{\micro L}\Delta P$$
-$\kappa$ is the permeability, which is determined by the amount of fines and their distribution. $\micro$ is the viscosity of the coffee. Determining $\kappa$ here would require experiments, we can only formulate hypotheses here.
+There is [Darcy's Law](https://en.wikipedia.org/wiki/Darcy%27s_law) which - applied here - describes the flow rate $Q$ through a porous medium of portafilter area $A$ and puck height $L$ as:
+$$Q = \frac{\kappa A}{\mu L}\Delta P$$
+$\kappa$ is the permeability, which is determined by the amount of fines and their distribution. $\mu$ is the viscosity of the coffee. Determining $\kappa$ here would require experiments, we can only formulate hypotheses here.
 
 Overall, the only small particles metric I am interpreting is the accumulated percentage of fines in the PSD. This is not directly a quality metric, but gives an indication of how strongly a grinder leans into the traditional, "body" espresso. How much a distinct/clear main peak can compensate, I don't know.
 
@@ -74,8 +74,8 @@ Overall, the only small particles metric I am interpreting is the accumulated pe
 Let's go into two simplified PSDs. They show two grinders with a dialed-in espresso.
 ![](/assets/images/coffeegrinders-bimodal-compare-1.png)
 When it comes to the taste of the coffee, all elements are interconnected. A separation of the elements does not fully work, but it can be a helpful mental concept to understand individual contributions.
-- In the chart we have the fines peak at $55\micro m$ for Grinder A and a bit lower for Grinder B. As covered in the chapter above, it will have an impact on the permeability $\kappa$ and thus the puck resistance. How, is not clear to me.
-- The integral of contributions of the fines $<100\micro m$ is smaller for grinder B. Relative to grinder A, it has "less body" and produces a more nuanced shot. I am not sure whether it is harder to dial in.
+- In the chart we have the fines peak at $55\mu m$ for Grinder A and a bit lower for Grinder B. As covered in the chapter above, it will have an impact on the permeability $\kappa$ and thus the puck resistance. How, is not clear to me.
+- The integral of contributions of the fines $<100\mu m$ is smaller for grinder B. Relative to grinder A, it has "less body" and produces a more nuanced shot. I am not sure whether it is harder to dial in.
 - The clearer main peak helps pronounce the coffee better. More particles can be extracted at their sweet spot.
 - Both grinders have their main spike at the same spot. I am not aware that anything can be derived from peak value differences.
 
@@ -83,9 +83,9 @@ I would expect two identical PSDs, but coming from two different grinders and bu
 
 #### My Desire
 
-Whilst I enjoy nerding out on coffee occasionally; in my day to day I prefer a quickly dialed in coffee and usually want the process to just work™. I think to prefer the expressive coffee notes (found with more clarity) over the more bitter aspects, but don't dislike them either.
+While I enjoy nerding out on coffee occasionally; in my day to day I prefer a quickly dialed in coffee and usually want the process to just work™. I think I prefer the expressive coffee notes (found with more clarity) over the more bitter aspects, but don't dislike them either.
 
-My current machine is a quite cheap beginner model (Sage Bambino Plus) with a flat 9 bar pressure profile. I worry about not having enough controllable process parameters to pull reliable shots with changing beans. An unimodal PSD will require a significantly smaller grind size due to the absence of fines. If I were to know I could do that reliably and relative hassle-free on a day-to-day basis, I'd opt for unimodal. But, I believe that to not be the case.
+My current machine is a quite cheap beginner model (Sage Bambino Plus) with a flat 9 bar pressure profile. I worry about not having enough controllable process parameters to pull reliable shots with changing beans. A unimodal PSD will require a significantly smaller grind size due to the absence of fines. If I were to know I could do that reliably and relative hassle-free on a day-to-day basis, I'd opt for unimodal. But, I believe that not to be the case.
 
 This leaves me deciding between different kinds of bimodal burrs. In the discussed example above, my choice would then be grinder B.
 
@@ -120,7 +120,7 @@ How do we measure the two?
 
 I would imagine the fixed retention to slowly build up in reality. Measuring it should be easy: Clean the grinder thoroughly after some usage. Measure all coffee you cleaned out of the machine.
 
-Exchanged rotation is likely more nuanced. We could color the beans for each dose and see how much of the last color comes out? This might already work when swapping from light to dark roast.
+Exchanged retention is likely more nuanced. We could color the beans for each dose and see how much of the last color comes out? This might already work when swapping from light to dark roast.
 
 One can also measure the weight consistency. What variance do our retention measurements $r_i$ have? In other words, measuring the exchanged retention consistency. That is helpful. If we consistently get $r=0$, we can trust we are working with the same weight in each shot at least. My impression is that many reviewers measure that number. It's important to remember, that this is not the same as the exchanged retention.
 ##### Does exchanged retention even matter?
@@ -137,7 +137,7 @@ So far, we assumed pre-weighting the beans before every shot. Coffee hoppers aim
 
 Grind-By-Weight addresses this issue by directly measuring the amount of coffee at the output and introducing a smarter control-loop. Overall, that's pretty cool and handy.
 
-My issue with both of those methods is, that for both of them to work we need a continuous stream of coffee beans as input. This comes with significantly more exchanged retention. Some of the exchanged retention is in half-crushed bean-state. The ones that were just in between the burrs when the control-loop
+My issue with both of those methods is, that for both of them to work we need a continuous stream of coffee beans as input. This comes with significantly more exchanged retention. Some of the exchanged retention is in half-crushed bean-state. The ones that were just in between the burrs when the control-loop stops the motor.
 
 ![](/assets/images/coffeegrinders-hopperretention-1.png)
 
@@ -148,7 +148,4 @@ I'm currently having a grinder with hopper and grind-by-time. I started using it
 
 ### Wrapping it up
 
-I am looking for a single-dose grinder with low exchanged rotation. Whilst uniform burrs likely would match my taste preference, I don't trust it to be hassle-free enough on my flat 9-bar coffee machine.
-
-
-[[Concrete Coffee Grinder Comparisons]]
+I am looking for a single-dose grinder with low exchanged retention. While uniform burrs likely would match my taste preference, I don't trust it to be hassle-free enough on my flat 9-bar coffee machine.
