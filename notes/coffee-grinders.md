@@ -116,9 +116,6 @@ work, but it can be a helpful mental concept to understand individual contributi
 - Both grinders have their main spike at the same spot. I am not aware that anything can be derived from peak value
   differences.
 
-I would expect two identical PSDs, but coming from two different grinders and burr types, to taste identical, but would
-like to see that verified.
-
 #### My Desire
 
 While I enjoy nerding out on coffee occasionally, in my day-to-day I prefer a quickly dialed-in coffee and usually want
@@ -136,13 +133,13 @@ be grinder B.
 I want my next grinder to last at least 10 years. It thus needs to provide a platform that allows exchanging the burrs
 in the future.
 
-> [!info]
+> [!note]
 > We left out quite a few interesting aspects here. I am not questioning whether flat burrs are really better than
-> conical ones. I think they are, based purely on their prevalence in high-end grinders.
+> conical ones. I think they are, based purely on their prevalence in high-end grinders.  
 > The size of the burrs is not mentioned. Overall, I believe that bigger burrs have a higher quality ceiling than
-> smaller ones.
+> smaller ones.  
 > I think the discussion is mostly relevant for light roasts. I think it is an anti-thesis to have dark roasts with a
-> unimodal burrset.
+> unimodal burrset.  
 > Lastly, the precision of the alignment of the two burr parts is fundamental for every grinder. Imperfections there
 > will have an impact on the PSD.
 
@@ -197,6 +194,9 @@ My use case is different. There are stretches of days without me making a coffee
 this period would contain old coffee. Or I might want to do a filter coffee in the morning and have an espresso after
 lunch. Filter-sized grounds should not land in the portafilter. Both issues can be mitigated by purging the estimated
 exchanged retention initially.
+
+Whilst my taste buds are less refined than James Hoffmann's, a one [day staling of ground beans is already clearly 
+noticeable](https://www.youtube.com/watch?v=NxklrAQfupw) to him.
 
 #### Single-Dosing vs Grind-By-Weight
 
