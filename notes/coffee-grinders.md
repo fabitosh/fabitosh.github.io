@@ -11,7 +11,7 @@ title: Quantifying Coffee Grinders
 
 This article assumes you have already started nerding into [Coffee](/notes/coffee/). I have been looking into an upgrade
 of my coffee grinder. In this post, I'm going through my learnings of the relevant metrics. Writing this down helps me
-to ensure I have understood the concepts (hopefully). This is mostly a theoretical piece. I am no taste-bud reference
+solidify my understanding of these concepts (hopefully). This is mostly a theoretical piece. I am no taste-bud reference
 and have not done comparative tasting of different grinders.
 
 Starting out, what do I want from a grinder?
@@ -44,7 +44,7 @@ puck.
 ![](/assets/images/coffeegrinders-bimodal-1.png)
 
 There are also discussions about whether multi-modal output (3+ distinct size peaks) would be desirable, though my
-impression was that this is still very experimental — which I am not the target audience for. We'll thus conclude 
+impression was that this is still very experimental — which I am not the target audience for. We'll thus conclude
 that the industry currently focuses on the two distinct design goals discussed above.
 
 #### Performance Quantification
@@ -56,16 +56,14 @@ to be quite straightforward: a distinct, thin peak around one particle size, and
 > Generally, most find unimodal PSD desirable for filter and immersion brewing. There can be flavor preferences for
 > more "traditional" profiles with "strength". To me, that is not why one goes for filter coffee.
 
-For bimodality, it seems a bit harder to quantify.
-A low variation around the main peak would be desirable to allow the even extraction of the key tastes. This is similar
-to the unimodal case. For the fine particles, what would be desirable or "tasty"? Is it better to have one distinct fine
-particle size, or would we actually prefer them to spread over a broader particle spectrum as long as they stay far from
-the main peak?
+Quantifying bimodality is more complex. While a narrow main peak is still desirable for even extraction, the "ideal"
+distribution of fines is less clear. Should they form one distinct secondary peak, or would we actually prefer them
+to spread over a broader spectrum as long as they stay far from the main peak?
 
 #### The role of fines in espresso
 
-Classic coffee machines ramp up to 9 bar and keep it there until the end of the shot. To reach an extraction of the
-coffee, sufficient resistance needs to come from the puck. This is a primary role of the fines.
+Classic coffee machines ramp up to 9 bar and keep it there until the end of the shot. To achieve a balanced extraction,
+the puck must provide sufficient resistance. This resistance is largely due to the fines .
 A unimodal PSD can reach the required resistance as well by grinding significantly finer than the main peak from the
 bimodal PSD. However, it is generally harder to hit that sweet spot without channeling. The fines leave a broader window
 to operate within.
@@ -100,18 +98,17 @@ Overall, the only small particles metric I am interpreting is the accumulated pe
 not directly a quality metric but gives an indication of how strongly a grinder leans into the traditional, "body"
 espresso. How much a distinct/clear main peak can compensate, I don't know.
 
-#### Lets put some numbers to it. An example
+#### Let's put some numbers to it. An example
 
 Let's go into two simplified PSDs. They show two grinders with a dialed-in espresso.
 ![](/assets/images/coffeegrinders-bimodal-compare-1.png)
 When it comes to the taste of the coffee, all elements are interconnected. A separation of the elements does not fully
 work, but it can be a helpful mental concept to understand individual contributions.
 
-- In the chart, we have the fines peak at $55\mu m$ for Grinder A and a bit lower for Grinder B. As covered in the
-  chapter above, it will have an impact on the permeability $\kappa$ and thus the puck resistance. How exactly is not
-  clear to me.
-- The integral of contributions of the fines $<100\mu m$ is smaller for grinder B. Relative to grinder A, it has "less
-  body" and produces a more nuanced shot. I am not sure whether it is harder to dial in.
+- In the chart, we have the fines peak at $55\mu m$ for Grinder A and a bit lower for Grinder B. This influences the
+  permeability $\kappa$ and thus the puck resistance. How exactly is not clear to me.
+- The integral of the fines $<100\mu m$ is smaller for grinder B. Relative to grinder A, it has "less body" and produces
+  a more nuanced shot. I am not sure whether it is harder to dial in.
 - The clearer main peak helps pronounce the coffee better. More particles can be extracted at their sweet spot.
 - Both grinders have their main spike at the same spot. I am not aware that anything can be derived from peak value
   differences.
@@ -195,7 +192,7 @@ this period would contain old coffee. Or I might want to do a filter coffee in t
 lunch. Filter-sized grounds should not land in the portafilter. Both issues can be mitigated by purging the estimated
 exchanged retention initially.
 
-Whilst my taste buds are less refined than James Hoffmann's, a one [day staling of ground beans is already clearly 
+While my taste buds are less refined than James Hoffmann's, a [one-day staling of ground beans is already clearly
 noticeable](https://www.youtube.com/watch?v=NxklrAQfupw) to him.
 
 #### Single-Dosing vs Grind-By-Weight
