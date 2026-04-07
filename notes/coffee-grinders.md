@@ -32,8 +32,7 @@ We need to understand what we should actually optimize for. **Particle Size Dist
 attempts to quantify grinder characteristics. That is, the distribution of coffee particles of different sizes. My naive
 assumption was always that this is all about uniformity. My idea of an ideal grinder was one that crushes beans into
 particles of equal size. The general idea is quite simple: all pieces are equally sized and can thus be equally
-extracted at their sweet spot. I was surprised to see that this design target was only a rather recent thing. **Unimodal
-** burrs. The name hints at it; we have one mode (= one particle size) where most of our particles are.
+extracted at their sweet spot. I was surprised to see that this design target was only a rather recent thing. **Unimodal** burrs. The name hints at it; we have one mode (= one particle size) where most of our particles are.
 ![](/assets/images/coffeegrinders-unimodal-1.png)
 
 Traditionally, **bimodal** burrs were the norm and are still desirable due to a different design goal. The underlying
@@ -44,8 +43,7 @@ puck.
 ![](/assets/images/coffeegrinders-bimodal-1.png)
 
 There are also discussions about whether multi-modal output (3+ distinct size peaks) would be desirable, though my
-impression was that this is still very experimental — which I am not the target audience for. We'll thus conclude
-that the industry currently focuses on the two distinct design goals discussed above.
+impression was that this is still very experimental — which I am not the target audience for. We'll focus on the two distinct design goals discussed above.
 
 #### Performance Quantification
 
@@ -56,16 +54,16 @@ to be quite straightforward: a distinct, thin peak around one particle size, and
 > Generally, most find unimodal PSD desirable for filter and immersion brewing. There can be flavor preferences for
 > more "traditional" profiles with "strength". To me, that is not why one goes for filter coffee.
 
-Quantifying bimodality is more complex. While a narrow main peak is still desirable for even extraction, the "ideal"
-distribution of fines is less clear. Should they form one distinct secondary peak, or would we actually prefer them
+Quantifying the desireability of bimodality is more complex. While a narrow main peak is still key for even extraction, the "ideal"
+distribution of fines is less clear to me. Should they form one distinct secondary peak, or would we actually prefer them
 to spread over a broader spectrum as long as they stay far from the main peak?
 
 #### The role of fines in espresso
 
 Classic coffee machines ramp up to 9 bar and keep it there until the end of the shot. To achieve a balanced extraction,
-the puck must provide sufficient resistance. This resistance is largely due to the fines .
+the puck must provide sufficient resistance. This resistance is largely due to the fines with the bimodal PSD.
 A unimodal PSD can reach the required resistance as well by grinding significantly finer than the main peak from the
-bimodal PSD. However, it is generally harder to hit that sweet spot without channeling. The fines leave a broader window
+bimodal PSD. However, it is harder to hit that sweet spot without channeling. The fines leave a broader window
 to operate within.
 It would also help if the machine were able to run at a lower pressure (like 6 bar), which most machines today cannot be
 configured to.
@@ -94,7 +92,7 @@ $$Q = \frac{\kappa A}{\mu L}\Delta P$$
 $\kappa$ is the permeability, which is determined by the amount of fines and their distribution. $\mu$ is the viscosity
 of the coffee. Determining $\kappa$ here would require experiments; we can only formulate hypotheses here.
 
-Overall, the only small particles metric I am interpreting is the accumulated percentage of fines in the PSD. This is
+Overall, the only metric for small particles metric I am interpreting is the accumulated percentage of fines in the PSD. This is
 not directly a quality metric but gives an indication of how strongly a grinder leans into the traditional, "body"
 espresso. How much a distinct/clear main peak can compensate, I don't know.
 
@@ -111,7 +109,7 @@ work, but it can be a helpful mental concept to understand individual contributi
   a more nuanced shot. I am not sure whether it is harder to dial in.
 - The clearer main peak helps pronounce the coffee better. More particles can be extracted at their sweet spot.
 - Both grinders have their main spike at the same spot. I am not aware that anything can be derived from peak value
-  differences.
+  differences. The peaks shift with grind size adjustments.
 
 #### My Desire
 
@@ -119,7 +117,7 @@ While I enjoy nerding out on coffee occasionally, in my day-to-day I prefer a qu
 the process to just work™. I think I prefer the expressive coffee notes (found with more clarity) over the more bitter
 aspects, but don't dislike them either.
 
-My current machine is a quite cheap beginner model (Sage Bambino Plus) with a flat 9-bar pressure profile. I worry about
+My current machine is a quite basic beginner model (Sage Bambino Plus) with a flat 9-bar pressure profile. I worry about
 not having enough controllable process parameters to pull reliable shots with changing beans. A unimodal PSD will
 require a significantly smaller grind size due to the absence of fines. If I knew I could do that reliably and
 relatively hassle-free on a day-to-day basis, I'd opt for unimodal. But I believe that not to be the case.
@@ -133,12 +131,9 @@ in the future.
 > [!note]
 > We left out quite a few interesting aspects here. I am not questioning whether flat burrs are really better than
 > conical ones. I think they are, based purely on their prevalence in high-end grinders.  
-> The size of the burrs is not mentioned. Overall, I believe that bigger burrs have a higher quality ceiling than
-> smaller ones.  
-> I think the discussion is mostly relevant for light roasts. I think it is an anti-thesis to have dark roasts with a
-> unimodal burrset.  
-> Lastly, the precision of the alignment of the two burr parts is fundamental for every grinder. Imperfections there
-> will have an impact on the PSD.
+> The size of the burrs is not mentioned. Overall, I believe that bigger burrs have a higher quality ceiling than smaller ones.  
+> The discussion is mostly relevant for lighter roasts. I think it is an antithesis to have dark roasts with a unimodal burrset.  
+> Lastly, the precision of the alignment of the two burr parts is fundamental for every grinder. Imperfections there will have an impact on the PSD.
 
 ### Workflow
 
@@ -148,11 +143,9 @@ I needed to get clarity on the impact of a hopper in the workflow.
 
 Let's start by defining retention $r$ as:
 $$r_i = \text{beans}_\text{in} - \text{grounds}_\text{out}$$
-We take the difference from weighted beans to ground output. $i$ is the number of the grinds since the first shot from a
-cleaned machine.
+We take the difference from weighted beans to ground output. $i$ is the grind sequence number since the first shot from a cleaned machine.
 
-A clean machine has no coffee inside yet. We expect the first shot to be negative: $r_0=-0.1[g]$ with some coffee "
-filling" empty spaces and corners of the grinder. Some bits are likely going to last there until we clean the machine
+A clean machine has no coffee inside yet. We expect the first shot to be negative, say $r_0=-0.1[g]$ with some coffee filling empty spaces and corners of the grinder. Some bits are likely going to last there until we clean the machine
 again. If that's the case, it does not really matter.
 
 This brings us to the part that I believe to be worse: the amount of coffee staying in the grinder and coming out with
@@ -190,7 +183,7 @@ included exchanged retention will still be fresh and of the same target size.
 My use case is different. There are stretches of days without me making a coffee at home, meaning the first shot after
 this period would contain old coffee. Or I might want to do a filter coffee in the morning and have an espresso after
 lunch. Filter-sized grounds should not land in the portafilter. Both issues can be mitigated by purging the estimated
-exchanged retention initially.
+exchanged retention before working on the new coffee.
 
 While my taste buds are less refined than James Hoffmann's, a [one-day staling of ground beans is already clearly
 noticeable](https://www.youtube.com/watch?v=NxklrAQfupw) to him.
@@ -222,5 +215,5 @@ me.
 
 ### Wrapping it up
 
-I am looking for a single-dose grinder with low exchanged retention. While uniform burrs likely would match my taste
+I am looking for a single-dose grinder with low exchanged retention. While dialed-in uniform burrs likely would match my taste
 preference, I don't trust them to be hassle-free enough on my flat 9-bar coffee machine.
