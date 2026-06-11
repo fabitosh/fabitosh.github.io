@@ -6,7 +6,7 @@ permalink: notes/{{ page.fileSlug }}/index.html
 status: draft
 tags:
   - sport
-title: DIY Endurance Fuel
+title: What's in My Bidon
 ---
 
 I want to create my own sugar mix for cycling. I have jotted down the steps towards my practical mixture. I am fine
