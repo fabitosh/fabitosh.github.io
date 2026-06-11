@@ -1,4 +1,5 @@
 ---
+description: "Notes on Cal Newport's Digital Minimalism. Why willpower loses against engineered addictiveness and how a digital declutter helps."
 btime: 2025-06-29 18:52
 layout: note.njk
 mtime: null

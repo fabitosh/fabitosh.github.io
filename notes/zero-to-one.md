@@ -1,4 +1,5 @@
 ---
+description: "Chapter notes on Peter Thiel's Zero to One. Vertical progress, monopolies, secrets and the mindset behind building something new."
 btime: 2025-07-20
 layout: note.njk
 mtime:

@@ -1,4 +1,5 @@
 ---
+description: "How I unified my keyboard layout across operating systems and languages, so every machine reacts identically to my inputs."
 btime: 2024-04-12
 layout: note.njk
 mtime: 2025-01-19

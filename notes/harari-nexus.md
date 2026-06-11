@@ -1,4 +1,5 @@
 ---
+description: "Reading notes on Nexus by Yuval Noah Harari. Information networks through history and what idea-generating AI means for democracies and dictatorships."
 btime: 2025-06-28
 layout: note.njk
 mtime: null

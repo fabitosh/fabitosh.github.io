@@ -1,4 +1,5 @@
 ---
+description: "How I consolidated my news channels into one algorithm-free place with RSS. Feeds, readers, and workarounds for sites without them."
 btime: 2025-05-24 11:29
 layout: note.njk
 mtime: 2025-10-17

@@ -1,4 +1,5 @@
 ---
+description: "How to keep kitchen knives sharp. Reducing wear, honing, and sharpening with water stones."
 btime: 2024-05-02
 layout: note.njk
 mtime: null

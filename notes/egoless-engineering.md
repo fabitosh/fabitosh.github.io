@@ -1,4 +1,5 @@
 ---
+description: "Notes on Dan McKinley's Egoless Engineering talk. Organizational pitfalls in software companies and what makes engineering teams work well."
 btime: 2025-04-17 08:14
 layout: note.njk
 mtime: 2025-05-08 08:09

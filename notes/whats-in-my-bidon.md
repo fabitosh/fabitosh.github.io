@@ -1,4 +1,5 @@
 ---
+description: "Mixing my own sugar fuel for cycling. Maltodextrin, fructose ratios, osmolality and a practical recipe to avoid bonking on long rides."
 btime: 2026-06-11 11:36
 layout: note.njk
 mtime: null
