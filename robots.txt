@@ -1,0 +1,14 @@
+# Search engines and AI search (cite + link): allowed
+User-agent: *
+Allow: /
+
+# AI training crawlers: not allowed
+User-agent: GPTBot
+User-agent: Google-Extended
+User-agent: ClaudeBot
+User-agent: CCBot
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+Sitemap: https://fabio.earth/sitemap.xml
