@@ -3,7 +3,7 @@ btime: 2026-06-11 11:36
 layout: note.njk
 mtime: null
 permalink: notes/{{ page.fileSlug }}/index.html
-status: draft
+status: completed
 tags:
   - sport
 title: What's in My Bidon
