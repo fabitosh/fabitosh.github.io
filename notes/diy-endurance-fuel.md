@@ -16,13 +16,17 @@ with not reaching the last marginal nutritional performance. It's mostly about n
 
 ### Sucrose (Household Sugar)
 
-Contains 50% Glucose, 50% Fructose. Naturally utilizes dual absorption pathways for each kind of sugar.
+Contains 50% Glucose, 50% Fructose, so it feeds two absorption pathways at once (see below).
 
-Tastes very sweet. Pulls a lot of water in the gut, making it hard to consume ~60g/h due to digestive challenges.
+Very sweet, getting excessive over a long ride, and harder on the stomach in high concentrations.
 
 ### Maltodextrin
 
-Complex, large carbohydrate (Polysaccharide). Easy to digest. Tasteless. Aim for DE 12-19.
+A glucose polymer. That means multiple glucose units bundled into one large molecule.
+
+Its edge is low osmolality. How heavy a drink sits in the stomach scales with the _number_ of dissolved molecules, not their mass. One maltodextrin chain is a single molecule, so gram for gram it puts far fewer particles into solution than household sugar.
+
+It digests quickly back to glucose and is near tasteless. This is not a regular household item, but required for a semi-performant energy drink.
 
 ### Dextrose (Pure Glucose)
 
@@ -31,7 +35,7 @@ Covered with Household Sugar. Is there a downside to having Fructose in the mix?
 
 ### Isomaltulose
 
-Glucose-Fructose dimer with much stronger chemical bond. Breaking down slowly and releasing energy over an accordingly longer time period. Regular gulping of a lighter mix has the same effect. Slower and pricier. Maybe interesting if you want to minimize sugar spikes (diabetes)? Or likely less risky for the teeth. I don't see a strict need for it for now.
+Same Glucose-Fructose content as Sucrose, but with a much more resistant chemical bond. It breaks down slowly in the digestive system and releases energy over an accordingly longer time period. Regular sipping of Sucrose mimics the same effect, and unlike Isomaltulose it can also be gulped for a faster energy hit. Isomaltulose is maybe interesting if you want to minimize sugar spikes (diabetes) and is substantially less risky for the teeth. I don't see a strict need for it for now.
 
 ## Digestive Transporters
 
@@ -40,10 +44,10 @@ The intake rate is limited by the saturation point of intestinal transporters. T
 Fructose activates `GLUT5` and has an absorption cap of ~30-40g/h.
 Glucose / Malto activates `SGLT1` with an absorption cap of ~60g/h.
 
-Thus we aim for a 2:1 Glucose:Fructose Ratio.
+With my target of consuming roughly 75g/h we need a mixture of the two. A 2:1 Glucose:Fructose Ratio is chosen. I am aware that this is not the absolute performance optimum, but it seems like a highly practical spot. Still better than what professional cyclists consumed just 20 years ago.
 
 > [!NOTE]
-> Those values seemed oddly low to me. Professional cyclists manage to consume 120+g carbs/h. My quick research indicates that more fructose can be transported if glucose is maxed out. The pros go for a 5:4 Glucose:Fructose ratio. I might deviate more towards that ratio in the future.
+> The sum of those values seemed oddly low to me. Professional cyclists manage to consume 120+g carbs/h. My quick research indicates that more fructose can be transported if glucose is maxed out. The pros go for a 5:4 Glucose:Fructose ratio. I might deviate more towards that ratio in the future.
 
 ## Additives & Flavor
 
@@ -56,13 +60,32 @@ Use food-grade powder, not the industrial cleaning grade.
 
 To combat the loss in sweat.
 
-## My mixture (1kg Batch)
+## My mixture (~1kg Batch)
 
 - 310g Maltodextrin
 - 620g Household sugar
 - 15g Citric Acid Powder
 - 10g Salt
 - Optional Flavor (can also be liquid at the end of the mix. grapefruit juice)
+
+Reaching a 2:1 Glucose:Fructose ratio.
+
+## Dosing
+
+With my bottle size fixed, I just vary how much powder I fill in. The longer the ride, the thicker the syrup.
+
+The mix is ~97% carbohydrate by weight, so the powder mass is basically the carbs.
+
+| Expected ride | Powder into the bottle |
+| ------------- | ---------------------- |
+| 1 h           | ~75g                   |
+| 2 h           | ~150g                  |
+| 3+ h          | ~200g + other fueling  |
+
+I find it hard to dissolve over 200g within a bidon. For longer rides I either:
+
+- take a sachet of mix with me and refill later
+- fuel differently (coffee breaks, proper lunch, gummy bears)
 
 ## Practical Preparation
 
