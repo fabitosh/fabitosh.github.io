@@ -84,7 +84,7 @@ def sync_notes() -> None:
             try:
                 web_frontmatter, _ = _parse_markdown_file(website_path)
                 obsi_f, obsidian_content = _parse_markdown_file(temp_path)
-                web_frontmatter.update({k: v for k, v in obsi_f.items() if k in {'title'}})
+                web_frontmatter.update({k: v for k, v in obsi_f.items() if k in {'title', 'description'}})
                 _save_markdown_file(website_path, web_frontmatter, obsidian_content)
             except Exception as e:
                 print(f"Error updating {website_path}: {e}")
@@ -220,7 +220,7 @@ def _has_publish_tag(frontmatter: Frontmatter) -> bool:
 
 
 def _create_web_frontmatter(obsidian_frontmatter: Frontmatter, filename: str) -> Frontmatter:
-    return Frontmatter({
+    frontmatter = Frontmatter({
         'layout': 'note.njk',
         'title': obsidian_frontmatter.get('title', filename.replace("-", " ").title()),
         'tags': obsidian_frontmatter.get('tags', []),
@@ -229,6 +229,9 @@ def _create_web_frontmatter(obsidian_frontmatter: Frontmatter, filename: str) ->
         'status': obsidian_frontmatter.get('status', 'draft'),
         'permalink': "notes/{{ page.fileSlug }}/index.html",
     })
+    if obsidian_frontmatter.get('description'):
+        frontmatter['description'] = obsidian_frontmatter['description']
+    return frontmatter
 
 
 def _save_markdown_file(file_path: Path, frontmatter: Frontmatter, content: MdContent) -> None:
