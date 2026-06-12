@@ -1,4 +1,5 @@
 ---
+description: "Zusammengetragene Infos zum Parkieren in Zürich. Blaue Zone, Tagesbewilligung und nützliche Karten für den Stadtbesuch."
 btime: 2024-04-12
 layout: note.njk
 mtime: null

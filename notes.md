@@ -1,4 +1,5 @@
 ---
+description: "Notes on software, coffee, cycling, keyboards and books. A digital garden by Fabio Meier."
 layout: layout.njk
 title: fabio.earth - notes
 permalink: /

@@ -1,4 +1,5 @@
 ---
+description: "A beginner's overview of building static websites with Eleventy. Set the page up once, then only worry about the content."
 btime: 2024-04-12
 layout: note.njk
 mtime: null

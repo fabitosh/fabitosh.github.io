@@ -1,4 +1,5 @@
 ---
+description: "Synchronizing dotfiles and tool configuration across machines with chezmoi. From fresh install to feeling at home in minutes."
 btime: 2025-10-19 23:58
 layout: note.njk
 mtime: null

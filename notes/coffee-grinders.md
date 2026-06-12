@@ -1,4 +1,5 @@
 ---
+description: "What actually matters when choosing a coffee grinder. How the grinder influences taste, and whether a bean hopper is worth it."
 btime: 2026-04-04
 layout: note.njk
 mtime: null

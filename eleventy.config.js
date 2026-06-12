@@ -9,6 +9,11 @@ import katex from 'katex';
 const photographyImages = fg.sync(['assets/photography/**/*.jpg', '!**/_site']);
 
 export default async function (eleventyConfig) {
+    // Repo-internal markdown that must not become public pages
+    eleventyConfig.ignores.add("README.md");
+    eleventyConfig.ignores.add("obsidian_sync/**");
+    eleventyConfig.ignores.add(".prompts/**");
+
     eleventyConfig.addCollection('notes', function (collectionApi) {
         const notes = collectionApi.getFilteredByGlob('notes/*.md');
         // latest changes first
@@ -25,6 +30,14 @@ export default async function (eleventyConfig) {
     });
 
     eleventyConfig.addPassthroughCopy("assets/");
+    eleventyConfig.addPassthroughCopy("robots.txt");
+
+    // YYYY-MM-DD for sitemap <lastmod>; returns null for missing/unparsable dates
+    eleventyConfig.addFilter("isoDate", function (value) {
+        if (!value) return null;
+        const date = new Date(value);
+        return isNaN(date) ? null : date.toISOString().split("T")[0];
+    });
 
     eleventyConfig.addShortcode("githubIcon", function() {
         return `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">

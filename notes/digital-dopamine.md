@@ -1,4 +1,5 @@
 ---
+description: "The systems and artificial barriers I use to keep my phone and computer habits aligned with my values."
 btime: 2024-03-23
 layout: note.njk
 mtime: null

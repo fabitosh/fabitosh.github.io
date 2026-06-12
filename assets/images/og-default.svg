@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a1a1a"/>
+  <rect x="0" y="0" width="1200" height="12" fill="#C62F20"/>
+  <text x="600" y="320" font-family="Helvetica, Arial, sans-serif" font-size="110" font-weight="bold" fill="#ffffff" text-anchor="middle">fabio<tspan fill="#C62F20">.</tspan>earth</text>
+  <text x="600" y="410" font-family="Helvetica, Arial, sans-serif" font-size="42" fill="#bbbbbb" text-anchor="middle">Exploring technology and curiosity.</text>
+</svg>

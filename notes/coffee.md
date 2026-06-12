@@ -1,4 +1,5 @@
 ---
+description: "An introduction to brewing coffee at home. Espresso extraction, the sour-to-bitter spectrum, and the process parameters that move it."
 btime: 2024-04-08
 layout: note.njk
 mtime: 2025-04-10
