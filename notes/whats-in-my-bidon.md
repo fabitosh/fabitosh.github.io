@@ -15,28 +15,31 @@ with not reaching the last marginal nutritional performance. It's mostly about n
 
 ## Sugars
 
+In-activity nutrition is all about refueling carbs. Proteins are relevant for recovery and post-activity meals, which we won't cover here.  
+I checked which kinds of sugars are sold and tried to identify which ones are of interest for my drink.
+
 ### Sucrose (Household Sugar)
 
-Contains 50% Glucose, 50% Fructose, so it feeds two absorption pathways at once (see below).
+Household sugar contains 50% Glucose and 50% Fructose. This feeds two absorption pathways at once. More on that later.
 
-Very sweet, getting excessive over a long ride, and harder on the stomach in high concentrations.
+It tastes very sweet, easily feeling excessive over a long ride. Duh, it's sugar, of course it tastes sweet. Well, it does not have to:
 
 ### Maltodextrin
 
-A glucose polymer. That means multiple glucose units bundled into one large molecule.
+A glucose polymer. That means it contains multiple glucose units bundled into one large molecule.
 
-Its edge is low osmolality. How heavy a drink sits in the stomach scales with the _number_ of dissolved molecules, not their mass. One maltodextrin chain is a single molecule, so gram for gram it puts far fewer particles into solution than household sugar.
+Its advantage is being gentle on the stomach. How heavy a drink sits in the stomach scales with the _number_ of dissolved molecules, not their mass. One maltodextrin chain is a single molecule, so gram for gram it puts far fewer particles into solution than household sugar.
 
 It digests quickly back to glucose and is near tasteless. This is not a regular household item, but required for a semi-performant energy drink.
 
-### Dextrose (Pure Glucose)
+### Dextrose
 
-Single-sugar molecule (monosaccharide).
-Covered with Household Sugar. Is there a downside to having Fructose in the mix? The opposite, two digestive pathways make it easier to absorb. Buying Dextrose would allow tweaking the ratio, but I don't want/need to go down that deeply.
+Single-sugar molecule (monosaccharide). 100% Glucose.
+Glucose is 50% of household sugar. So, is there a downside to having Fructose in the mix? The opposite: Triggering the two digestive pathways makes it easier to absorb. I am not sure about its purpose. My take: It allows tweaking the ratio of fructose and glucose very easily. But as we'll see, there are also other ways to do it. It is the fastest absorbing carb, but we don't care on multi-hour rides.
 
 ### Isomaltulose
 
-Same Glucose-Fructose content as Sucrose, but with a much more resistant chemical bond. It breaks down slowly in the digestive system and releases energy over an accordingly longer time period. Regular sipping of Sucrose mimics the same effect, and unlike Isomaltulose it can also be gulped for a faster energy hit. Isomaltulose is maybe interesting if you want to minimize sugar spikes (diabetes) and is substantially less risky for the teeth. I don't see a strict need for it for now.
+Same Glucose-Fructose content as Sucrose, but with a much more resistant chemical bond. It breaks down slowly in the digestive system and releases energy over an accordingly longer time period. Regular sipping of Sucrose mimics the same effect, and unlike Isomaltulose it can also be gulped for a faster energy hit. Isomaltulose is maybe interesting if you want to minimize sugar spikes (diabetes?) and is substantially less risky for the teeth. I don't see a strict need for it for now.
 
 ## Digestive Transporters
 
