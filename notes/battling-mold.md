@@ -146,12 +146,12 @@ $$\text{net water loss} = W_\text{out} - W_\text{in}$$
 By now we are familiar with throwing some assumptions around:
 
 - Water Creation per day
-  - Humans: 55g/h \* 6h + 40g/h \* 9h = 0.6l
+  - Humans: 55g/h \* 6h + 40g/h \* 9h = 0.7l
   - Plants Watering: 0.5l
   - Shower: 30g/min \* 10min = 0.3l
   - Cooking: 800g/h \* 0.25h = 0.2l
   - One hand dried laundry per 3 days: 0.8l
-  - Total $W_\text{in}$: 2.4l
+  - Total $W_\text{in}$: 2.5l
 - Water exit:
   - Stosslüften 2 times per day: 1.98l
   - Passive air exit: $W_\text{passive}​=ACH * V_\text{apt}*24* (AH_{\text{in}}​−AH_\text{out}​)$
@@ -222,7 +222,7 @@ $$R_\text{total} = R_\text{conv,in} + R_\text{wall} + R_\text{conv,out} = \frac{
 
 Let's put this to a test on my girlfriend's apartment. I sadly have no idea what elements her wall contains. Not overthinking this, let's just assume it is all concrete and use its [material properties](https://en.wikipedia.org/wiki/List_of_thermal_conductivities). In the fashion of Swiss houses built in that period, the wall is thick.
 $$R_\text{total}\times A = \frac{1}{10[\frac{W}{m^2K}]} + \frac{0.8[m]}{1.5 [\frac{W}{mK}]} + \frac{1}{30[\frac{W}{m^2K}]} = \frac{2}{3} [\frac{m^2K}{W}]$$
-$$T_\text{wall,surface,in} = 21 - (21 - 3) \times \frac{0.1}{\frac{2}{3}} = 18.3$$
+$$T_\text{wall,surface,in} = 22 - (22 - 3) \times \frac{0.1}{\frac{2}{3}} = 19.2$$
 Does this match reality?
 
 ### Verifying the assumption
