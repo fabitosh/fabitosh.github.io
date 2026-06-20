@@ -14,14 +14,14 @@ Time to pull out the old thermodynamics class notes and attack it full force.
 
 ## Assessing the Situation
 
-Some what I consider relevant facts:
+Some of what I consider relevant facts:
 
 - Over the past years, she has seen mold growing at the bottom of some corners.
 - The problem was always prevalent during winter, but never started in the summer.
 - Despite having gotten it professionally removed, it reappeared the next winter.
 - The apartment is on the ground floor.
 - Her humidity sensors are often reaching 70% relative humidity.
-- Her neighbours are reporting similar problems
+- Her neighbours are reporting similar problems.
 
 This likely sounds familiar to many with a mold problem.
 
@@ -33,7 +33,7 @@ Realistically, we'll only be able to battle the moisture. She wouldn't like me i
 Mold is bad. It looks ugly, destroys the walls over the longer term and has bad effects on your health.
 
 Moisture could come from water/pipe leakages. That would need a fix at the source.
-We hope her excess moisture to not come from the ground up into the walls. This would be a lost battle as the water source is way larger than any ability to remove it through the air.
+We hope her excess moisture does not come from the ground up into the walls. This would be a lost battle as the water source is way larger than any ability to remove it through the air.
 
 ## Don't be like water, fight it
 
@@ -51,7 +51,7 @@ How much would a dehumidifier help?
 We are jumping straight in.
 Let's clarify two concepts:
 
-- Saturation: The point, where a volume of air cannot contain more water without forming drops.
+- Saturation: The point where a volume of air cannot contain more water without forming drops.
 - Relative Humidity: $\frac{\text{water in the air}}{\text{water of saturation point}}$
 
 This at first overwhelming [chart](https://www.flycarpet.net/en/psyonline) below is awesome as it contains all hard numbers we need:
@@ -62,8 +62,8 @@ Let me guide you through it:
 
 - Horizontal axis (x): temperature as measured by our regular thermostat
 - Right vertical axis (y): Humidity Ratio $W$. g of water vapor per kg of dry air
-  - We can see that this tops out in a curve until it gets cut off at ~32° degree Celsius. This topping out is when the air is fully saturated. Our relative humidity is reaching 100%. This is exactly when we get moisture. We can see other relative humidity lines in red. This is a key dynamic to understand for our indoor mold problem. We'll come back to it.
-  - Above the 32° degrees, the graph is directly horizontal. This is not due to a physical phenomenon, but the graph just cutting off.
+  - We can see that this tops out in a curve until it gets cut off at ~32 degrees Celsius. This topping out is when the air is fully saturated. Our relative humidity is reaching 100%. This is exactly when we get moisture. We can see other relative humidity lines in red. This is a key dynamic to understand for our indoor mold problem. We'll come back to it.
+  - Above 32 degrees, the graph is directly horizontal. This is not due to a physical phenomenon, but the graph just cutting off.
 - Blue dashed diagonal lines: Specific Volume ($[m^3 / (\text{kg of dry air})]$)
 - Pressure is constant at 1 bar / atmospheric pressure. This is sufficient for our use-case. In general, that is one more dimension to consider.
 
@@ -83,7 +83,7 @@ We start by plugging in our relevant numbers.
 
 #### Quantifying the humidity loss
 
-We have measured indoor temperature and relative humidity. In average they are
+We have measured indoor temperature and relative humidity. On average they are
 $T_i = 22$, $RH_i = 70\%$
 
 Outdoors, that varies a bit more. Let's pull some information from [meteoschweiz.admin.ch](https://www.meteoschweiz.admin.ch/service-und-publikationen/applikationen/messwerte-und-messnetze.html#param=messwerte-luftfeuchtigkeit-10min&table=false&station=SMA&chart=day) for the Meteo station in Zürich, Fluntern.
@@ -99,7 +99,7 @@ How does the water mass change if we exchange one cubic meter ($m^3$) of air fro
 $$\Delta m_\text{Water} = \Delta m_\text{dry air} \times (W_i - W_o)$$ $W_i$ and $W_o$ are the humidity ratios, which we can find on our chart:
 ![Psychrometric chart annotated with two points: (1) indoor air at ~12 g/kg and (2) outdoor air at ~4 g/kg humidity ratio](/assets/images/battling-mold-psychrometric-chart-annotated.png)
 To revise, the humidity ratio tells us how much water we have per kg of dry air. We'll be moving ~12g of water out (1) and get ~4g of water in from outdoors (2). In total, a loss of roughly 8g per kg of dry air.
-Thus, we can already qualitatively confirm, that opening the windows does indeed help the fight with humidity.
+Thus, we can already qualitatively confirm that opening the windows does indeed help the fight with humidity.
 
 What mass of dry air is in a $m^3$ of air? Yes, we can also determine that from the awesome chart. At (1) we have approximately $0.85 \frac{m^3}{kg_\text{dryair}}$.
 
@@ -109,7 +109,7 @@ Putting it all together:
 
 #### Clearing the air
 
-Good thing noone is mad. But since we learned that swapping indoor with outdoor air removes behated humidity from the mold-prone apartment, we are all for it.
+Good thing no one is mad. But since we learned that swapping indoor with outdoor air removes the loathed humidity from the mold-prone apartment, we are all for it.
 
 An amazing German word needs to be part of this post. For one, because it precisely describes the most effective way to improve your air quality and reduce the humidity levels. For the other, it's fun.
 
@@ -117,7 +117,7 @@ An amazing German word needs to be part of this post. For one, because it precis
 
 For Stosslüften, it is paramount to open as many windows as possible. To illustrate that importance: imagine only having one window open. The air needs to both enter and exit at the same time. This will slowly happen. But you will keep on exchanging already exchanged air since that's the one that's closest to the window. It is way more effective to have a flow, where fresh air comes in from one place and exits at another.
 
-The apartment is $A = 54m^2$ and $h = 3m$ high. $150m^3$. We assume that we air properly (STOSSLÜFTEN!) and exchange 70% of all indoor air within 10 minutes. I have not gotten to install a CO2 Sensor at her place, but that would be an awesome proxy to determine whether most air has been exchanged. Maybe an other time.
+The apartment is $A = 54m^2$ and $h = 3m$ high. $150m^3$. We assume that we air properly (STOSSLÜFTEN!) and exchange 70% of all indoor air within 10 minutes. I have not gotten to install a CO2 Sensor at her place, but that would be an awesome proxy to determine whether most air has been exchanged. Maybe another time.
 
 With that assumption, each STOSSLÜFTEN would make us lose
 $$\|\Delta m_\text{water airing} \| = 150 [m^3] * 0.7 * 0.0094 [\frac{l}{m^3}] = 0.99 [l]$$
@@ -146,17 +146,17 @@ $$\text{net water loss} = W_\text{out} - W_\text{in}$$
 By now we are familiar with throwing some assumptions around:
 
 - Water Creation per day
-  - Humans: 55g/h _6h + 40g/h_ 9h = 0.6l
+  - Humans: 55g/h \* 6h + 40g/h \* 9h = 0.6l
   - Plants Watering: 0.5l
   - Shower: 30g/min \* 10min = 0.3l
-  - Cooking: 800g/h \* 0.25h: 0.2l
+  - Cooking: 800g/h \* 0.25h = 0.2l
   - One hand dried laundry per 3 days: 0.8l
   - Total $W_\text{in}$: 2.4l
 - Water exit:
   - Stosslüften 2 times per day: 1.98l
   - Passive air exit: $W_\text{passive}​=ACH * V_\text{apt}*24* (AH_{\text{in}}​−AH_\text{out}​)$
     - [ACH (Air Changes per Hour)](https://en.wikipedia.org/wiki/Air_changes_per_hour#Airtightness_in_building) 0.6 is the required standard for the "Passive House Standard". We assume 0.8 $[\frac{\text{Air Changes}}{h}]$. Though the standard test mimics the situation of sustained 32km/h wind. The "natural ACH" may be a factor of 10-25 times smaller. We go conservative and take $0.8/20 = 0.04$.
-    - $\Delta$ AH Absolute Humidity: We check our psychrometric graph again and estimate a delta of per 5g/m3
+    - $\Delta$ AH Absolute Humidity: We check our psychrometric graph again and estimate a delta of 5g/m3
     - Total $W_\text{passive}​ = 0.04 * 150 [m^3] * 24 * 5 [\frac{g}{m^3}] = 0.72l$
   - Total $W_\text{out} = 2.7l$
 
@@ -182,30 +182,30 @@ This section is a bit nerdy and not strictly necessary. If you don't like differ
 For those of you up to it, the [one-dimensional thermal conductivity equation](https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node117.html) serves as basis to calculate how heat propagates through a material such as walls. We'll ignore that modern walls have (multiple) insulation layers and just assume it is a single material for now. This should not alter the high level understanding.
 
 $$\rho c\frac{\delta T}{\delta t}=\frac{\delta}{\delta x}(\lambda\frac{\delta T}{\delta x})$$
-$T$: Temperature($x$: position, $t$ time), $\rho$: density, $c_p$: specific heat capacity, $\lambda$: thermal conductivity
+$T$: Temperature($x$: position, $t$: time), $\rho$: density, $c$: specific heat capacity, $\lambda$: thermal conductivity
 
 We can already draw conclusions from only looking into the steady-state description. Steady-state implies no changes over time, thus $\frac{\delta T}{\delta t}=0$. The equation above gets significantly easier:
 $$0 =\frac{\delta^2T}{\delta x^2}$$
 
 Integrating this twice, we see that the temperature drops linearly across the wall material in the steady state.
 $$T(x) = C_1x+C_2$$
-The two constants $C$ can be derived from boundary conditions such as the measured temperature at the inner wall. If your wall temperature is 18 degrees you'd set $T(x=0) = C_1*0+C_2 = 18$. Here it is important to keep
+The two constants $C$ can be derived from boundary conditions such as the measured temperature at the inner wall. If your wall temperature is 18 degrees you'd set $T(x=0) = C_1*0+C_2 = 18$.
 
 #### Heat Exchange with the Wall
 
 This wall temperature is different than the air temperature. What factors affect how much heat is transferred from the air to the wall? [Convection](https://www.engineeringtoolbox.com/convective-heat-transfer-d_430.html) is the term used in thermodynamics to describe it:
 The energy $q$ transferred through the area $A [m^2]$ intuitively depends on the temperature difference from wall and air $\Delta T$.
 $$q = h_cA\Delta T [\frac{W}{m^2}]$$
-$h_c$ is the coefficient that captures how efficiently heat flows between the two medium. Here, we are interested in convection from air.
+$h_c$ is the coefficient that captures how efficiently heat flows between the two media. Here, we are interested in convection from air.
 We differentiate between free and forced convection. Forced simply means, that there is an active airflow that speeds up the heat exchange. You might accurately guess, that this factor is hard to get right.
-For this piece, we assume based on a [short internet search](https://en.wikipedia.org/wiki/Heat_transfer_coefficient#Overall_heat_transfer_coefficient) :
+For this piece, we assume based on a [short internet search](https://en.wikipedia.org/wiki/Heat_transfer_coefficient#Overall_heat_transfer_coefficient):
 
 - $h_c, \text{indoor} = 10 [\frac{W}{m^2K}]$, free convection
 - $h_c, \text{outdoor} = 30 [\frac{W}{m^2K}]$, slightly forced convection due to a light wind
 
 ### Thermal Resistance
 
-Analogous to electrical circuits, we can model our thermal system ans RC-Circuit with the following parallels:
+Analogous to electrical circuits, we can model our thermal system as an RC-Circuit with the following parallels:
 
 - Heat Flux $Q$ <-> Current $I$
 - Temperature $T$ <-> Voltage $V$
@@ -220,7 +220,7 @@ $$R_\text{total} = R_\text{conv,in} + R_\text{wall} + R_\text{conv,out} = \frac{
 > The RC-circuit analogy also allows the usage of the Voltage Divider Rule to find the wall surface temperature without calculating the actual heat flux $Q$
 > $$T_\text{wall,surface,in} = T_\text{indoor} - (T_\text{indoor} - T_\text{outdoor}) \times \frac{R_\text{conv,in}}{R_\text{total}}$$
 
-Let's put this to a test on my girlfriends apartment. I sadly have no idea what elements her wall contain. Not overthinking this, let's just assume it is all concrete and use it's [material properties](https://en.wikipedia.org/wiki/List_of_thermal_conductivities). In the fashion of Swiss houses built in that period, the wall is thick.
+Let's put this to a test on my girlfriend's apartment. I sadly have no idea what elements her wall contains. Not overthinking this, let's just assume it is all concrete and use its [material properties](https://en.wikipedia.org/wiki/List_of_thermal_conductivities). In the fashion of Swiss houses built in that period, the wall is thick.
 $$R_\text{total}\times A = \frac{1}{10[\frac{W}{m^2K}]} + \frac{0.8[m]}{1.5 [\frac{W}{mK}]} + \frac{1}{30[\frac{W}{m^2K}]} = \frac{2}{3} [\frac{m^2K}{W}]$$
 $$T_\text{wall,surface,in} = 21 - (21 - 3) \times \frac{0.1}{\frac{2}{3}} = 18.3$$
 Does this match reality?
@@ -234,16 +234,16 @@ Life passed and I didn't get to measure the wall temperature during winter. I do
 Recapturing, we have seen how psychrometrics work and realised the importance of the water mass equilibrium.
 In the next chapter we covered how the temperature within walls can be drastically lower. Equipped with our psychrometrics knowledge, we understand the significance of it.
 
-I wanted to put all those parameters into a model and with that evaluate the efficacy of preventive measures such as airing and the dehumidifer.
+I wanted to put all those parameters into a model and with that evaluate the efficacy of preventive measures such as airing and the dehumidifier.
 
-But well, I other things popped up and this remained in this state for months. Publishing it now and might pick it up again later.
+But well, other things popped up and this remained in this state for months. Publishing it now and might pick it up again later.
 
 With it being summer now, it is interesting to evaluate whether it makes sense to keep the dehumidifier running.
 
 ## Dehumidifier in Summer
 
 The mold problem is largely due to the lower capacity for water in colder air. E.g. the warm indoor air cools down in the walls, capacity is reached and droplets form.
-This thermal difference from indoor to outdoor is significantly lower. With that, both indoor and outdoor have a similar capacity to carry water.
+This thermal difference from indoor to outdoor is significantly lower than in winter. With that, both indoor and outdoor have a similar capacity to carry water.
 
 After multiple hot days, the walls might reach around 30 degrees. Reheating the indoor air, even during a cool night.
 
@@ -255,5 +255,5 @@ Overall, my impression is that mold is no problem during summer. Which is reinfo
 ## Questions for when I pick this topic up again
 
 - Is it worthwhile bumping up the room temperature?
-- How much Water do I need to pump out of the air to stop the mold problem?
-- The discussed model took steady state for everything, which do not match reality. Walls have a large thermal mass. With mold problems, water gets "stored" in walls and it needs to be pumped out over multiple days. Outdoor temperatures vary over multiple days.
+- How much water do I need to pump out of the air to stop the mold problem?
+- The discussed model took steady state for everything, which does not match reality. Walls have a large thermal mass. With mold problems, water gets "stored" in walls and it needs to be pumped out over multiple days. Outdoor temperatures vary over multiple days.
