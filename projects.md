@@ -8,12 +8,26 @@ title: fabio.earth - Projects
 
 ---
 
+## tailcloak
+
+I got tired of manually toggling tailscale when working from the library and later back at home. This small macOS background daemon turns Tailscale on for untrusted networks and off for trusted ones. Automatically, as I move between them.
+
+<div class="grid">
+  <a href="https://github.com/fabitosh/tailcloak" role="button" class="secondary">
+    {% githubIcon %} fabitosh/tailcloak
+  </a>
+</div>
+
+---
+
 ## Configuration Synchronization
+
 Ever spent hours setting up a new machine, trying to remember all your tools and tweaks? Yeah, me too.
 
 This project gets me from "fresh install" to "feeling at home" in minutes.
 
 What's automated and synchronised:
+
 - Dotfiles and configs (`.zshrc`, `.gitconfig`, etc.)
 - Terminal packages
 - GUI applications
@@ -42,5 +56,3 @@ better (and because it seemed like a cool project), I started looking into my ch
 </div>
 
 ---
-
-
