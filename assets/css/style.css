@@ -262,3 +262,12 @@ https://github.com/picocss/pico/discussions/343#discussioncomment-11700419
     color: var(--shiki-light) !important;
     background-color: var(--shiki-light-bg) !important;
 }
+
+.katex-display {
+    /*scroll instead of overflow esp. for mobile*/
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.6em 0.9em;
+    margin: 1em 0;
+    background-color: var(--pico-code-background-color);
+}
