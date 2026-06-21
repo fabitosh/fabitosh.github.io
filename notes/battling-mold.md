@@ -93,10 +93,10 @@ Outdoors, that varies a bit more. Let's pull some information from [meteoschweiz
 
 I'd say the following values are fair averages for winter months
 
-$T_o=3$ $RH_o = 85\%$
+$T_o = 3$, $RH_o = 85\%$
 
 How does the water mass change if we exchange one cubic meter ($m^3$) of air from outdoors with the one indoors?
-$$\Delta m_\text{Water} = \Delta m_\text{dry air} \times (W_i - W_o)$$ $W_i$ and $W_o$ are the humidity ratios, which we can find on our chart:
+$$\Delta m_\text{Water} = \Delta m_\text{dry air} \cdot (W_i - W_o)$$ $W_i$ and $W_o$ are the humidity ratios, which we can find on our chart:
 ![Psychrometric chart annotated with two points: (1) indoor air at ~12 g/kg and (2) outdoor air at ~4 g/kg humidity ratio](/assets/images/battling-mold-psychrometric-chart-annotated.png)
 To revise, the humidity ratio tells us how much water we have per kg of dry air. We'll be moving ~12g of water out (1) and get ~4g of water in from outdoors (2). In total, a loss of roughly 8g per kg of dry air.
 Thus, we can already qualitatively confirm that opening the windows does indeed help the fight with humidity.
@@ -120,7 +120,7 @@ For Stosslüften, it is paramount to open as many windows as possible. To illust
 The apartment is $A = 54m^2$ and $h = 3m$ high. $150m^3$. We assume that we air properly (STOSSLÜFTEN!) and exchange 70% of all indoor air within 10 minutes. I have not gotten to install a CO2 Sensor at her place, but that would be an awesome proxy to determine whether most air has been exchanged. Maybe another time.
 
 With that assumption, each STOSSLÜFTEN would make us lose
-$$\|\Delta m_\text{water airing} \| = 150 [m^3] * 0.7 * 0.0094 [\frac{l}{m^3}] = 0.99 [l]$$
+$$\|\Delta m_\text{water airing} \| = 150 [m^3] \cdot 0.7 \cdot 0.0094 [\frac{l}{m^3}] = 0.99 [l]$$
 Is that a lot? Let's compare different water sources.
 
 ### Water Equilibrium
@@ -154,10 +154,10 @@ By now we are familiar with throwing some assumptions around:
   - Total $W_\text{in}$: 2.5l
 - Water exit:
   - Stosslüften 2 times per day: 1.98l
-  - Passive air exit: $W_\text{passive}​=ACH * V_\text{apt}*24* (AH_{\text{in}}​−AH_\text{out}​)$
+  - Passive air exit: $W_\text{passive} = ACH \cdot V_\text{apt} \cdot 24 \cdot (AH_\text{in} - AH_\text{out})$
     - [ACH (Air Changes per Hour)](https://en.wikipedia.org/wiki/Air_changes_per_hour#Airtightness_in_building) 0.6 is the required standard for the "Passive House Standard". We assume 0.8 $[\frac{\text{Air Changes}}{h}]$. Though the standard test mimics the situation of sustained 32km/h wind. The "natural ACH" may be a factor of 10-25 times smaller. We go conservative and take $0.8/20 = 0.04$.
-    - $\Delta$ AH Absolute Humidity: We check our psychrometric graph again and estimate a delta of 5g/m3
-    - Total $W_\text{passive}​ = 0.04 * 150 [m^3] * 24 * 5 [\frac{g}{m^3}] = 0.72l$
+    - $\Delta$ AH Absolute Humidity: We check our psychrometric graph again and estimate a delta of $5 [\frac{g}{m^3}]$
+    - Total $W_\text{passive} = 0.04 \cdot 150 [m^3] \cdot 24 \cdot 5 [\frac{g}{m^3}] = 0.72l$
   - Total $W_\text{out} = 2.7l$
 
 Given the number of assumptions we made, 2.5l and 2.7l are pretty close. So on average, the assumptions say we air 
@@ -185,15 +185,15 @@ This section is a bit nerdy and not strictly necessary. If you don't like differ
 
 For those of you up to it, the [one-dimensional thermal conductivity equation](https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node117.html) serves as basis to calculate how heat propagates through a material such as walls. We'll ignore that modern walls have (multiple) insulation layers and just assume it is a single material for now. This should not alter the high level understanding.
 
-$$\rho c\frac{\delta T}{\delta t}=\frac{\delta}{\delta x}(\lambda\frac{\delta T}{\delta x})$$
+$$\rho c\frac{\partial T}{\partial t}=\frac{\partial}{\partial x}(\lambda\frac{\partial T}{\partial x})$$
 $T$: Temperature($x$: position, $t$: time), $\rho$: density, $c$: specific heat capacity, $\lambda$: thermal conductivity
 
-We can already draw conclusions from only looking into the steady-state description. Steady-state implies no changes over time, thus $\frac{\delta T}{\delta t}=0$. The equation above gets significantly easier:
-$$0 =\frac{\delta^2T}{\delta x^2}$$
+We can already draw conclusions from only looking into the steady-state description. Steady-state implies no changes over time, thus $\frac{\partial T}{\partial t}=0$. The equation above gets significantly easier:
+$$0 = \frac{\partial^2 T}{\partial x^2}$$
 
 Integrating this twice, we see that the temperature drops linearly across the wall material in the steady state.
 $$T(x) = C_1x+C_2$$
-The two constants $C$ can be derived from boundary conditions such as the measured temperature at the inner wall. If your wall temperature is 18 degrees you'd set $T(x=0) = C_1*0+C_2 = 18$.
+The two constants $C$ can be derived from boundary conditions such as the measured temperature at the inner wall. If your wall temperature is 18 degrees you'd set $T(x=0) = C_1 \cdot 0+C_2 = 18$.
 
 #### Heat Exchange with the Wall
 
@@ -222,11 +222,11 @@ $$R_\text{total} = R_\text{conv,in} + R_\text{wall} + R_\text{conv,out} = \frac{
 
 > [!TIP]
 > The RC-circuit analogy also allows the usage of the Voltage Divider Rule to find the wall surface temperature without calculating the actual heat flux $Q$
-> $$T_\text{wall,surface,in} = T_\text{indoor} - (T_\text{indoor} - T_\text{outdoor}) \times \frac{R_\text{conv,in}}{R_\text{total}}$$
+> $$T_\text{wall,surface,in} = T_\text{indoor} - (T_\text{indoor} - T_\text{outdoor}) \cdot \frac{R_\text{conv,in}}{R_\text{total}}$$
 
 Let's put this to a test on my girlfriend's apartment. I sadly have no idea what elements her wall contains. Not overthinking this, let's just assume it is all concrete and use its [material properties](https://en.wikipedia.org/wiki/List_of_thermal_conductivities). In the fashion of Swiss houses built in that period, the wall is thick.
-$$R_\text{total}\times A = \frac{1}{10[\frac{W}{m^2K}]} + \frac{0.8[m]}{1.5 [\frac{W}{mK}]} + \frac{1}{30[\frac{W}{m^2K}]} = \frac{2}{3} [\frac{m^2K}{W}]$$
-$$T_\text{wall,surface,in} = 22 - (22 - 3) \times \frac{0.1}{\frac{2}{3}} = 19.2$$
+$$R_\text{total} \cdot A = \frac{1}{10[\frac{W}{m^2K}]} + \frac{0.8[m]}{1.5 [\frac{W}{mK}]} + \frac{1}{30[\frac{W}{m^2K}]} = \frac{2}{3} [\frac{m^2K}{W}]$$
+$$T_\text{wall,surface,in} = 22 - (22 - 3) \cdot \frac{0.1}{2/3} = 19.2$$
 Does this match reality?
 
 ### Verifying the assumption
