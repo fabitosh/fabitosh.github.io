@@ -84,7 +84,7 @@ We start by plugging in our relevant numbers.
 #### Quantifying the humidity loss
 
 We have measured indoor temperature and relative humidity. On average they are
-$T_i = 22$, $RH_i = 70\%$
+$T_i = 22^\circ C$, $RH_i = 70\%$
 
 Outdoors, that varies a bit more. Let's pull some information from [meteoschweiz.admin.ch](https://www.meteoschweiz.admin.ch/service-und-publikationen/applikationen/messwerte-und-messnetze.html#param=messwerte-luftfeuchtigkeit-10min&table=false&station=SMA&chart=day) for the Meteo station in Zürich, Fluntern.
 ![Daily mean outdoor temperature in Zürich Fluntern over a year, ranging from near 0°C in winter to about 25°C in summer](/assets/images/battling-mold-meteo-zurich-temperature.png)
@@ -93,7 +93,7 @@ Outdoors, that varies a bit more. Let's pull some information from [meteoschweiz
 
 I'd say the following values are fair averages for winter months
 
-$T_o = 3$, $RH_o = 85\%$
+$T_o = 3^\circ C$, $RH_o = 85\%$
 
 How does the water mass change if we exchange one cubic meter ($m^3$) of air from outdoors with the one indoors?
 $$\Delta m_\text{Water} = \Delta m_\text{dry air} \cdot (W_i - W_o)$$ $W_i$ and $W_o$ are the humidity ratios, which we can find on our chart:
@@ -172,7 +172,7 @@ Our relative humidity indoors is measured at 70%. The air within the room is thu
 
 The walls are the insulation from the colder outdoor temperature $T_o$ to the cozy warmth indoor $T_i$. Across the wall, we have a temperature profile: on the outside it will be coldest and gradually get warmer towards the inside.
 
-We'll be looking into three aspects:
+We'll be looking into two aspects:
 
 - The temperature across the wall
 - The heat exchange from inner and outer wall to the respective air
@@ -197,9 +197,9 @@ The two constants $C$ can be derived from boundary conditions such as the measur
 
 #### Heat Exchange with the Wall
 
-This wall temperature is different than the air temperature. What factors affect how much heat is transferred from the air to the wall? [Convection](https://www.engineeringtoolbox.com/convective-heat-transfer-d_430.html) is the term used in thermodynamics to describe it:
+This wall temperature is different from the air temperature. What factors affect how much heat is transferred from the air to the wall? [Convection](https://www.engineeringtoolbox.com/convective-heat-transfer-d_430.html) is the term used in thermodynamics to describe it:
 The energy $q$ transferred through the area $A [m^2]$ intuitively depends on the temperature difference from wall and air $\Delta T$.
-$$q = h_cA\Delta T [\frac{W}{m^2}]$$
+$$q = h_cA\Delta T [W]$$
 $h_c$ is the coefficient that captures how efficiently heat flows between the two media. Here, we are interested in convection from air.
 We differentiate between free and forced convection. Forced simply means, that there is an active airflow that speeds up the heat exchange. You might accurately guess, that this factor is hard to get right.
 For this piece, we assume based on a [short internet search](https://en.wikipedia.org/wiki/Heat_transfer_coefficient#Overall_heat_transfer_coefficient):
@@ -226,7 +226,7 @@ $$R_\text{total} = R_\text{conv,in} + R_\text{wall} + R_\text{conv,out} = \frac{
 
 Let's put this to a test on my girlfriend's apartment. I sadly have no idea what elements her wall contains. Not overthinking this, let's just assume it is all concrete and use its [material properties](https://en.wikipedia.org/wiki/List_of_thermal_conductivities). In the fashion of Swiss houses built in that period, the wall is thick.
 $$R_\text{total} \cdot A = \frac{1}{10[\frac{W}{m^2K}]} + \frac{0.8[m]}{1.5 [\frac{W}{mK}]} + \frac{1}{30[\frac{W}{m^2K}]} = \frac{2}{3} [\frac{m^2K}{W}]$$
-$$T_\text{wall,surface,in} = 22 - (22 - 3) \cdot \frac{0.1}{2/3} = 19.2$$
+$$T_\text{wall,surface,in} = 22 - (22 - 3) \cdot \frac{0.1}{2/3} = 19.2^\circ C$$
 Does this match reality?
 
 ### Verifying the assumption
