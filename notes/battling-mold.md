@@ -160,7 +160,11 @@ By now we are familiar with throwing some assumptions around:
     - Total $W_\text{passive}​ = 0.04 * 150 [m^3] * 24 * 5 [\frac{g}{m^3}] = 0.72l$
   - Total $W_\text{out} = 2.7l$
 
-This is awkward. According to our calculations and assumptions we should be able to handle the water creation. What are we missing? The next chapter explains how a better insulation (lower ACH and less passive air exit) reduces the likelihood of mold. It seems intuitive. But the above calculation does not support that claim. A better insulation is moving less water outwards naturally.
+Given the number of assumptions we made, 2.5l and 2.7l are pretty close. So on average, the assumptions say we air 
+out enough water to compensate for the production. Why do we still have mold? 
+
+Also, a better insulation decreases our ACH. Seemingly worsening the fight against mold. This goes against 
+conventional wisdom. What are we missing?
 
 ### Why is the wall moist?
 
