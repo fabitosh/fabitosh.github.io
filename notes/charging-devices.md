@@ -4,13 +4,13 @@ btime: 2026-10-09
 layout: note.njk
 mtime: null
 permalink: notes/{{ page.fileSlug }}/index.html
-status: draft
+status: completed
 tags:
   - electronics
 title: Wireless Charging without Guilt
 ---
 
-I am contemplating a wireless charging dock for my phone and earbuds. The idea: whenever I'm home, the phone goes onto the dock. No cable fiddling, always topped up.
+I am contemplating a wireless charging dock for my phone and earbuds. The idea: whenever I'm at the office, the phone goes onto the dock. No cable fiddling, always topped up.
 Before buying one, I wanted to understand what actually happens between the wall socket and the battery, and whether parking a phone on a charger all day hurts it.
 
 <figure>
@@ -375,5 +375,5 @@ Ultimately, we can do almost anything for convenience, as long as we keep the ba
 
 - A Qi2-certified dock: The magnets keep the coils aligned. 15 W or 25 W both work.
 - An 80% limit: Optimized Charging can't predict my irregular undocking at the office, so a fixed limit it is. If I never run low starting from 80%, it stays. On days I expect to need more, I'll generously top up to 100%. A few of those cycles don't hurt. I won't trade today's usefulness for battery life I can buy back with an earlier battery swap.
-- The earbud case is only docked when it runs low: The WF-1000XM5 has no charge limit, so parked on the dock, the case would sit at damaging 100% around the clock.
+- The earbud case is only docked when it runs low: The WF-1000XM5 has no charge limit, so parked on the dock, the case would sit at 100% around the clock.
 - A cable nearby for a quick top-up.
