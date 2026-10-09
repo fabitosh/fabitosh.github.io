@@ -16,11 +16,11 @@ export default async function (eleventyConfig) {
 
     eleventyConfig.addCollection('notes', function (collectionApi) {
         const notes = collectionApi.getFilteredByGlob('notes/*.md');
-        // latest changes first
+        // oldest changes first, like Eleventy's default order: the RSS plugin reverses it to take the latest
         notes.sort((a, b) => {
             const dateA = a.data.mtime || a.data.btime;
             const dateB = b.data.mtime || b.data.btime;
-            return new Date(dateB) - new Date(dateA);
+            return new Date(dateA) - new Date(dateB);
         });
         return notes;
     });

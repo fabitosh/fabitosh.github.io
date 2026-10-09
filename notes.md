@@ -8,7 +8,7 @@ permalink: /
 # Notes
 
 <div>
-{%- for note in collections.notes -%}
+{%- for note in collections.notes reversed -%}
     <hgroup>
       <h2><a href="{{ note.url }}">{{ note.data.title }}</a>
         {%- if note.data.tags -%}
