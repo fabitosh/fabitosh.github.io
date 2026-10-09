@@ -123,25 +123,22 @@ PD itself does not follow the battery. Once agreed, the charger holds its voltag
 
 #### PPS and AVS
 
-PPS and AVS add adjustable voltages to PD. Instead of picking one of the fixed steps, the phone requests an exact voltage (in 20 mV steps for PPS, 100 mV for AVS) and re-requests every few seconds as the battery voltage rises. The charger effectively becomes the phone's charging circuit. Inside the phone, a simple and very efficient stage halves the voltage and doubles the current (a charge pump). It can't regulate anything itself: its output is always half its input. So as the battery voltage climbs from about 3.7 to 4.4 V, the phone asks for a little more voltage to keep the current flowing.
-
-> [!NOTE]
-> Why exactly half? A charge pump is little more than a capacitor and a few switches, flipping between two positions hundreds of thousands of times per second. In the first, the capacitor sits between input and output, so it charges up to the difference between the two. In the second, it sits next to the battery and discharges into it, so it ends up at the battery's voltage. Both only hold if input minus output equals output, which makes the output exactly half the input. And every bit of charge taken from the charger reaches the battery twice, once in each position, so the current doubles.
+PPS and AVS add adjustable voltages to PD. Instead of picking one of the fixed steps, the phone requests an exact voltage: in 20 mV steps for PPS, 100 mV for AVS. Phones with PPS re-request every few seconds as the battery voltage rises. The charger effectively becomes the phone's charging circuit. Inside the phone, a simple and very efficient stage halves the voltage and doubles the current (a charge pump). It can't regulate anything itself: its output is always half its input. So as the battery voltage climbs from about 3.7 to 4.4 V, the phone asks for a little more voltage to keep the current flowing.
 
 Here's what that looks like for a phone at 10%, charging at about 18.5 W (rough numbers):
 
-|                         | Fixed PD                            | PD PPS                                                              |
-| ----------------------- | ----------------------------------- | ------------------------------------------------------------------- |
-| Phone requests          | 9 V                                 | 7.6 V                                                               |
-| Charger delivers        | 9 V × 2.2 A ≈ 20 W                  | 7.6 V × 2.5 A ≈ 19 W                                                |
-| Conversion in the phone | Step-down converter, ~92%           | Charge pump, ~97%                                                   |
-| Into the battery        | 3.7 V × 5 A ≈ 18.5 W                | 3.7 V × 5 A ≈ 18.5 W                                                |
-| Heat in the phone       | ~1.6 W                              | ~0.5 W                                                              |
-| As the battery fills    | Voltage stays at 9 V, current drops | Voltage creeps up with the battery to about 9 V, then current drops |
+|                         | Fixed PD                              | PD PPS                                                              |
+| ----------------------- | ------------------------------------- | ------------------------------------------------------------------- |
+| Phone requests          | 9 V                                   | 7.6 V                                                               |
+| Charger delivers        | 9 V × 2.2 A ≈ 20 W                    | 7.6 V × 2.5 A ≈ 19 W                                                |
+| Conversion in the phone | Step-down converter, ~92%             | Charge pump, ~97%                                                   |
+| Into the battery        | 3.7 V × 5 A ≈ 18.5 W                  | 3.7 V × 5 A ≈ 18.5 W                                                |
+| Heat in the phone       | ~1.6 W                                | ~0.5 W                                                              |
+| As the battery fills    | Current drops, then steps down to 5 V | Voltage creeps up to about 9 V, current drops, then fixed PD again  |
 
-AVS follows the same idea: the voltage rises with the battery, in 100 mV steps from 9 V upward. That floor is too high for the simple halving above, so the phone needs a different conversion stage. Apple doesn't publish how the iPhone 17 does it.
+AVS offers the same adjustability, in 100 mV steps from 9 V upward. That floor is too high for the simple halving above, so a phone needs a different conversion stage. Despite the marketing around [Apple's 40 W AVS adapter](https://www.chargerlab.com/apple-iphone-17-series-debuts-with-40w-dynamic-power-adapter-and-pd-3-2-avs-fast-charging/), the iPhone 17 doesn't use AVS: [ChargerLab found](https://www.notebookcheck.net/iPhone-17-charging-test-shows-negligible-improvement-with-Apple-s-new-40-W-charger.1158762.0.html) it charging on standard PD at a fixed 15 V. Apple lists [AVS fast charging](https://support.apple.com/en-us/102574) only from the iPhone 18 Pro.
 
-How helpful are those voltage steps over regular USB PD? At typical phone wattages, barely. [Apple's 40 W adapter uses AVS](https://www.chargerlab.com/apple-iphone-17-series-debuts-with-40w-dynamic-power-adapter-and-pd-3-2-avs-fast-charging/) to charge the iPhone 17 to 50% in 20 minutes, but [in PhoneArena's test](https://www.phonearena.com/news/iphone-17-fast-charge-speed-test_id174304), regular 45–65 W PD chargers still delivered about 36 W. Their real job is making high-power charging possible: at 45 W, a 92% converter would leave almost 4 W of heat inside the phone, a charge pump about 1.5 W. Samsung builds its 25 and 45 W modes on PPS, so without it, a Galaxy falls back to 15 W.
+How helpful are those voltage steps over regular USB PD? At typical phone wattages, barely. Their real job is making high-power charging possible: at 45 W, a 92% converter would leave almost 4 W of heat inside the phone, a charge pump about 1.5 W. Samsung builds its 25 and 45 W modes on PPS, so without it, a Galaxy falls back to 15 W.
 
 #### The Whole Family
 
@@ -152,7 +149,7 @@ How helpful are those voltage steps over regular USB PD? At typical phone wattag
 | USB-C Current | 5 V                                 | 15 W           | USB-C without negotiation, signalled via resistors                                                                |
 | USB PD        | 5 / 9 / 15 / 20 V                   | 100 W          | The universal standard. What most devices use today                                                               |
 | USB PD PPS    | 3.3–21 V in 20 mV steps             | 100 W          | Required for Samsung's "Super Fast Charging"                                                                      |
-| USB PD AVS    | 9–20 V (or 15–48 V) in 100 mV steps | 100 W (240 W)  | PD 3.2. The iPhone 17 uses it                                                                                     |
+| USB PD AVS    | 9–20 V (or 15–48 V) in 100 mV steps | 100 W (240 W)  | PD 3.2. The iPhone 18 Pro uses it                                                                                 |
 | USB PD EPR    | 28 / 36 / 48 V                      | 240 W          | Laptops. Needs a 5 A e-marked cable                                                                               |
 | Proprietary   | various                             | 100 W and more | Quick Charge, SuperVOOC, HyperCharge, ... Only with the brand's own charger and cable, falls back to PD otherwise |
 
@@ -270,9 +267,11 @@ That's why fast charging is advertised as "50% in 20 minutes", and the last 20% 
 
 These two phases happen at the battery, however the power arrives. What differs is who shapes them:
 
-- Plain PD: The charger holds its fixed voltage, say 9 V, throughout. The phone's own converter does all the work: it caps the current in the first phase, then holds the cell voltage while the current tapers.
-- PPS and AVS: In the first phase, the charger does the shaping. The phone keeps requesting a slightly higher voltage as the cell voltage rises. Once the cell reaches its maximum, the requested voltage stops rising and the current tapers. Near the end, many phones switch back to their regular converter for the final stretch.
+- Plain PD: The charger holds a fixed voltage, say 15 V. The phone's own converter does all the work: it caps the current in the first phase, then holds the cell voltage while the current tapers. As less power is needed, the phone steps down to a lower fixed voltage. ChargerLab's [iPhone 17 Pro Max](https://www.chargerlab.com/charging-review-of-iphone-17-pro-max) starts at 15 V and ends at 9 or 5 V, depending on the adapter.
+- PPS: In the first phase, the charger does the shaping. The phone keeps requesting a slightly higher voltage as the cell voltage rises. Once the cell reaches its maximum, the requested voltage stops rising and the current tapers. Near the end, many phones switch back to their regular converter for the final stretch.
 - Wireless: Much like plain PD. The phone turns the coil's power into a steady voltage, and its converter shapes the phases from there.
+
+So over a whole charge, the voltage mostly falls. Only the fast phase of a PPS charge creeps upward.
 
 On top of that:
 
