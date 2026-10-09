@@ -1,7 +1,7 @@
 ---
 description: "Projects by Fabio Meier, like automated configuration synchronization across machines."
 layout: layout.njk
-title: fabio.earth - Projects
+title: Projects
 ---
 
 # Projects

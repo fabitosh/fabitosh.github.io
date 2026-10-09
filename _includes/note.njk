@@ -5,7 +5,34 @@ ogType: article
 
 <article>
   <h1>{{ title }}</h1>
-  <p>Status: {{ status }}</p>
+  <p>
+    {%- if btime %}<time datetime="{{ btime | isoDate }}">{{ btime | isoDate }}</time> | {% endif -%}
+    {%- if mtime %}last updated <time datetime="{{ mtime | isoDate }}">{{ mtime | isoDate }}</time> | {% endif -%}
+    Status: {{ status }}
+  </p>
   <hr/>
   <div>{{ content | safe }}</div>
 </article>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | dump | safe }},
+  {%- if description %}
+  "description": {{ description | dump | safe }},
+  {%- endif %}
+  "url": "{{ site.url }}{{ page.url }}",
+  "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+  "image": "{{ site.url }}{{ ogImage or site.ogImage }}",
+  "inLanguage": "{{ lang or site.language }}",
+  {%- if btime %}
+  "datePublished": "{{ btime | isoDate }}",
+  "dateModified": "{{ (mtime or btime) | isoDate }}",
+  {%- endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author }}",
+    "url": "{{ site.url }}/about/"
+  }
+}
+</script>

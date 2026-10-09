@@ -2,11 +2,12 @@
 title: fabio.earth
 
 ---
-<html lang="en">
+<!DOCTYPE html>
+<html lang="{{ lang or site.language }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }}</title>
+    <title>{{ title if site.name in title else title + " - " + site.name }}</title>
     <meta name="description" content="{{ description or site.description }}">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.name }}">
@@ -32,9 +33,9 @@ title: fabio.earth
     </ul>
     <ul role="menuitem">
         <li class="nav-item"><a href="/">Notes</a></li>
-        <li class="nav-item"><a href="/photography">Photography</a></li>
-        <li class="nav-item"><a href="/projects">Projects</a></li>
-        <li class="nav-item"><a href="/about">About</a></li>
+        <li class="nav-item"><a href="/photography/">Photography</a></li>
+        <li class="nav-item"><a href="/projects/">Projects</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
         <li class="nav-item"><button id="themetoggle" class="theme-toggle">
             <span class="icon-moon" data-theme="dark" aria-hidden="true">🌙</span>
             <span class="icon-sun" data-theme="light" aria-hidden="true">☀️</span>

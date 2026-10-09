@@ -8,7 +8,8 @@ eleventyExcludeFromCollections: true
 {%- if item.url and ".xml" not in item.url %}
   <url>
     <loc>{{ site.url }}{{ item.url }}</loc>
-    {%- set lastmod = item.data.mtime or item.data.btime or item.date %}
+    {#- No fallback to item.date: in CI that is the checkout time, so it would change on every deploy #}
+    {%- set lastmod = item.data.mtime or item.data.btime %}
     {%- if lastmod | isoDate %}
     <lastmod>{{ lastmod | isoDate }}</lastmod>
     {%- endif %}

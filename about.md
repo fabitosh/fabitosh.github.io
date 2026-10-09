@@ -1,7 +1,7 @@
 ---
 description: "Who is behind fabio.earth. Fabio Meier, software engineer with a background in robotics, data science and mechanical engineering."
 layout: layout.njk
-title: fabio.earth - about
+title: About
 ---
 
 # About
