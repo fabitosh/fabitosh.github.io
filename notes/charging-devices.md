@@ -57,6 +57,7 @@ Following the chain, we'll cover:
 3. Wireless: Qi, Qi2, MagSafe, what the convenience costs, and charging with a case.
 4. Chargers: How multi-port chargers split power and what makes a good one.
 5. The battery: What wears it down and how to charge without noticeable sacrifice.
+6. Small devices: How earbuds and co. fit into all of the above.
 
 ## Wall to Charger
 
@@ -334,10 +335,45 @@ What the tests don't cover:
 - Avoid real heat. No charging in direct sun, on the car dashboard or under the pillow. Cold is bad too, but most phones refuse to charge below freezing.
 - Don't leave it empty or full for long. For storage, aim for about 50%.
 
+## Small Devices
+
+Earbuds, watches or electric toothbrushes are no special case. Everything above applies to them; they just sit at the low end of it. My Sony WF-1000XM5 next to a phone:
+
+|                | Phone                            | WF-1000XM5                                |
+| -------------- | -------------------------------- | ----------------------------------------- |
+| Charging power | 20–45 W                          | About 2.5 W                               |
+| Voltage        | Negotiated via PD, typically 9 V | 5 V, no negotiation                       |
+| Charger        | USB PD                           | Any USB port with 0.5 A                   |
+| Wireless       | Qi2, with magnets                | Plain Qi, no magnets                      |
+| Battery        | About 15 Wh                      | About 2 Wh in the case, 0.4 Wh per earbud |
+| Charge limit   | 80% limit or Optimized Charging  | None                                      |
+| Battery swap   | About a hundred francs           | Not intended                              |
+
+### How They Charge
+
+The case never asks for more than 5 V, so there's no PD conversation. These are the first rows of the protocol table. Any USB charger and cable works, even a computer's USB port: Sony only asks for [0.5 A](https://helpguide.sony.net/mdr/2963/v1/en/contents/TP1000781964.html).
+
+Charging happens in two steps. The charger fills the case, and the case fills the earbuds through small contacts whenever they're inside. The case is a little power bank with its own charging circuit, running the same constant current and constant voltage phases as a phone. From empty, case and earbuds take about two hours.
+
+Wirelessly, the case speaks plain Qi. Any Qi pad works, including the earbud spot on a multi-device dock. Without magnets, positioning is up to you. Sony warns that a misaligned case charges slowly or stops, and gets warm. Efficiency hardly matters: a full charge of case and earbuds is under 3 Wh.
+
+### What to Consider
+
+- Speed and heat are no concern. At 2.5 W, there's no fast charging and barely any warmth. The usual heat rules still apply: Sony recommends charging between 15 and 30 °C and warns against leaving the earbuds in a parked car.
+- The earbuds live at 100%. Whenever they sit in a charged case, it fills them up. That's the high charge level from above, for most of their life. Newer models counter it: recent AirPods hold at 80% until shortly before you usually need them ([Optimized Battery Charging](https://support.apple.com/en-us/119912)), and Sony's WF-1000XM6 has a [Battery Care](https://www.sony-mea.com/en/electronics/support/wireless-headphones-bluetooth-headphones/wf-1000xm6/articles/00378185) setting that stops charging early. The WF-1000XM5 has no such setting.
+- The battery sets the lifetime. Earbud batteries are sealed in. Once they're worn, the earbuds are done. There's no battery swap to buy time, as with the phone.
+- No need to park the case on a charger. One charge lasts days, and parking only keeps the case's own battery at 100% as well.
+
+### When One Doesn't Charge
+
+- It charges from USB-A, but not from a USB-C charger: Some cheap USB-C gadgets skip two tiny resistors that tell a USB-C charger a device is attached. Without them, the charger never switches on. A USB-A to USB-C cable works around it ([Plugable explains](https://plugable.com/blogs/news/understanding-usb-c-charging-issues)).
+- It stops on a power bank: Many power banks switch off when the current drops low, taking earbuds for an empty port. Look for a trickle or low-power mode.
+
 ## So, the Dock?
 
 Ultimately, we can do almost anything for convenience, as long as we keep the battery cool. My setup:
 
 - A Qi2-certified dock: The magnets keep the coils aligned. 15 W or 25 W both work.
 - An 80% limit: Optimized Charging can't predict my irregular undocking at the office, so a fixed limit it is. If I never run low starting from 80%, it stays. On days I expect to need more, I'll generously top up to 100%. A few of those cycles don't hurt. I won't trade today's usefulness for battery life I can buy back with an earlier battery swap.
+- The earbud case is only docked when it runs low: The WF-1000XM5 has no charge limit, so parked on the dock, the case would sit at damaging 100% around the clock.
 - A cable nearby for a quick top-up.
