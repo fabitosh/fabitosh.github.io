@@ -52,11 +52,11 @@ Before buying one, I wanted to understand what actually happens between the wall
 
 Following the chain, we'll cover:
 
-1. **Wall to charger**: How much power the socket offers and whether a charger needs a grounding pin.
-2. **Wired**: Connectors, cables and the protocols that negotiate how much power flows.
-3. **Wireless**: Qi, Qi2, MagSafe and what the convenience costs.
-4. **Chargers**: How multi-port chargers split power and what makes a good one.
-5. **The battery**: What wears it down and how to charge without noticeable sacrifice.
+1. Wall to charger: How much power the socket offers and whether a charger needs a grounding pin.
+2. Wired: Connectors, cables and the protocols that negotiate how much power flows.
+3. Wireless: Qi, Qi2, MagSafe, what the convenience costs, and charging with a case.
+4. Chargers: How multi-port chargers split power and what makes a good one.
+5. The battery: What wears it down and how to charge without noticeable sacrifice.
 
 ## Wall to Charger
 
@@ -74,8 +74,8 @@ Most phone chargers are double insulated (protection class II, the ⧈ symbol on
 
 The grounding pin comes at a cost:
 
-- **International use**: Grounded plugs are country-specific. Swiss T12, German Schuko and British type G don't fit each other's sockets. The ungrounded two-pin Europlug fits sockets across continental Europe, Switzerland included.
-- **Size**: Three pins don't fold away as neatly.
+- International use: Grounded plugs are country-specific. Swiss T12, German Schuko and British type G don't fit each other's sockets. The ungrounded two-pin Europlug fits sockets across continental Europe, Switzerland included.
+- Size: Three pins don't fold away as neatly.
 
 For phones and earbuds, a Europlug charger is the better pick. For a charger that stays at home, three pins don't hurt.
 
@@ -107,7 +107,9 @@ Any USB-C to USB-C cable up to 2 m is fine for charging up to 60 W. That covers 
 
 The charger never pushes power. It advertises what it can offer, and the device picks what it wants. Without an agreement, everything stays at a safe 5 V. That's why a 140 W laptop charger is perfectly fine for earbuds.
 
-**USB Power Delivery (PD)** turns that agreement into a short digital conversation over a dedicated wire in the USB-C cable. The charger lists its offers, for example:
+#### USB Power Delivery (PD)
+
+PD turns that agreement into a short digital conversation over a dedicated wire in the USB-C cable. The charger lists its offers, for example:
 
 - 5 V at 3 A
 - 9 V at 3 A
@@ -118,7 +120,9 @@ The phone requests one, the charger confirms and switches its output. That's the
 
 PD itself does not follow the battery. Once agreed, the charger holds its voltage, say 9 V. The battery sits somewhere between 3.5 and 4.4 V, depending on its charge level. A converter inside the phone steps the 9 V down and controls the current. As the battery fills, the phone draws less current, but the voltage stays where it is. The phone can renegotiate, but only between the fixed steps.
 
-**PPS and AVS** add adjustable voltages to PD. Instead of picking one of the fixed steps, the phone requests an exact voltage (in 20 mV steps for PPS, 100 mV for AVS) and re-requests every few seconds as the battery voltage rises. The charger effectively becomes the phone's charging circuit. Inside the phone, a simple and very efficient stage halves the voltage and doubles the current (a charge pump). It can't regulate anything itself: its output is always half its input. So as the battery voltage climbs from about 3.7 to 4.4 V, the phone asks for a little more voltage to keep the current flowing.
+#### PPS and AVS
+
+PPS and AVS add adjustable voltages to PD. Instead of picking one of the fixed steps, the phone requests an exact voltage (in 20 mV steps for PPS, 100 mV for AVS) and re-requests every few seconds as the battery voltage rises. The charger effectively becomes the phone's charging circuit. Inside the phone, a simple and very efficient stage halves the voltage and doubles the current (a charge pump). It can't regulate anything itself: its output is always half its input. So as the battery voltage climbs from about 3.7 to 4.4 V, the phone asks for a little more voltage to keep the current flowing.
 
 > [!NOTE]
 > Why exactly half? A charge pump is little more than a capacitor and a few switches, flipping between two positions hundreds of thousands of times per second. In the first, the capacitor sits between input and output, so it charges up to the difference between the two. In the second, it sits next to the battery and discharges into it, so it ends up at the battery's voltage. Both only hold if input minus output equals output, which makes the output exactly half the input. And every bit of charge taken from the charger reaches the battery twice, once in each position, so the current doubles.
@@ -138,7 +142,7 @@ AVS follows the same idea: the voltage rises with the battery, in 100 mV steps f
 
 How helpful are those voltage steps over regular USB PD? At typical phone wattages, barely. [Apple's 40 W adapter uses AVS](https://www.chargerlab.com/apple-iphone-17-series-debuts-with-40w-dynamic-power-adapter-and-pd-3-2-avs-fast-charging/) to charge the iPhone 17 to 50% in 20 minutes, but [in PhoneArena's test](https://www.phonearena.com/news/iphone-17-fast-charge-speed-test_id174304), regular 45–65 W PD chargers still delivered about 36 W. Their real job is making high-power charging possible: at 45 W, a 92% converter would leave almost 4 W of heat inside the phone, a charge pump about 1.5 W. Samsung builds its 25 and 45 W modes on PPS, so without it, a Galaxy falls back to 15 W.
 
-For reference, the whole family:
+#### The Whole Family
 
 | Protocol      | Voltage                             | Max power      | Notes                                                                                                             |
 | ------------- | ----------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -151,13 +155,13 @@ For reference, the whole family:
 | USB PD EPR    | 28 / 36 / 48 V                      | 240 W          | Laptops. Needs a 5 A e-marked cable                                                                               |
 | Proprietary   | various                             | 100 W and more | Quick Charge, SuperVOOC, HyperCharge, ... Only with the brand's own charger and cable, falls back to PD otherwise |
 
-Want to go deeper? Texas Instruments' [An Engineer's Guide to USB Type-C](https://www.ti.com/lit/eb/slyy228/slyy228.pdf) is an excellent e-book on USB-C and Power Delivery.
+Want to go deeper? Texas Instruments' [An Engineer's Guide to USB Type-C](https://www.ti.com/lit/eb/slyy228/slyy228.pdf) is an excellent e-book on USB-C and Power Delivery. For the fast-charging side, their short article [The architecture of a switched-capacitor charger](https://www.ti.com/lit/an/slyt743/slyt743.pdf) shows the charge pump behind PPS, circuit included.
 
 ## Wireless
 
 Wireless charging uses two coils. The charger's coil creates an alternating magnetic field, and the phone's coil turns it back into current.
 
-**Alignment makes or breaks it.** The coils only couple well when they sit right on top of each other. A few millimetres off, and a growing share of the energy turns into heat instead of charge. The phone warms up and throttles, so a misaligned phone charges slower and hotter at the same time. With plain Qi, positioning is up to you. Magnets (MagSafe, Qi2) snap the coils into the same spot every time. That, more than the extra watts, is the reason to pick Qi2 over plain Qi.
+Alignment makes or breaks it. The coils only couple well when they sit right on top of each other. A few millimetres off, and a growing share of the energy turns into heat instead of charge. The phone warms up and throttles, so a misaligned phone charges slower and hotter at the same time. With plain Qi, positioning is up to you. Magnets (MagSafe, Qi2) snap the coils into the same spot every time. That, more than the extra watts, is the reason to pick Qi2 over plain Qi.
 
 | Standard    | Max power                 | Magnets     | Notes                                                                               |
 | ----------- | ------------------------- | ----------- | ----------------------------------------------------------------------------------- |
@@ -189,6 +193,12 @@ In money, at 0.30 CHF/kWh: about CHF 0.60 per year for the wireless losses, and 
 
 Money and energy are not the issue. The lost energy turns into heat, partly right next to the battery. That's the part to keep an eye on, especially with a case.
 
+### Charging With a Case
+
+- Thin cases work. Each millimetre adds distance between the coils, so a little more energy turns into heat in the coils instead of charge. The phone's coil sits right behind the battery, and the case keeps that heat in.
+- For Qi2 and MagSafe, the case needs a magnet ring to keep the coils aligned. The magnets only align; they don't boost the charging field.
+- The phone measures the battery temperature and throttles when it runs warm, whatever the cause. Apple notes that [certain cases can trap excess heat](https://www.apple.com/batteries/maximizing-performance/), and that a [warm iPhone may stop charging above 80%](https://support.apple.com/en-us/105047).
+
 ## Chargers
 
 ### Multiple Ports
@@ -201,12 +211,12 @@ Multi-device wireless docks (phone, earbuds, watch) are multi-port chargers too.
 
 ### What to Look Out For
 
-- **USB-C with USB PD** as the baseline. PPS and AVS are optional extensions. A charger doesn't get them automatically by supporting PD, so they must be listed explicitly on the spec sheet ("PPS", "AVS", or an output range like "3.3–21 V"). Without them, phones fall back to fixed PD. That's fine for most phones, but Samsung needs PPS for anything above 15 W.
-- **Enough watts**: The rating is the total. Add up what you charge at once and check the per-port table.
-- **GaN** (gallium nitride): Smaller and cooler than a silicon charger of the same power. Almost standard by now.
-- **Plug**: Two pins (Europlug) for travel. For a charger that stays at home, three pins don't hurt.
-- **Brand**: CE is a self-declaration. Cheap no-name chargers skimp on protection circuits and filtering. Stick to brands with a good track record, e.g. Anker, Ugreen, Belkin, Satechi, Apple, Samsung or Google, and Nomad or ESR for docks. [ChargerLab](https://www.chargerlab.com/) tears chargers apart and shows what's inside.
-- **Wireless**: Look for the official Qi2 logo. "Magnetic" or "MagSafe compatible" can mean plain Qi at 7.5 W with a magnet glued on. Check which power adapter the dock needs for full speed, often 30–45 W. Some 25 W docks have a fan, which is annoying in a bedroom.
+- USB-C with USB PD as the baseline. PPS and AVS are optional extensions. A charger doesn't get them automatically by supporting PD, so they must be listed explicitly on the spec sheet ("PPS", "AVS", or an output range like "3.3–21 V"). Without them, phones fall back to fixed PD. That's fine for most phones, but Samsung needs PPS for anything above 15 W.
+- Enough watts: The rating is the total. Add up what you charge at once and check the per-port table.
+- GaN (gallium nitride): Smaller and cooler than a silicon charger of the same power. Almost standard by now.
+- Plug: Two pins (Europlug) for travel. For a charger that stays at home, three pins don't hurt.
+- Brand: CE is a self-declaration. Cheap no-name chargers skimp on protection circuits and filtering. Stick to brands with a good track record, e.g. Anker, Ugreen, Belkin, Satechi, Apple, Samsung or Google, and Nomad or ESR for docks. [ChargerLab](https://www.chargerlab.com/) tears chargers apart and shows what's inside.
+- Wireless: Look for the official Qi2 logo. "Magnetic" or "MagSafe compatible" can mean plain Qi at 7.5 W with a magnet glued on. Check which power adapter the dock needs for full speed, often 30–45 W. Some 25 W docks have a fan, which is annoying in a bedroom.
 
 ## The Battery
 
@@ -219,9 +229,13 @@ A lithium-ion battery shuttles lithium ions between two electrodes. Charging pus
 
 ### What Wears It Down
 
-**Heat.** Unwanted side reactions speed up with temperature. They grow a crust on the anode (the solid electrolyte interphase, SEI) that permanently traps lithium. As a rule of thumb, reaction rates roughly double per 10 °C. [Apple names 16–22 °C](https://www.apple.com/batteries/maximizing-performance/) as the comfort zone.
+#### Heat
 
-**High charge level.** A full battery sits at its highest voltage. Both electrodes are at their extremes and the electrolyte decomposes more easily. That ages a battery even when it's lying in a drawer. Combined with heat, it gets bad. [Battery University](https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries) estimates the remaining capacity after a year of storage:
+Unwanted side reactions speed up with temperature. They grow a crust on the anode (the solid electrolyte interphase, SEI) that permanently traps lithium. As a rule of thumb, reaction rates roughly double per 10 °C. [Apple names 16–22 °C](https://www.apple.com/batteries/maximizing-performance/) as the comfort zone.
+
+#### High Charge Level
+
+A full battery sits at its highest voltage. Both electrodes are at their extremes and the electrolyte decomposes more easily. That ages a battery even when it's lying in a drawer. Combined with heat, it gets bad. [Battery University](https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries) estimates the remaining capacity after a year of storage:
 
 | Temperature | Stored at 40% | Stored at 100%       |
 | ----------- | ------------- | -------------------- |
@@ -230,22 +244,34 @@ A lithium-ion battery shuttles lithium ions between two electrodes. Charging pus
 | 40 °C       | 85%           | 65%                  |
 | 60 °C       | 75%           | 60% (after 3 months) |
 
-**Mechanical stress of a charge cycle.** Graphite swells by about 10% when it's packed with lithium and shrinks again when it empties. Every charge cycle is a breath. Over time, particles crack, and the protective SEI breaks open and regrows, consuming lithium each time. Deeper cycles mean bigger breaths, so frequent small top-ups are gentler than running the battery down and charging it full. According to Battery University, a typical cell lasts about 300 full cycles (100% to 0%) before it drops to 70% capacity, but about 1000 cycles of 40%. Even counted in delivered energy (300 versus 400 full charges' worth), shallow cycles win.
+#### Mechanical Stress of a Charge Cycle
+
+Graphite swells by about 10% when it's packed with lithium and shrinks again when it empties. Every charge cycle is a breath. Over time, particles crack, and the protective SEI breaks open and regrows, consuming lithium each time. Deeper cycles mean bigger breaths, so frequent small top-ups are gentler than running the battery down and charging it full. According to Battery University, a typical cell lasts about 300 full cycles (100% to 0%) before it drops to 70% capacity, but about 1000 cycles of 40%. Even counted in delivered energy (300 versus 400 full charges' worth), shallow cycles win.
 
 Swollen batteries ("spicy pillows") are a different story. That's gas from decomposing electrolyte, mostly caused by heat and high voltage over a long time. The classic case: a laptop sitting at 100% on its charger for years. A swollen battery is broken. Stop charging it, don't press or puncture it, and have it replaced. It's a fire risk.
 
-**Fast charging when full or cold.** Ions need time to slot into the graphite. Push them faster than the graphite can take them, and they deposit as metallic lithium on its surface ("lithium plating"). That lithium is lost for good. The risk grows when the anode is already full (high charge level) and when it's cold (slow chemistry). Fast charging an empty battery at room temperature is much less of a problem.
+#### Fast Charging When Full or Cold
 
-**Running low.** Less harmful than the top end. A high charge level stresses the battery for as long as it sits there. A low one mostly doesn't, because the 0% your phone shows is not truly empty: phones keep a hidden reserve. It only becomes harmful when a phone sits empty for weeks. Self-discharge can then pull the cell below its safe minimum and damage it for good. The gentlest range is the middle.
+Ions need time to slot into the graphite. Push them faster than the graphite can take them, and they deposit as metallic lithium on its surface ("lithium plating"). That lithium is lost for good. The risk grows when the anode is already full (high charge level) and when it's cold (slow chemistry). Fast charging an empty battery at room temperature is much less of a problem.
+
+#### Running Low
+
+Less harmful than the top end. A high charge level stresses the battery for as long as it sits there. A low one mostly doesn't, because the 0% your phone shows is not truly empty: phones keep a hidden reserve. It only becomes harmful when a phone sits empty for weeks. Self-discharge can then pull the cell below its safe minimum and damage it for good. The gentlest range is the middle.
 
 ### What the Phone Already Does
 
 Phones charge in two phases:
 
-1. **Constant current**: Full speed while the battery is low. The voltage rises.
-2. **Constant voltage**: Once the cell reaches its maximum voltage (somewhere around 60–80%), the phone holds the voltage and the current tapers off.
+1. Constant current: Full speed while the battery is low. The voltage rises.
+2. Constant voltage: Once the cell reaches its maximum voltage (somewhere around 60–80%), the phone holds the voltage and the current tapers off.
 
 That's why fast charging is advertised as "50% in 20 minutes", and the last 20% take disproportionately long.
+
+These two phases happen at the battery, however the power arrives. What differs is who shapes them:
+
+- Plain PD: The charger holds its fixed voltage, say 9 V, throughout. The phone's own converter does all the work: it caps the current in the first phase, then holds the cell voltage while the current tapers.
+- PPS and AVS: In the first phase, the charger does the shaping. The phone keeps requesting a slightly higher voltage as the cell voltage rises. Once the cell reaches its maximum, the requested voltage stops rising and the current tapers. Near the end, many phones switch back to their regular converter for the final stretch.
+- Wireless: Much like plain PD. The phone turns the coil's power into a steady voltage, and its converter shapes the phases from there.
 
 On top of that:
 
@@ -259,9 +285,11 @@ What's at stake: A modern iPhone is rated to keep 80% of its capacity after 1000
 
 ### In Practice: Long-Term Tests
 
-The chemistry above tells us what wears a battery down, but not by how much in everyday charging. HTX Studio built automated rigs that drain and recharge phones around the clock, and ran two long-term tests.
+The chemistry above tells us what wears a battery down, but not by how much in everyday charging. Three long-term tests help.
 
-The [first](https://www.youtube.com/watch?v=kLS5Cg_yNdM) ran iPhone 12s and Android phones (iQOO 7, fast charging at 120 W) through 500 charge cycles. Per phone model, a few phones each were slow-charged or fast-charged between 5% and 100%, another group was fast-charged only between 30% and 80%, and one phone was never charged as a control. Capacity lost after 500 cycles:
+#### Fast, Slow, or Only 30–80%
+
+HTX Studio built automated rigs that drain and recharge phones around the clock. Their [first test](https://www.youtube.com/watch?v=kLS5Cg_yNdM) ran iPhone 12s and Android phones (iQOO 7, fast charging at 120 W) through 500 charge cycles. Per phone model, three phones each were slow-charged or fast-charged between 5% and 100%, and three more were fast-charged only between 30% and 80%. Capacity lost after 500 cycles:
 
 | Group        | iPhone 12 | iQOO 7 |
 | ------------ | --------- | ------ |
@@ -269,9 +297,9 @@ The [first](https://www.youtube.com/watch?v=kLS5Cg_yNdM) ran iPhone 12s and Andr
 | Fast, 5–100% | 12.3%     | 8.5%   |
 | Fast, 30–80% | 8.3%      | 6.0%   |
 
-Fast versus slow made no meaningful difference, even at 120 W. Staying between 30% and 80% cut the wear by about 30% on both phones.
+#### Wired or Wireless
 
-The [second](https://www.youtube.com/watch?v=Lj4LMlGr4og) compared wired and wireless charging on iPhones, all on Apple's 20 W adapter. One group comes close to the dock scenario: phones topped up between 80% and 95% on a wireless charger, over and over. Capacity lost after 2000 hours:
+Their [second test](https://www.youtube.com/watch?v=Lj4LMlGr4og) compared wired and wireless charging on iPhones, four per group, all on Apple's 20 W adapter. One group comes close to the dock scenario: phones topped up between 80% and 95% on a wireless charger, over and over. Capacity lost after 2000 hours:
 
 | Group            | Capacity lost |
 | ---------------- | ------------- |
@@ -279,59 +307,37 @@ The [second](https://www.youtube.com/watch?v=Lj4LMlGr4og) compared wired and wir
 | Wireless, 5–100% | 9.0%          |
 | Wireless, 80–95% | 3.9%          |
 
-Wireless charging wore the batteries no more than a cable. And frequent top-ups on the pad didn't hurt: that group lost the least.
+#### How Full
+
+[Battery University](https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries) collects lab data on how far a cell is charged and how long it lasts. A lower charge voltage means a less full battery. Each row shows how much energy a classic cell holds per charge, and how many cycles it lasts until it's worn out. The end point is the same for every row:
+
+| Charged to    | Energy per charge | Cycles until worn out |
+| ------------- | ----------------- | --------------------- |
+| 4.20 V (full) | 100%              | 300–500               |
+| 4.06 V        | ~81%              | 600–1000              |
+| 3.92 V        | ~65%              | 1200–2000             |
+
+Even counted in energy, charging to about 81% delivers 490–810 full charges' worth instead of 300–500.
 
 What the tests don't cover:
 
-- **Sample size**: A handful of phones per group. HTX itself labels the results as for reference only.
-- **Sitting full**: Both tests cycled the phones nonstop. Neither captures a phone simply sitting at 100% for days. That's calendar aging, and the storage table above suggests a limit matters even more there.
-- **Cases**: The phones charged without one. A case adds distance between the coils and insulates the battery, so lower efficiency and more heat.
+- Sample size: HTX used three or four phones per group and labels its results as for reference only.
+- Held at 100%: The tests cycled the batteries continuously. None shows a phone parked on a charger at 100% for hours, topped up whenever it slips, like overnight or on a dock without a limit. That's where the storage table above suggests a limit matters most.
+- Cases: The phones charged without one. A case adds distance between the coils and insulates the battery, so lower efficiency and more heat.
 
-### Charging to 80%
+### Lessons Learned
 
-In theory, it's a big lever. Battery University on the charge voltage of classic cells:
-
-| Charge voltage | Cycles    | Usable capacity |
-| -------------- | --------- | --------------- |
-| 4.20 V (full)  | 300–500   | 100%            |
-| 4.06 V         | 600–1000  | ~81%            |
-| 3.92 V         | 1200–2000 | ~65%            |
-
-Modern phone cells charge to higher voltages and are built differently, so the absolute numbers don't transfer. The trend does. The first test above confirms the direction with a smaller effect: about 30% less wear for 30–80%.
-
-### Fast Charging
-
-Not a problem in itself, as the first test shows. The phone decides the current and only charges fast when the battery is low and not too hot. With PPS or AVS, the conversion heat even stays in the charger.
-
-What to avoid is real heat: direct sun or a car dashboard in summer. Charging below freezing is bad too, but most phones refuse anyway.
-
-### Wireless Charging With a Case
-
-- Thin plastic or silicone cases of a few millimetres work fine. Every millimetre adds distance between the coils and costs a little efficiency.
-- For Qi2 and MagSafe, the case needs a magnet ring. Otherwise, the phone doesn't snap into place, sits misaligned, and charges slower and hotter.
-- The magnets only align. They don't strengthen or extend the charging field: they are static, while the charging field alternates rapidly.
-- Thick, rugged or leather cases insulate. Apple itself warns that charging inside certain cases can generate excess heat and recommends taking the phone out if it gets hot.
-- The phone doesn't know about the case, but it notices the result. It measures the battery temperature and throttles regardless of the cause. iPhones may pause at 80% when the battery runs warm.
-- Nothing metallic between phone and pad: cards in wallet cases, ring holders, metal plates for car mounts. Most chargers detect foreign metal and stop.
-
-### Rules of Thumb
-
-1. Avoid real heat: no charging in direct sun, on the car dashboard or under the pillow.
-2. Let the phone manage: enable Optimized Charging or an 80% limit.
-3. Don't leave it at 0% or 100% for long. For storage, aim for about 50%.
-4. Top up whenever. Lithium-ion batteries have no memory effect. That was NiCd.
+- Charge fast or slow, whatever is convenient. Slow and fast charging ended within half a percent of each other, even at 120 W. The phone decides the current and only charges fast when the battery is low and not too hot.
+- Wired or wireless, both are fine. Wireless wore the batteries no more than a cable.
+- Top up whenever. Frequent top-ups don't hurt: the 80–95% wireless group lost the least in its test. Lithium-ion batteries have no memory effect. That was NiCd.
+- Stay below full when you can. The tests align here: HTX's 30–80% group wore about 30% less, and Battery University's cells last twice the cycles when charged to about 81%. Let the phone manage it with Optimized Charging or a charge limit.
+- Avoid real heat. No charging in direct sun, on the car dashboard or under the pillow. Cold is bad too, but most phones refuse to charge below freezing.
+- Don't leave it empty or full for long. For storage, aim for about 50%.
 
 ## So, the Dock?
 
-Ultimately, we can do almost anything for convenience, as long as we keep the battery cool.
+Ultimately, we can do almost anything for convenience, as long as we keep the battery cool. My setup:
 
-Parking the phone on a dock for hours means a slightly warm phone at a high charge level. Exactly the combination to avoid. With the right setup, it's fine:
-
-- **Qi2 certified, with magnets**: Aligned coils waste less energy as heat. Speed hardly matters when the phone sits there for hours, and slower runs cooler.
-- **80% limit**: Optimized Charging only kicks in when the phone expects one long charging session, and it still aims for 100% by the time you unplug. A dock means many short sessions. A fixed limit is predictable: it keeps the phone between 75% and 80%.
-- **A cool spot**: Not on the window sill.
-- **A cable nearby**: Wired is faster and cooler for a quick top-up before leaving.
-
-HTX's 80–95% wireless group shows that frequent top-ups, exactly what a dock does, are not bad for the battery. It's not an exact replica of my setup, though: those phones charged without a case. Mine has one, so a bit less efficiency and more heat. The earbuds have tiny batteries and draw little power. No concern there. The energy cost is negligible, as calculated above.
-
-For me, this will be slow wireless charging capped at 80%, with an occasional fast charge to 100% by cable when I need it.
+- A Qi2-certified dock: The magnets keep the coils aligned. 15 W or 25 W both work.
+- An 80% limit: Optimized Charging can't predict my irregular undocking at the office, so a fixed limit it is. If I never run low starting from 80%, it stays. On days I expect to need more, I'll generously top up to 100%. A few of those cycles don't hurt. I won't trade today's usefulness for battery life I can buy back with an earlier battery swap.
+- A cable nearby for a quick top-up.
