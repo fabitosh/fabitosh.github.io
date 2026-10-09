@@ -1,5 +1,5 @@
 ---
-description: "From the wall socket to the battery: plugs, chargers, cables, wireless standards, and how to charge without wearing out the battery."
+description: "Does a wireless charger on my desk damage my phone battery severely? The elements behind phone/gadget charging."
 btime: 2026-10-09
 layout: note.njk
 mtime: null
@@ -7,7 +7,7 @@ permalink: notes/{{ page.fileSlug }}/index.html
 status: draft
 tags:
   - electronics
-title: Charging Phones and Devices
+title: Wireless Charging without Guilt
 ---
 
 I am contemplating a wireless charging dock for my phone and earbuds. The idea: whenever I'm home, the phone goes onto the dock. No cable fiddling, always topped up.
@@ -66,23 +66,18 @@ $$
 P = U \cdot I = 230\,\text{V} \cdot 10\,\text{A} = 2300\,\text{W}
 $$
 
-A phone charger draws 20–45 W, a laptop charger 65–140 W. The wall is never the bottleneck. It only becomes one when the charger shares a power strip with a kettle.
+A phone charger draws 20–45 W, a laptop charger 65–140 W. The wall is never the bottleneck with regular tech gear.
 
 ### Does a Charger Need a Grounding Pin?
 
-Most phone chargers are double insulated (protection class II, the ⧈ symbol on the housing). Even if something fails inside, there is no live part you could touch. They don't need a ground for safety.
+Most phone chargers are double insulated (protection class II, the ⧈ symbol on the housing). Even if something fails inside, there is no live part you could touch. They don't need a ground for safety. The only benefit you might notice: on a metal laptop charging from a two-pin charger, some people feel a faint, harmless buzz when stroking the case. Many never do.
 
-The grounding pin still helps in some cases:
-
-- **Metal housings**: Switch-mode power supplies leak a tiny current through a filter capacitor (the Y-capacitor) that bridges their mains and low-voltage sides. On an ungrounded charger, you can feel it as a faint tingle on an aluminium laptop. A ground path drains it. That's why Apple's MacBook extension cable has a grounding pin.
-- **Touchscreens**: The same electrical noise can make a touchscreen jumpy while charging, mostly with cheap chargers. Grounding can help.
-
-It comes at a cost:
+The grounding pin comes at a cost:
 
 - **International use**: Grounded plugs are country-specific. Swiss T12, German Schuko and British type G don't fit each other's sockets. The ungrounded two-pin Europlug fits sockets across continental Europe, Switzerland included.
 - **Size**: Three pins don't fold away as neatly.
 
-For phones and earbuds, a Europlug charger is the better pick. For a stationary laptop or desktop charger, grounding is nice to have.
+For phones and earbuds, a Europlug charger is the better pick. For a charger that stays at home, three pins don't hurt.
 
 ## Wired
 
@@ -94,19 +89,19 @@ On the charger side, you find USB-A or USB-C. On the device side, almost everyth
 
 | Connector | Shape (roughly to scale) | Where you find it | Voltage | Max power |
 |---|---|---|---|---|
-| USB-C | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="USB-C outline"><rect x="7.6" y="8.9" width="24.8" height="7.2" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="11" y="11.6" width="18" height="1.8" rx="0.9" fill="currentColor" opacity="0.35"/></svg> | Everything new. Reversible. Mandatory in the EU for phones, earbuds and co. since end of 2024, for laptops since April 2026 | 5–48 V | 240 W |
-| USB-A | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="USB-A outline"><rect x="2" y="5.75" width="36" height="13.5" rx="0.6" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="4.5" y="8" width="31" height="4.5" fill="currentColor" opacity="0.35"/></svg> | Older chargers, computers, car sockets | 5–12 V | 18 W |
-| Micro-USB | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="Micro-USB outline"><path d="M9.7 9.8 H30.3 V12.6 L27.6 15.2 H12.4 L9.7 12.6 Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg> | Older Android phones, cheap gadgets | 5–12 V | 18 W |
+| USB-C | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="USB-C outline"><rect x="7.6" y="8.9" width="24.8" height="7.2" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="11" y="11.6" width="18" height="1.8" rx="0.9" fill="currentColor" opacity="0.35"/></svg> | Everything new. Reversible. Mandatory in the EU for phones, earbuds etc. since end of 2024, for laptops since April 2026 | 5–48 V | 240 W |
+| USB-A | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="USB-A outline"><rect x="2" y="5.75" width="36" height="13.5" rx="0.6" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="4.5" y="8" width="31" height="4.5" fill="currentColor" opacity="0.35"/></svg> | Older chargers, computers, car sockets | 5–12 V | ~18 W |
+| Micro-USB | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="Micro-USB outline"><path d="M9.7 9.8 H30.3 V12.6 L27.6 15.2 H12.4 L9.7 12.6 Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg> | Older Android phones, cheap gadgets | 5–12 V | ~18 W |
 | Micro-USB 3.0 | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="Micro-USB 3.0 outline"><path d="M1.6 9.8 H22.2 V12.6 L19.5 15.2 H4.3 L1.6 12.6 Z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M23.4 9.8 H38.4 V12.6 L35.7 15.2 H23.4 Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg> | Older external hard drives | 5 V | 4.5 W |
 | Mini-USB | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="Mini-USB outline"><path d="M9.8 8 H30.2 V11.5 L27.5 17 H12.5 L9.8 11.5 Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg> | Old GoPros, card readers, MP3 players, PS3 controllers | 5 V | ~5 W |
 | Lightning | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="Lightning outline"><rect x="8.45" y="10.25" width="23.1" height="4.5" rx="2.25" fill="none" stroke="currentColor" stroke-width="1.2"/></svg> | iPhone 5 to 14, older AirPods | 5–9 V | 27 W |
 | USB-B | <svg width="48" height="30" viewBox="0 0 40 25" role="img" aria-label="USB-B outline"><path d="M7.3 24.15 V5.5 L12 0.85 H28 L32.7 5.5 V24.15 Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg> | Printers, some audio and lab gear | 5 V | 4.5 W |
 
-Anything above 5 V on the older connectors comes from fast-charging schemes on top: Qualcomm's Quick Charge on USB-A and Micro-USB, USB PD through a USB-C to Lightning cable on Lightning.
+Anything above 5 V on the older connectors comes from fast-charging schemes on top, most commonly Qualcomm's Quick Charge on USB-A and Micro-USB, and USB PD through a USB-C to Lightning cable on Lightning.
 
 ### Cables
 
-Any USB-C cable up to 2 m is fine for charging up to 60 W. That covers every phone. Above 60 W, or if you also want fast data transfer, you need a cable rated for it. For power, that's a 5 A cable with an e-marker, a small chip that tells the charger it can handle the current ([up to 240 W](https://plugable.com/blogs/news/what-is-240w-usb-extended-power-range-epr)). The ratings are printed on the packaging.
+Any USB-C to USB-C cable up to 2 m is fine for charging up to 60 W. That covers every phone. Above 60 W, or if you also want fast data transfer, you need a cable rated for it. For power, that's a 5 A cable with an e-marker, a small chip that tells the charger it can handle the current ([up to 240 W](https://plugable.com/blogs/news/what-is-240w-usb-extended-power-range-epr)). The ratings are printed on the packaging.
 
 ### Protocols: Who Decides How Much Power Flows?
 
@@ -123,22 +118,25 @@ The phone requests one, the charger confirms and switches its output. That's the
 
 PD itself does not follow the battery. Once agreed, the charger holds its voltage, say 9 V. The battery sits somewhere between 3.5 and 4.4 V, depending on its charge level. A converter inside the phone steps the 9 V down and controls the current. As the battery fills, the phone draws less current, but the voltage stays where it is. The phone can renegotiate, but only between the fixed steps.
 
-**PPS and AVS** add adjustable voltages to PD. Instead of picking one of the fixed steps, the phone requests an exact voltage (in 20 mV steps for PPS, 100 mV for AVS) and re-requests every few seconds as the battery voltage rises. The charger effectively becomes the phone's charging circuit. Inside the phone, a simple and very efficient stage halves the voltage and doubles the current (a charge pump).
+**PPS and AVS** add adjustable voltages to PD. Instead of picking one of the fixed steps, the phone requests an exact voltage (in 20 mV steps for PPS, 100 mV for AVS) and re-requests every few seconds as the battery voltage rises. The charger effectively becomes the phone's charging circuit. Inside the phone, a simple and very efficient stage halves the voltage and doubles the current (a charge pump). It can't regulate anything itself: its output is always half its input. So as the battery voltage climbs from about 3.7 to 4.4 V, the phone asks for a little more voltage to keep the current flowing.
+
+> [!NOTE]
+> Why exactly half? A charge pump is little more than a capacitor and a few switches, flipping between two positions hundreds of thousands of times per second. In the first, the capacitor sits between input and output, so it charges up to the difference between the two. In the second, it sits next to the battery and discharges into it, so it ends up at the battery's voltage. Both only hold if input minus output equals output, which makes the output exactly half the input. And every bit of charge taken from the charger reaches the battery twice, once in each position, so the current doubles.
 
 Here's what that looks like for a phone at 10%, charging at about 18.5 W (rough numbers):
 
-| | Fixed PD | PPS |
+| | Fixed PD | PD PPS |
 |---|---|---|
 | Phone requests | 9 V | 7.6 V |
 | Charger delivers | 9 V × 2.2 A ≈ 20 W | 7.6 V × 2.5 A ≈ 19 W |
 | Conversion in the phone | Step-down converter, ~92% | Charge pump, ~97% |
 | Into the battery | 3.7 V × 5 A ≈ 18.5 W | 3.7 V × 5 A ≈ 18.5 W |
 | Heat in the phone | ~1.6 W | ~0.5 W |
-| As the battery fills | Voltage stays at 9 V, current drops | Voltage creeps up with the battery, then current drops |
+| As the battery fills | Voltage stays at 9 V, current drops | Voltage creeps up with the battery to about 9 V, then current drops |
 
-AVS works like PPS, with coarser steps and starting at 9 V.
+AVS follows the same idea: the voltage rises with the battery, in 100 mV steps from 9 V upward. That floor is too high for the simple halving above, so the phone needs a different conversion stage. Apple doesn't publish how the iPhone 17 does it.
 
-So what's the bar? **USB PD.** Beyond that, adjustable voltages barely change the speed. [Apple's 40 W adapter uses AVS](https://www.chargerlab.com/apple-iphone-17-series-debuts-with-40w-dynamic-power-adapter-and-pd-3-2-avs-fast-charging/) to charge the iPhone 17 to 50% in 20 minutes, but [in PhoneArena's test](https://www.phonearena.com/news/iphone-17-fast-charge-speed-test_id174304), regular 45–65 W PD chargers still delivered about 36 W. The exception is Samsung: its phones need PPS for anything above 15 W. Where PPS and AVS do make a difference is heat. About a watt less inside the phone, during the phase where the battery charges hardest.
+How helpful are those voltage steps over regular USB PD? At typical phone wattages, barely. [Apple's 40 W adapter uses AVS](https://www.chargerlab.com/apple-iphone-17-series-debuts-with-40w-dynamic-power-adapter-and-pd-3-2-avs-fast-charging/) to charge the iPhone 17 to 50% in 20 minutes, but [in PhoneArena's test](https://www.phonearena.com/news/iphone-17-fast-charge-speed-test_id174304), regular 45–65 W PD chargers still delivered about 36 W. Their real job is making high-power charging possible: at 45 W, a 92% converter would leave almost 4 W of heat inside the phone, a charge pump about 1.5 W. Samsung builds its 25 and 45 W modes on PPS, so without it, a Galaxy falls back to 15 W.
 
 For reference, the whole family:
 
@@ -167,7 +165,7 @@ Wireless charging uses two coils. The charger's coil creates an alternating magn
 | MagSafe | 15 W, 25 W from iPhone 16 | Yes | Apple's own, since iPhone 12 |
 | Qi2 | 15 W | Yes | Open standard based on MagSafe. iPhone 13 to 15, Pixel 10 and 10 Pro |
 | Qi2 25 W | 25 W | Yes | Since 2025. iPhone 16 (not the 16e) and 17, Pixel 10 Pro XL |
-| Qi2 Ready | 15–25 W | In the case | Phone speaks Qi2 but has no magnets. Needs a magnetic case. E.g. Samsung Galaxy S25/S26 |
+| Qi2 Ready | 15–25 W | In the case | Phone speaks Qi2 but has no magnets. Needs a magnetic case. E.g. Samsung Galaxy S25 |
 | Proprietary | up to 50 W and more | Mostly no | Samsung, OnePlus, Xiaomi, ... Only with their own docks |
 
 On Android, built-in magnets are still rare. [Belkin's compatibility chart](https://www.belkin.com/company/blog/qi2-compatible-devices/) keeps track of which phone does what.
@@ -189,7 +187,7 @@ Idle draw is a separate question, and it applies to wired chargers just as well.
 
 In money, at 0.30 CHF/kWh: about CHF 0.60 per year for the wireless losses, and up to CHF 0.30 per idling charger.
 
-Money and energy are not the issue. The lost energy turns into heat, partly right next to the battery. In a lab, that didn't measurably wear the battery (see the long-term tests below). With a case and a warm spot, it's still the part to keep an eye on.
+Money and energy are not the issue. The lost energy turns into heat, partly right next to the battery. That's the part to keep an eye on, especially with a case.
 
 ## Chargers
 
@@ -207,7 +205,7 @@ Multi-device wireless docks (phone, earbuds, watch) are multi-port chargers too.
 - **Enough watts**: The rating is the total. Add up what you charge at once and check the per-port table.
 - **GaN** (gallium nitride): Smaller and cooler than a silicon charger of the same power. Almost standard by now.
 - **Plug**: Two pins (Europlug) for travel. For a charger that stays at home, three pins don't hurt.
-- **Brand**: CE is a self-declaration. Cheap no-name chargers skimp on protection circuits and filtering (see the touchscreen jitter above). Stick to brands with a good track record, e.g. Anker, Ugreen, Belkin, Satechi, Apple, Samsung or Google, and Nomad or ESR for docks. [ChargerLab](https://www.chargerlab.com/) tears chargers apart and shows what's inside.
+- **Brand**: CE is a self-declaration. Cheap no-name chargers skimp on protection circuits and filtering. Stick to brands with a good track record, e.g. Anker, Ugreen, Belkin, Satechi, Apple, Samsung or Google, and Nomad or ESR for docks. [ChargerLab](https://www.chargerlab.com/) tears chargers apart and shows what's inside.
 - **Wireless**: Look for the official Qi2 logo. "Magnetic" or "MagSafe compatible" can mean plain Qi at 7.5 W with a magnet glued on. Check which power adapter the dock needs for full speed, often 30–45 W. Some 25 W docks have a fan, which is annoying in a bedroom.
 
 ## The Battery
@@ -252,7 +250,7 @@ That's why fast charging is advertised as "50% in 20 minutes", and the last 20% 
 On top of that:
 
 - Phones throttle or pause charging when they get hot. The iPhone shows "Charging on Hold".
-- Optimized Charging (iOS) or Adaptive Charging (Android) learns your routine, holds at 80% overnight and finishes just before you usually unplug.
+- Optimized Charging (iOS) or Adaptive Charging (Android) learns your routine. When it expects a long charging session, like overnight, it holds at 80% and finishes just before you usually unplug.
 - Charge limits: iPhone 15 and later can stop anywhere between 80% and 100% in 5% steps. Pixel and Samsung phones offer an 80% limit, too.
 
 ## Practical Implications
@@ -263,17 +261,17 @@ What's at stake: A modern iPhone is rated to keep 80% of its capacity after 1000
 
 The chemistry above tells us what wears a battery down, but not by how much in everyday charging. HTX Studio built automated rigs that drain and recharge phones around the clock, and ran two long-term tests.
 
-The [first](https://www.youtube.com/watch?v=kLS5Cg_yNdM) put ten iPhone 12s and ten Android phones (iQOO 7) through 500 charge cycles each, comparing slow charging, fast charging and charging only between 30% and 80%. Capacity lost after 500 cycles:
+The [first](https://www.youtube.com/watch?v=kLS5Cg_yNdM) ran iPhone 12s and Android phones (iQOO 7, fast charging at 120 W) through 500 charge cycles. Per phone model, a few phones each were slow-charged or fast-charged between 5% and 100%, another group was fast-charged only between 30% and 80%, and one phone was never charged as a control. Capacity lost after 500 cycles:
 
 | Group | iPhone 12 | iQOO 7 |
 |---|---|---|
-| Slow, 5–100% (5 W / 18 W) | 11.8% | 8.8% |
-| Fast, 5–100% (20 W / 120 W) | 12.3% | 8.5% |
-| Only 30–80% | 8.3% | 6.0% |
+| Slow, 5–100% | 11.8% | 8.8% |
+| Fast, 5–100% | 12.3% | 8.5% |
+| Fast, 30–80% | 8.3% | 6.0% |
 
 Fast versus slow made no meaningful difference, even at 120 W. Staying between 30% and 80% cut the wear by about 30% on both phones.
 
-The [second](https://www.youtube.com/watch?v=Lj4LMlGr4og) compared wired and wireless charging on iPhones, all on Apple's 20 W adapter. One group comes close to the dock scenario: phones kept between 80% and 95% on a wireless charger. Capacity lost after 2000 hours:
+The [second](https://www.youtube.com/watch?v=Lj4LMlGr4og) compared wired and wireless charging on iPhones, all on Apple's 20 W adapter. One group comes close to the dock scenario: phones topped up between 80% and 95% on a wireless charger, over and over. Capacity lost after 2000 hours:
 
 | Group | Capacity lost |
 |---|---|
@@ -281,7 +279,7 @@ The [second](https://www.youtube.com/watch?v=Lj4LMlGr4og) compared wired and wir
 | Wireless, 5–100% | 9.0% |
 | Wireless, 80–95% | 3.9% |
 
-Wireless charging wore the batteries no more than a cable. Keeping the phone topped up on the pad cut the wear by more than half.
+Wireless charging wore the batteries no more than a cable. And frequent top-ups on the pad didn't hurt: that group lost the least.
 
 What the tests don't cover:
 
@@ -299,13 +297,13 @@ In theory, it's a big lever. Battery University on the charge voltage of classic
 | 4.06 V | 600–1000 | ~81% |
 | 3.92 V | 1200–2000 | ~65% |
 
-Modern phone cells charge to higher voltages and are built differently, so the absolute numbers don't transfer. The trend does. The tests above confirm the direction with a smaller effect: about 30% less wear for 30–80%, and more than half for 80–95% on a wireless pad.
+Modern phone cells charge to higher voltages and are built differently, so the absolute numbers don't transfer. The trend does. The first test above confirms the direction with a smaller effect: about 30% less wear for 30–80%.
 
 ### Fast Charging
 
 Not a problem in itself, as the first test shows. The phone decides the current and only charges fast when the battery is low and not too hot. With PPS or AVS, the conversion heat even stays in the charger.
 
-Using the phone while charging isn't either. In HTX's second test, it warmed the battery to about 37 °C but caused no measurable extra wear. Even a group charged at 45 °C lost only 9.6% instead of 9.0%. The phone's own throttling handles the everyday cases. What's left to avoid are the extremes: direct sun or a car dashboard in summer. Charging below freezing is bad too, but most phones refuse anyway.
+What to avoid is real heat: direct sun or a car dashboard in summer. Charging below freezing is bad too, but most phones refuse anyway.
 
 ### Wireless Charging With a Case
 
@@ -330,10 +328,10 @@ Ultimately, we can do almost anything for convenience, as long as we keep the ba
 Parking the phone on a dock for hours means a slightly warm phone at a high charge level. Exactly the combination to avoid. With the right setup, it's fine:
 
 - **Qi2 certified, with magnets**: Aligned coils waste less energy as heat. Speed hardly matters when the phone sits there for hours, and slower runs cooler.
-- **80% limit**: Optimized Charging is trained on overnight routines. A phone parked on a dock during the day may well sit at 100%. A fixed limit keeps it hovering between 75% and 80%.
+- **80% limit**: Optimized Charging only kicks in when the phone expects one long charging session, and it still aims for 100% by the time you unplug. A dock means many short sessions. A fixed limit is predictable: it keeps the phone between 75% and 80%.
 - **A cool spot**: Not on the window sill.
 - **A cable nearby**: Wired is faster and cooler for a quick top-up before leaving.
 
-HTX's 80–95% wireless group is the closest test of this setup, and it came out best in that test. It's not an exact replica, though: those phones charged without a case. Mine has one, so a bit less efficiency and more heat. The earbuds have tiny batteries and draw little power. No concern there. The energy cost is negligible, as calculated above.
+HTX's 80–95% wireless group shows that frequent top-ups, exactly what a dock does, are not bad for the battery. It's not an exact replica of my setup, though: those phones charged without a case. Mine has one, so a bit less efficiency and more heat. The earbuds have tiny batteries and draw little power. No concern there. The energy cost is negligible, as calculated above.
 
 For me, this will be slow wireless charging capped at 80%, with an occasional fast charge to 100% by cable when I need it.
