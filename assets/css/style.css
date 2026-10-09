@@ -83,6 +83,11 @@ blockquote {
     --border-color: var(--pico-secondary);
 }
 
+/* Wide tables scroll instead of stretching the page on small screens */
+.table-scroll {
+    overflow-x: auto;
+}
+
 /* Navbar */
 nav[role="menu"] {
     background-color: var(--header-background-color);

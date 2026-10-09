@@ -87,5 +87,8 @@ export default async function (eleventyConfig) {
             },
             defaultColor: 'light-dark()',
         }));
+    // Wrap tables so wide ones scroll horizontally on small screens
+    md.renderer.rules.table_open = () => '<div class="table-scroll">\n<table>\n';
+    md.renderer.rules.table_close = () => '</table>\n</div>\n';
     eleventyConfig.setLibrary("md", md);
 };
