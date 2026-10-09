@@ -2,7 +2,7 @@
 
 import pytest
 
-from obsidian_sync.mirror import _extract_image_links, MdContent
+from obsidian_sync.mirror import _extract_image_links, _update_image_link_in_content, MdContent
 
 # Consolidated parametrized tests for image link extraction regex
 # Merged from former test.py and test_image_links.py
@@ -34,6 +34,8 @@ from obsidian_sync.mirror import _extract_image_links, MdContent
         ("![spaced](Folder Name/Another Image 01.png)", ["Folder Name/Another Image 01.png"]),
         ("![q](img/photo.jpeg?version=3)", ["img/photo.jpeg?version=3"]),
         ("![frag](img/diagram.PNG#section-one)", ["img/diagram.PNG#section-one"]),
+        ("![[Image.PNG|Chart of grind sizes]]", ["Image.PNG"]),
+        ("![[Folder/Image.png|300]] and ![[Other.jpg|300x200]]", ["Folder/Image.png", "Other.jpg"]),
     ],
 )
 def test_extract_image_links(content: str, expected: list[str]):
@@ -55,3 +57,20 @@ def test_extract_image_links(content: str, expected: list[str]):
 )
 def test_extract_image_links_negative(content: str):
     assert _extract_image_links(MdContent(content)) == []
+
+@pytest.mark.parametrize(
+    "content, old_link, expected",
+    [
+        ("![Chart of grind sizes](img/chart.png)", "img/chart.png", "![Chart of grind sizes](/assets/images/chart.png)"),
+        ("![](img/chart.png)", "img/chart.png", "![](/assets/images/chart.png)"),
+        ("![alt [inner] text](img/chart.png)", "img/chart.png", "![alt [inner] text](/assets/images/chart.png)"),
+        ("![[img/chart.png]]", "img/chart.png", "![](/assets/images/chart.png)"),
+        ("![[img/chart.png|Chart of grind sizes]]", "img/chart.png", "![Chart of grind sizes](/assets/images/chart.png)"),
+        ("![[img/chart.png|300]]", "img/chart.png", "![](/assets/images/chart.png)"),
+        ("![[img/chart.png|300x200]]", "img/chart.png", "![](/assets/images/chart.png)"),
+        # Only the image with the matching link changes, also when another image precedes it on the same line
+        ("![first](a.png) and ![second](img/chart.png)", "img/chart.png", "![first](a.png) and ![second](/assets/images/chart.png)"),
+    ],
+)
+def test_update_image_link_keeps_alt(content: str, old_link: str, expected: str):
+    assert _update_image_link_in_content(MdContent(content), old_link, "/assets/images/chart.png") == expected

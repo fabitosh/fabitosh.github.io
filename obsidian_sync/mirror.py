@@ -17,6 +17,9 @@ WEBSITE_ASSETS_PATH = Path("../assets/images")
 Frontmatter = NewType("Frontmatter", dict)
 MdContent = NewType("MdContent", str)
 
+# Obsidian embeds take either alt text or a size after the pipe: ![[img.png|alt]], ![[img.png|300]], ![[img.png|300x200]]
+OBSIDIAN_IMAGE_SIZE = re.compile(r'\d+(?:x\d+)?')
+
 
 def mirror_obsidian_notes() -> None:
     """
@@ -108,7 +111,7 @@ def _extract_image_links(content: MdContent) -> list[str]:
     """Extract image links from Markdown or Obsidian-style embeds.
 
     Supports:
-      1. Obsidian: ![[path/to/Image Name.PNG]]
+      1. Obsidian: ![[path/to/Image Name.PNG]], optionally ![[Image.PNG|alt text]] or ![[Image.PNG|300]]
       2. Markdown: ![alt text](path/to/image-name.jpg)
 
     Optional query or fragment after extension (included in returned link):
@@ -119,7 +122,7 @@ def _extract_image_links(content: MdContent) -> list[str]:
     by using a non-greedy wildcard for alt portion until the next "](" sequence.
     """
     image_pattern = re.compile(
-        r'!\[\[([^]]+\.(?:jpe?g|png|gif|webp)(?:[?#][^]]*)?)]]'  # Obsidian
+        r'!\[\[([^]|]+\.(?:jpe?g|png|gif|webp)(?:[?#][^]|]*)?)(?:\|[^]]*)?]]'  # Obsidian, optional |alt or |size
         r'|!\[.*?]\(([^)]+\.(?:jpe?g|png|gif|webp)(?:[?#][^)]*)?)\)',  # Markdown (non-greedy alt)
         re.IGNORECASE,
     )
@@ -160,13 +163,20 @@ def _resolve_image_path(link: str, note_dir: Path) -> Path | None:
 
 
 def _update_image_link_in_content(content: MdContent, old_link: str, new_link: str) -> MdContent:
-    """Replaces an old image link with a new one in the content."""
+    """Replaces an old image link with a new one in the content, keeping its alt text."""
     escaped_old_link = re.escape(old_link)
-    pattern1 = re.compile(r'!\[\[' + escaped_old_link + r']]')  # Obsidian style
-    pattern2 = re.compile(r'!\[.*?]\(' + escaped_old_link + r'\)')  # Markdown style (flexible alt)
-    new_md_link = f"![]({new_link})"
-    updated = pattern1.sub(new_md_link, content)
-    updated = pattern2.sub(new_md_link, updated)
+    pattern1 = re.compile(r'!\[\[' + escaped_old_link + r'(?:\|([^]]*))?]]')  # Obsidian style, optional |alt or |size
+    # Markdown style: the alt may contain brackets, but never "](", so it cannot reach back into a previous image
+    pattern2 = re.compile(r'!\[((?:(?!]\().)*)]\(' + escaped_old_link + r'\)')
+
+    def obsidian_to_md(match: re.Match) -> str:
+        alt = match.group(1) or ""
+        if OBSIDIAN_IMAGE_SIZE.fullmatch(alt):
+            alt = ""
+        return f"![{alt}]({new_link})"
+
+    updated = pattern1.sub(obsidian_to_md, content)
+    updated = pattern2.sub(lambda match: f"![{match.group(1)}]({new_link})", updated)
     return MdContent(updated)
 
 
