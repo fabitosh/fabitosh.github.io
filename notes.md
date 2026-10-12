@@ -5,7 +5,7 @@ title: fabio.earth - notes
 permalink: /
 ---
 
-# Notes
+# Notes {% rssIcon %}
 
 <div>
 {%- for note in collections.notes reversed -%}

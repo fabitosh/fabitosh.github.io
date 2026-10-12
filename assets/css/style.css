@@ -24,6 +24,22 @@
     font-weight: normal;
 }
 
+/* RSS icon next to the notes heading */
+.rss-link {
+    color: var(--pico-muted-color);
+    text-decoration: none;
+}
+
+.rss-link:hover,
+.rss-link:focus-visible {
+    color: var(--pico-primary);
+}
+
+.rss-link svg {
+    width: 0.5em;
+    height: 0.5em;
+}
+
 /* Gallery styling */
 .gallery {
     display: grid;

@@ -16,12 +16,25 @@ export default async function (eleventyConfig) {
 
     eleventyConfig.addCollection('notes', function (collectionApi) {
         const notes = collectionApi.getFilteredByGlob('notes/*.md');
-        // oldest changes first, like Eleventy's default order: the RSS plugin reverses it to take the latest
+        // oldest changes first, like Eleventy's default order: the notes page reverses it to show the latest
         notes.sort((a, b) => {
             const dateA = a.data.mtime || a.data.btime;
             const dateB = b.data.mtime || b.data.btime;
             return new Date(dateA) - new Date(dateB);
         });
+        return notes;
+    });
+
+    // The feed announces a note once, when it's published; updates don't bring it back
+    eleventyConfig.addCollection('feed', function (collectionApi) {
+        const notes = collectionApi.getFilteredByGlob('notes/*.md');
+        // The feed dates items by item.date, which defaults to the file creation time (in CI the checkout time).
+        // Computed data can't override it, so set it here from the publish date.
+        for (const note of notes) {
+            if (note.data.btime) note.date = new Date(note.data.btime);
+        }
+        // oldest first, like Eleventy's default order: the RSS plugin reverses it to take the latest
+        notes.sort((a, b) => a.date - b.date);
         return notes;
     });
 
@@ -45,11 +58,16 @@ export default async function (eleventyConfig) {
 </svg>`;
     });
 
+    // Single line, so it can sit inside a markdown heading
+    eleventyConfig.addShortcode("rssIcon", function() {
+        return `<a href="/feed.xml" class="rss-link" title="RSS feed" aria-label="RSS feed of the notes"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="2.5" cy="13.5" r="2.5"/><path d="M0 5.5v2.6c4.36 0 7.9 3.54 7.9 7.9h2.6C10.5 10.2 5.8 5.5 0 5.5z"/><path d="M0 0v2.6c7.4 0 13.4 6 13.4 13.4H16C16 7.16 8.84 0 0 0z"/></svg></a>`;
+    });
+
     eleventyConfig.addPlugin(feedPlugin, {
         type: "rss",
         outputPath: "/feed.xml",
         collection: {
-            name: "notes",
+            name: "feed",
             limit: 10,
         },
         metadata: {
