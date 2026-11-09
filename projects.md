@@ -10,9 +10,10 @@ title: Projects
 
 ## tailcloak
 
-I got tired of manually toggling tailscale when working from the library and later back at home. This small macOS background daemon turns Tailscale on for untrusted networks and off for trusted ones. Automatically, as I move between them.
+I got tired of manually toggling Tailscale when working from the library and later back at home. This small macOS background daemon adjusts Tailscale whenever I join a trusted or untrusted network. On public Wi-Fi, it routes my traffic through my own exit node, so it stays encrypted past the potentially unsafe local network.
 
 <div class="grid">
+  <a href="https://crates.io/crates/tailcloak" role="button">crates.io</a>
   <a href="https://github.com/fabitosh/tailcloak" role="button" class="secondary">
     {% githubIcon %} fabitosh/tailcloak
   </a>
@@ -32,7 +33,7 @@ What's automated and synchronised:
 - Terminal packages
 - GUI applications
 
-One command. Three operating systems. Done.
+One command sets up and updates all three of my operating systems.
 
 <div class="grid">
   <a href="/projects/configuration-synchronization/" role="button">Read more</a>
