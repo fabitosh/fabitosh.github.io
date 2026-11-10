@@ -13,7 +13,7 @@ title: Projects
 I got tired of manually toggling Tailscale when working from the library and later back at home. This small macOS background daemon adjusts Tailscale whenever I join a trusted or untrusted network. On public Wi-Fi, it routes my traffic through my own exit node, so it stays encrypted past the potentially unsafe local network.
 
 <div class="grid">
-  <a href="https://crates.io/crates/tailcloak" role="button">crates.io</a>
+  <a href="https://crates.io/crates/tailcloak" role="button" class="secondary">crates.io</a>
   <a href="https://github.com/fabitosh/tailcloak" role="button" class="secondary">
     {% githubIcon %} fabitosh/tailcloak
   </a>
